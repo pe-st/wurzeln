@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset comparisonMethod="maven">
+    <ignoreVersions>
+        <!-- ignore all versions with a build number or qualifier -->
+        <!-- see http://www.mojohaus.org/versions-maven-plugin/version-rules.html -->
+        <ignoreVersion type="regex">\d+\.\d+(\.\d+)?-.*</ignoreVersion>
+
+        <!-- ignore version like 4.12.0.redhat-003 or 1.4.2.jenkins-1 -->
+        <ignoreVersion type="regex">\d+\.\d+\.\d+\.[a-z].*</ignoreVersion>
+    </ignoreVersions>
+    <rules>
+    </rules>
+</ruleset>

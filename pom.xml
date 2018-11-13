@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>ch.schlau.wurzeln.root</groupId>
+    <artifactId>root</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>${project.groupId}.${project.artifactId}</name>
+
+    <modules>
+        <module>jboss-eap-7.1</module>
+        <module>wildfly-14</module>
+        <module>update-checker</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- Override this with `11` in your application POM if so desired. -->
+        <!-- Until Java 8 is a thing of the past we have to live with two versioning schemes (see JEP223): -->
+        <!-- - the Java release (the 'de facto' Java major version number, e.g. 8 for Java 1.8, and 9 for Java 9), -->
+        <!--   supported in the compiler plugin as `<release>` for JDK 9 and later -->
+        <!-- - the official Java version number, e.g. 1.8 for Java 1.8, and 9 for Java 9 -->
+        <!--   (this is used for 'legacy' interfaces, e.g. the -source/-target switches of javac) -->
+        <java.release>8</java.release>
+
+        <!-- Used only with JDK 1.8 -->
+        <java.version>1.8</java.version>
+
+        <!-- Java EE modules that were removed from Java SE after Java 8 -->
+        <!-- (see http://openjdk.java.net/jeps/320) -->
+        <!-- and are not part (yet) of the Application Servers -->
+        <!-- For JAX-B see https://en.wikipedia.org/wiki/Java_Architecture_for_XML_Binding -->
+        <!-- and https://stackoverflow.com/a/43574427/3686 -->
+        <javax.jaxb.version>2.2.11</javax.jaxb.version>
+        <!-- javax.activation is overridden for the EAP JBosses -->
+        <javax.activation.version>1.1.1</javax.activation.version>
+        <!-- Commons Annotations latest version (note: EE7 => 1.2, EE8 => 1.3.x) -->
+        <!-- When using a JBoss EAP you can use the specific artifact from then BOM: -->
+        <!-- 'org.jboss.spec.javax.annotation:jboss-annotations-api_1.2_spec' (or 1.3) -->
+        <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
+
+        <!-- prevent javadoc failures in JDK 8 -->
+        <additionalparam>-Xdoclint:none</additionalparam>
+
+        <!-- it's jacoco-maven-plugin:0.8.2 that requires 3.3.9 -->
+        <minimum-maven-version>3.3.9</minimum-maven-version>
+
+        <!-- use 'versions:display-dependency-updates versions:display-plugin-updates' -->
+        <!-- in update-checker to find newer versions of artifacts and plugins -->
+        <!-- for plugins see also the section in README.md -->
+
+        <!-- non-apache maven plugin versions -->
+        <docker.plugin.version>0.27.2</docker.plugin.version>
+        <jacoco.plugin.version>0.8.2</jacoco.plugin.version>
+        <versions.plugin.version>2.7</versions.plugin.version>
+        <wildfly.plugin.version>1.2.2.Final</wildfly.plugin.version>
+
+        <!-- apache maven plugin versions (in alphabetical order) -->
+        <maven.assembly.plugin.version>3.1.0</maven.assembly.plugin.version>
+        <maven.clean.plugin.version>3.1.0</maven.clean.plugin.version>
+        <maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
+        <maven.dependency.plugin.version>3.1.1</maven.dependency.plugin.version>
+        <maven.deploy.plugin.version>2.8.2</maven.deploy.plugin.version>
+        <maven.ear.plugin.version>3.0.1</maven.ear.plugin.version>
+        <maven.ejb.plugin.version>3.0.1</maven.ejb.plugin.version>
+        <maven.enforcer.plugin.version>3.0.0-M2</maven.enforcer.plugin.version>
+        <maven.failsafe.plugin.version>2.22.1</maven.failsafe.plugin.version>
+        <maven.install.plugin.version>2.5.2</maven.install.plugin.version>
+        <maven.jar.plugin.version>3.1.0</maven.jar.plugin.version>
+        <maven.javadoc.plugin.version>3.0.1</maven.javadoc.plugin.version>
+        <maven.release.plugin.version>2.5.3</maven.release.plugin.version>
+        <maven.resources.plugin.version>3.1.0</maven.resources.plugin.version>
+        <maven.scm.plugin.version>1.11.1</maven.scm.plugin.version>
+        <maven.shade.plugin.version>3.2.0</maven.shade.plugin.version>
+        <maven.site.plugin.version>3.7.1</maven.site.plugin.version>
+        <maven.source.plugin.version>3.0.1</maven.source.plugin.version>
+        <maven.surefire.plugin.version>${maven.failsafe.plugin.version}</maven.surefire.plugin.version>
+        <maven.war.plugin.version>3.2.2</maven.war.plugin.version>
+
+        <!-- artifact versions -->
+        <apache.commons.lang3.version>3.8.1</apache.commons.lang3.version>
+        <slf4j.version>1.7.25</slf4j.version>
+
+        <!-- testing and static analysis -->
+        <junit.platform.version>1.3.1</junit.platform.version>
+        <junit.jupiter.version>5.3.1</junit.jupiter.version>
+        <hamcrest.version>2.0.0.0</hamcrest.version>
+        <mockito.version>2.23.0</mockito.version>
+        <equalsverifier.version>3.0.2</equalsverifier.version>
+        <restassured.version>3.2.0</restassured.version>
+    </properties>
+
+    <!-- no dependencies in this POM, as dependencies from a parent POM can't be excluded -->
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- utils -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${apache.commons.lang3.version}</version>
+            </dependency>
+
+            <!-- logging -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <!-- testing -->
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${junit.jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-params</artifactId>
+                <version>${junit.jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- junit 5 no longer includes hamcrest -->
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>java-hamcrest</artifactId>
+                <version>${hamcrest.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>nl.jqno.equalsverifier</groupId>
+                <artifactId>equalsverifier</artifactId>
+                <version>${equalsverifier.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.plugin.version}</version>
+                <configuration>
+                    <!-- skips surefire tests without skipping failsafe tests.
+                             Property value seems to magically default to false -->
+                    <skipTests>${skip.surefire.tests}</skipTests>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven.failsafe.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <argLine>${jacoco.integration.agent.arg}</argLine>
+                    <classpathDependencyExcludes>
+                        <classpathDependencyExcludes>javax:javaee-api</classpathDependencyExcludes>
+                    </classpathDependencyExcludes>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <pluginManagement>
+            <plugins>
+                <!-- apache maven -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${maven.jar.plugin.version}</version>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${maven.war.plugin.version}</version>
+                    <configuration>
+                        <failOnMissingWebXml>false</failOnMissingWebXml>
+                        <archive>
+                            <manifest>
+                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
+
+                <!-- JUnit Code Coverage -->
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>${jacoco.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>pre-unit-test</id>
+                            <phase>process-test-classes</phase>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>pre-integration-test</id>
+                            <phase>pre-integration-test</phase>
+                            <goals>
+                                <goal>prepare-agent-integration</goal>
+                            </goals>
+                            <configuration>
+                                <propertyName>jacoco.integration.agent.arg</propertyName>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>java9plus</id>
+            <activation>
+                <jdk>[9,)</jdk>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>${maven.compiler.plugin.version}</version>
+                        <configuration>
+                            <!-- starting with Java 9 javac should be called with -release N -->
+                            <release>${java.release}</release>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>java8</id>
+            <activation>
+                <jdk>1.8</jdk>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>${maven.compiler.plugin.version}</version>
+                        <configuration>
+                            <!-- Java 8 is the last version where `javac` should be called with -source N -target N -->
+                            <source>${java.version}</source>
+                            <target>${java.version}</target>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- profile to test that the referenced versions exist for typical dependencies -->
+        <!-- used in a separate Jenkinsfile stage -->
+        <profile>
+            <id>dependencies-existence</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <!-- Modules removed in Java 11 with JEP320 -->
+            <dependencies>
+                <dependency>
+                    <groupId>javax.xml.bind</groupId>
+                    <artifactId>jaxb-api</artifactId>
+                    <version>${javax.jaxb.version}</version>
+                </dependency>
+            </dependencies>
+            <!-- see each module POM for other dependencies to check -->
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <version>${maven.dependency.plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>analyze</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>analyze-only</goal>
+                                </goals>
+                                <configuration>
+                                    <verbose>true</verbose>
+                                    <failOnWarning>true</failOnWarning>
+                                    <ignoredUnusedDeclaredDependencies>
+                                        <!-- these are declared to check that the dependency exists -->
+                                        <ignoredUnusedDeclaredDependency>javax.xml.bind</ignoredUnusedDeclaredDependency>
+                                    </ignoredUnusedDeclaredDependencies>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>analyze-dep-mgt</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>analyze-dep-mgt</goal>
+                                </goals>
+                                <configuration>
+                                    <failBuild>true</failBuild>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-enforcer-plugin</artifactId>
+                        <version>${maven.enforcer.plugin.version}</version>
+                        <configuration>
+                            <rules>
+                                <dependencyConvergence/>
+                            </rules>
+                            <fail>true</fail>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>enforce-versions</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>enforce</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

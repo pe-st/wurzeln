@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>ch.schlau.wurzeln.root</groupId>
+        <artifactId>root</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>ch.schlau.wurzeln.root</groupId>
+    <artifactId>jboss-eap-7.1</artifactId>
+    <packaging>pom</packaging>
+
+    <name>${project.groupId}.${project.artifactId}</name>
+
+    <properties>
+        <!-- latest EE7 spec -->
+        <!-- see https://mvnrepository.com/artifact/javax/javaee-api -->
+        <javax.javaee-api.version>7.0</javax.javaee-api.version>
+
+        <!-- latest EE7 spec with JBoss additions, from the jboss-eap-javaee7-7.1.x.GA.pom /bom below -->
+        <!-- see https://github.com/jboss/jboss-javaee-specs/commits/master -->
+        <jboss-javaee-7.0.version>1.1.0.Final-redhat-4</jboss-javaee-7.0.version>
+
+        <!-- latest JBoss EAP 7 dependencies -->
+        <!-- see https://mvnrepository.com/artifact/org.jboss.bom/jboss-eap-javaee7 -->
+        <!-- and https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.1/html-single/development_guide/#manage_project_dependencies -->
+        <jboss-eap.bom.version>7.1.3.GA</jboss-eap.bom.version>
+
+        <!-- Artifact versions provided by JBoss EAP 7.1.3 -->
+        <!-- (see BOM and jboss-eap-7.1/modules/system/layers/base/.overlays/layer-base-jboss-eap-7.1.x.CP) -->
+        <resteasy.version>3.0.25.Final-redhat-1</resteasy.version>
+        <jackson-2-version>2.8.11.redhat-1</jackson-2-version>
+        <!-- provide separate jsr310 property for compatibility with the jboss-eap7.0 root pom -->
+        <jackson-datatype-jsr310.version>${jackson-2-version}</jackson-datatype-jsr310.version>
+        <!-- note: pay attention if you're using infinispan-jcache, there's no xxx-redhat-1 version of it -->
+        <infinispan.version>8.2.11.Final-redhat-1</infinispan.version>
+        <woodstox.version>5.0.3.redhat-1</woodstox.version>
+        <hibernate.version>5.1.14.Final-redhat-1</hibernate.version>
+        <javax.activation.version>1.1.1.redhat-5</javax.activation.version>
+
+        <!-- Hibernate 5.1.1.Final is the reference implementation for Bean Validation 1.1 (EE7) -->
+        <!-- JBoss EAP 7.1.3 uses Hibernate Validator 5.3.5.Final -->
+        <hibernate.validator.version>5.3.5.Final-redhat-2</hibernate.validator.version>
+
+        <!-- JBoss EAP 7.1.3 uses Weld 2.4.7.Final-redhat-1 (corresponding to CDI 1.2) -->
+        <weld.version>2.4.7.Final</weld.version>
+
+        <!-- Latest EE7 Wildfly plugin -->
+        <wildfly.maven.plugin.version>${wildfly.plugin.version}</wildfly.maven.plugin.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- JavaEE version -->
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-api</artifactId>
+                <version>${javax.javaee-api.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- JBoss specific JavaEE artifacts  -->
+            <dependency>
+                <groupId>org.jboss.spec</groupId>
+                <artifactId>jboss-javaee-7.0</artifactId>
+                <version>${jboss-javaee-7.0.version}</version>
+                <scope>provided</scope>
+                <type>pom</type>
+            </dependency>
+
+            <!-- JBoss BOM -->
+            <dependency>
+                <groupId>org.jboss.bom</groupId>
+                <artifactId>jboss-eap-javaee7</artifactId>
+                <version>${jboss-eap.bom.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+
+            <!-- this is not in the BOM -->
+            <dependency>
+                <groupId>org.codehaus.woodstox</groupId>
+                <artifactId>woodstox-core-asl</artifactId>
+                <version>${woodstox.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- profile to test that the referenced versions exist for typical dependencies -->
+    <profiles>
+        <profile>
+            <id>dependencies-existence</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.jboss.resteasy</groupId>
+                    <artifactId>resteasy-client</artifactId>
+                    <version>${resteasy.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-core</artifactId>
+                    <version>${jackson-2-version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>com.fasterxml.jackson.datatype</groupId>
+                    <artifactId>jackson-datatype-jsr310</artifactId>
+                    <version>${jackson-datatype-jsr310.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.infinispan</groupId>
+                    <artifactId>infinispan-core</artifactId>
+                    <version>${infinispan.version}</version>
+                </dependency>
+                <dependency>
+                    <!-- even though woodstox-core is in wildfly-11.0.0.Final/modules/system/layers/base/org/codehaus/woodstox, -->
+                    <!-- the group id is com.fasterxml.woodstox -->
+                    <groupId>com.fasterxml.woodstox</groupId>
+                    <artifactId>woodstox-core</artifactId>
+                    <version>${woodstox.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-core</artifactId>
+                    <version>${hibernate.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-validator</artifactId>
+                    <version>${hibernate.validator.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>com.fasterxml</groupId>
+                            <artifactId>classmate</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+                <dependency>
+                    <groupId>org.jboss.weld</groupId>
+                    <artifactId>weld-core-impl</artifactId>
+                    <version>${weld.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.jboss.weld.se</groupId>
+                    <artifactId>weld-se-core</artifactId>
+                    <version>${weld.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>javax.activation</groupId>
+                    <artifactId>activation</artifactId>
+                    <version>${javax.activation.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+</project>

@@ -1,0 +1,29 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="mvn dependency:tree" type="MavenRunConfiguration" factoryName="Maven">
+    <MavenSettings>
+      <option name="myGeneralSettings" />
+      <option name="myRunnerSettings" />
+      <option name="myRunnerParameters">
+        <MavenRunnerParameters>
+          <option name="profiles">
+            <set />
+          </option>
+          <option name="goals">
+            <list>
+              <option value="dependency:tree" />
+            </list>
+          </option>
+          <option name="pomFileName" />
+          <option name="profilesMap">
+            <map>
+              <entry key="dependencies-existence" value="true" />
+            </map>
+          </option>
+          <option name="resolveToWorkspace" value="false" />
+          <option name="workingDirPath" value="$PROJECT_DIR$/wildfly-14" />
+        </MavenRunnerParameters>
+      </option>
+    </MavenSettings>
+    <method v="2" />
+  </configuration>
+</component>
