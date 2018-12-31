@@ -25,25 +25,25 @@
         <!-- latest JBoss EAP 7 dependencies -->
         <!-- see https://mvnrepository.com/artifact/org.jboss.bom/jboss-eap-javaee7 -->
         <!-- and https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.1/html-single/development_guide/#manage_project_dependencies -->
-        <jboss-eap.bom.version>7.1.3.GA</jboss-eap.bom.version>
+        <jboss-eap.bom.version>7.1.5.GA</jboss-eap.bom.version>
 
-        <!-- Artifact versions provided by JBoss EAP 7.1.3 -->
+        <!-- Artifact versions provided by JBoss EAP 7.1.5 -->
         <!-- (see BOM and jboss-eap-7.1/modules/system/layers/base/.overlays/layer-base-jboss-eap-7.1.x.CP) -->
-        <resteasy.version>3.0.25.Final-redhat-1</resteasy.version>
+        <resteasy.version>3.0.26.Final-redhat-1</resteasy.version>
         <jackson-2-version>2.8.11.redhat-1</jackson-2-version>
         <!-- provide separate jsr310 property for compatibility with the jboss-eap7.0 root pom -->
         <jackson-datatype-jsr310.version>${jackson-2-version}</jackson-datatype-jsr310.version>
         <!-- note: pay attention if you're using infinispan-jcache, there's no xxx-redhat-1 version of it -->
         <infinispan.version>8.2.11.Final-redhat-1</infinispan.version>
         <woodstox.version>5.0.3.redhat-1</woodstox.version>
-        <hibernate.version>5.1.14.Final-redhat-1</hibernate.version>
+        <hibernate.version>5.1.16.Final-redhat-00001</hibernate.version>
         <javax.activation.version>1.1.1.redhat-5</javax.activation.version>
 
         <!-- Hibernate 5.1.1.Final is the reference implementation for Bean Validation 1.1 (EE7) -->
-        <!-- JBoss EAP 7.1.3 uses Hibernate Validator 5.3.5.Final -->
+        <!-- JBoss EAP 7.1.5 uses Hibernate Validator 5.3.5.Final -->
         <hibernate.validator.version>5.3.5.Final-redhat-2</hibernate.validator.version>
 
-        <!-- JBoss EAP 7.1.3 uses Weld 2.4.7.Final-redhat-1 (corresponding to CDI 1.2) -->
+        <!-- JBoss EAP 7.1.5 uses Weld 2.4.7.Final-redhat-1 (corresponding to CDI 1.2) -->
         <weld.version>2.4.7.Final</weld.version>
 
         <!-- Latest EE7 Wildfly plugin -->
