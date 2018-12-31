@@ -14,6 +14,7 @@
         <module>jboss-eap-7.1</module>
         <module>wildfly-14</module>
         <module>wildfly-15</module>
+        <module>thorntail-2.2</module>
         <module>update-checker</module>
     </modules>
 

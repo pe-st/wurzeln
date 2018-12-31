@@ -37,8 +37,6 @@
         <yasson.version>1.0.1</yasson.version>
         <!-- note that for new projects you should consider using JSON-B (yasson) instead of Jackson -->
         <jackson-2-version>2.9.5</jackson-2-version>
-        <!-- provide separate jsr310 property for compatibility with the jboss-eap7.0 root pom -->
-        <jackson-datatype-jsr310.version>${jackson-2-version}</jackson-datatype-jsr310.version>
         <infinispan.version>9.3.1.Final</infinispan.version>
         <woodstox.version>5.0.3</woodstox.version>
         <hibernate.version>5.3.6.Final</hibernate.version>
@@ -157,7 +155,7 @@
                 <dependency>
                     <groupId>com.fasterxml.jackson.datatype</groupId>
                     <artifactId>jackson-datatype-jsr310</artifactId>
-                    <version>${jackson-datatype-jsr310.version}</version>
+                    <version>${jackson-2-version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.infinispan</groupId>
