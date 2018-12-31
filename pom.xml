@@ -58,7 +58,7 @@
 
         <!-- non-apache maven plugin versions -->
         <asciidoctor.plugin.version>1.5.7.1</asciidoctor.plugin.version>
-        <docker.plugin.version>0.27.2</docker.plugin.version>
+        <docker.plugin.version>0.28.0</docker.plugin.version>
         <jacoco.plugin.version>0.8.2</jacoco.plugin.version>
         <versions.plugin.version>2.7</versions.plugin.version>
         <wildfly.plugin.version>2.0.0.Final</wildfly.plugin.version>
@@ -289,7 +289,6 @@
         </profile>
 
         <!-- profile to test that the referenced versions exist for typical dependencies -->
-        <!-- used in a separate Jenkinsfile stage -->
         <profile>
             <id>dependencies-existence</id>
             <activation>
