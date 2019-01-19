@@ -34,6 +34,9 @@
         <!-- Artifact versions provided by Wildfly 14.0.0.Final -->
         <!-- (see wildfly-14.0.0.Final/modules/system/layers/base and Wildfly BOM) -->
         <resteasy.version>3.6.1.Final</resteasy.version>
+        <javax.json.version>1.1.2</javax.json.version>
+        <glassfish.javax.json.version>1.1.2</glassfish.javax.json.version>
+        <javax.json.bind.version>1.0</javax.json.bind.version>
         <yasson.version>1.0.1</yasson.version>
         <!-- note that for new projects you should consider using JSON-B (yasson) instead of Jackson -->
         <jackson-2-version>2.9.5</jackson-2-version>
