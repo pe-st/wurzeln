@@ -42,7 +42,7 @@
         <!-- javax.activation is overridden for the EAP JBosses -->
         <javax.activation.version>1.1.1</javax.activation.version>
         <!-- Commons Annotations latest version (note: EE7 => 1.2, EE8 => 1.3.x) -->
-        <!-- When using a JBoss EAP you can use the specific artifact from then BOM: -->
+        <!-- When using a JBoss EAP you can use the specific artifact from the BOM: -->
         <!-- 'org.jboss.spec.javax.annotation:jboss-annotations-api_1.2_spec' (or 1.3) -->
         <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
 
@@ -303,6 +303,7 @@
                 </dependency>
             </dependencies>
             <!-- see each module POM for other dependencies to check -->
+
             <build>
                 <plugins>
                     <plugin>
@@ -334,27 +335,6 @@
                                 <configuration>
                                     <failBuild>true</failBuild>
                                 </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-enforcer-plugin</artifactId>
-                        <version>${maven.enforcer.plugin.version}</version>
-                        <configuration>
-                            <rules>
-                                <dependencyConvergence/>
-                            </rules>
-                            <fail>true</fail>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>enforce-versions</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>enforce</goal>
-                                </goals>
                             </execution>
                         </executions>
                     </plugin>
