@@ -15,6 +15,7 @@
         <module>wildfly-14</module>
         <module>wildfly-15</module>
         <module>thorntail-2.2</module>
+        <module>thorntail-2.3</module>
         <module>update-checker</module>
     </modules>
 
