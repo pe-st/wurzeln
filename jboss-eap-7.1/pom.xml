@@ -30,8 +30,8 @@
         <!-- Artifact versions provided by JBoss EAP 7.1.5 -->
         <!-- (see BOM and jboss-eap-7.1/modules/system/layers/base/.overlays/layer-base-jboss-eap-7.1.x.CP) -->
         <resteasy.version>3.0.26.Final-redhat-1</resteasy.version>
-        <javax.json.version>1.0.4-redhat-1</javax.json.version>
-        <!-- the glassfish RI for JSON-P is included in javax.json-1.0.4.redhat-1.jar -->
+        <!-- the API for JSON-P (javax.json:javax.json-api) is included in javax.json-1.0.4.redhat-1.jar -->
+        <glassfish.javax.json.version>1.0.4.redhat-1</glassfish.javax.json.version>
         <jackson-2-version>2.8.11.redhat-1</jackson-2-version>
         <!-- note: pay attention if you're using infinispan-jcache, there's no xxx-redhat-1 version of it -->
         <infinispan.version>8.2.11.Final-redhat-1</infinispan.version>
@@ -41,9 +41,11 @@
 
         <!-- Hibernate 5.1.1.Final is the reference implementation for Bean Validation 1.1 (EE7) -->
         <!-- JBoss EAP 7.1.5 uses Hibernate Validator 5.3.5.Final -->
+        <javax.validation.version>1.1.0.Final-redhat-1</javax.validation.version>
         <hibernate.validator.version>5.3.5.Final-redhat-2</hibernate.validator.version>
 
         <!-- JBoss EAP 7.1.5 uses Weld 2.4.7.Final-redhat-1 (corresponding to CDI 1.2) -->
+        <javax.inject.version>1.0.0.redhat-6</javax.inject.version>
         <weld.version>2.4.7.Final</weld.version>
 
         <!-- Latest EE7 Wildfly plugin -->
@@ -103,6 +105,11 @@
                     <version>${resteasy.version}</version>
                 </dependency>
                 <dependency>
+                    <groupId>org.glassfish</groupId>
+                    <artifactId>javax.json</artifactId>
+                    <version>${glassfish.javax.json.version}</version>
+                </dependency>
+                <dependency>
                     <groupId>com.fasterxml.jackson.core</groupId>
                     <artifactId>jackson-core</artifactId>
                     <version>${jackson-2-version}</version>
@@ -118,7 +125,7 @@
                     <version>${infinispan.version}</version>
                 </dependency>
                 <dependency>
-                    <!-- even though woodstox-core is in wildfly-11.0.0.Final/modules/system/layers/base/org/codehaus/woodstox, -->
+                    <!-- even though woodstox-core is in jboss-eap-7.1/modules/system/layers/base/org/codehaus/woodstox, -->
                     <!-- the group id is com.fasterxml.woodstox -->
                     <groupId>com.fasterxml.woodstox</groupId>
                     <artifactId>woodstox-core</artifactId>
@@ -148,6 +155,16 @@
                     <groupId>javax.activation</groupId>
                     <artifactId>activation</artifactId>
                     <version>${javax.activation.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>javax.inject</groupId>
+                    <artifactId>javax.inject</artifactId>
+                    <version>${javax.inject.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>javax.validation</groupId>
+                    <artifactId>validation-api</artifactId>
+                    <version>${javax.validation.version}</version>
                 </dependency>
             </dependencies>
         </profile>

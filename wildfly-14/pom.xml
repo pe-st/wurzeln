@@ -46,9 +46,11 @@
 
         <!-- Hibernate 6.0.1.Final is the reference implementation for Bean Validation 2.0 (EE8) -->
         <!-- Wildfly 14.0.0.Final uses Hibernate Validator 6.0.13.Final -->
+        <javax.validation.version>2.0.1.Final</javax.validation.version>
         <hibernate.validator.version>6.0.13.Final</hibernate.validator.version>
 
         <!-- Wildfly 14.0.0.Final uses Weld 3.0.5 (corresponding to CDI 2.0) -->
+        <javax.inject.version>1</javax.inject.version>
         <weld.version>3.0.5.Final</weld.version>
 
         <!-- Latest EE7 Wildfly plugin -->
@@ -138,6 +140,21 @@
                     <version>${resteasy.version}</version>
                 </dependency>
                 <dependency>
+                    <groupId>javax.json</groupId>
+                    <artifactId>javax.json-api</artifactId>
+                    <version>${javax.json.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.glassfish</groupId>
+                    <artifactId>javax.json</artifactId>
+                    <version>${glassfish.javax.json.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>javax.json.bind</groupId>
+                    <artifactId>javax.json.bind-api</artifactId>
+                    <version>${javax.json.bind.version}</version>
+                </dependency>
+                <dependency>
                     <groupId>org.eclipse</groupId>
                     <artifactId>yasson</artifactId>
                     <version>${yasson.version}</version>
@@ -198,6 +215,16 @@
                     <groupId>javax.annotation</groupId>
                     <artifactId>javax.annotation-api</artifactId>
                     <version>${javax.annotation-api.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>javax.inject</groupId>
+                    <artifactId>javax.inject</artifactId>
+                    <version>${javax.inject.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>javax.validation</groupId>
+                    <artifactId>validation-api</artifactId>
+                    <version>${javax.validation.version}</version>
                 </dependency>
             </dependencies>
         </profile>
