@@ -49,11 +49,14 @@
         <!-- doesn't appear in build-parent, but it's what's packaged for the JPA fraction -->
         <infinispan.version>9.4.3.Final</infinispan.version>
         <!--<woodstox.version>5.0.3</woodstox.version>-->
+
         <!-- does thorntail 2.3.0 use hibernate at all? There's a jpa-eclipselink fraction... -->
         <!--<hibernate.version>5.3.7.Final</hibernate.version>-->
-
+        <javax.validation.version>2.0.1.Final</javax.validation.version>
         <hibernate.validator.version>6.0.14.Final</hibernate.validator.version>
 
+        <!-- Thorntail 2.3.0.Final uses Weld 3.0.5 (corresponding to CDI 2.0) -->
+        <javax.inject.version>1</javax.inject.version>
         <weld.version>3.0.5.Final</weld.version>
 
         <!-- Latest EE7 Wildfly plugin -->
@@ -80,6 +83,19 @@
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-enforcer-plugin</artifactId>
+                        <version>${maven.enforcer.plugin.version}</version>
+                        <configuration>
+                            <!-- skip dependencyConvergence check for Thorntail, there is too much noise in the smallrye dependencies -->
+                            <skip>true</skip>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
             <dependencies>
                 <dependency>
                     <groupId>org.eclipse.microprofile.config</groupId>
@@ -225,6 +241,16 @@
                     <groupId>javax.annotation</groupId>
                     <artifactId>javax.annotation-api</artifactId>
                     <version>${javax.annotation-api.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>javax.inject</groupId>
+                    <artifactId>javax.inject</artifactId>
+                    <version>${javax.inject.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>javax.validation</groupId>
+                    <artifactId>validation-api</artifactId>
+                    <version>${javax.validation.version}</version>
                 </dependency>
             </dependencies>
         </profile>
