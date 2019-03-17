@@ -63,6 +63,7 @@
         <build-helper.plugin.version>3.0.0</build-helper.plugin.version>
         <docker.plugin.version>0.28.0</docker.plugin.version>
         <jacoco.plugin.version>0.8.3</jacoco.plugin.version>
+        <nexus-staging.plugin.version>1.6.8</nexus-staging.plugin.version>
         <versions.plugin.version>2.7</versions.plugin.version>
         <wildfly.plugin.version>2.0.1.Final</wildfly.plugin.version>
 
@@ -97,8 +98,8 @@
         <junit.platform.version>1.4.0</junit.platform.version>
         <junit.jupiter.version>5.4.0</junit.jupiter.version>
         <hamcrest.version>2.0.0.0</hamcrest.version>
-        <mockito.version>2.24.5</mockito.version>
-        <equalsverifier.version>3.1.5</equalsverifier.version>
+        <mockito.version>2.25.1</mockito.version>
+        <equalsverifier.version>3.1.7</equalsverifier.version>
         <json.unit.version>2.4.0</json.unit.version>
         <restassured.version>3.3.0</restassured.version>
     </properties>
