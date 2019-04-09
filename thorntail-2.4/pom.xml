@@ -8,7 +8,7 @@
     </parent>
 
     <groupId>ch.schlau.wurzeln.root</groupId>
-    <artifactId>thorntail-2.3</artifactId>
+    <artifactId>thorntail-2.4</artifactId>
     <packaging>pom</packaging>
 
     <name>${project.groupId}.${project.artifactId}</name>
@@ -18,28 +18,28 @@
         <javax.javaee-api.version>8.0</javax.javaee-api.version>
 
         <!-- latest Thorntail version -->
-        <thorntail.version>2.3.0.Final</thorntail.version>
+        <thorntail.version>2.4.0.Final</thorntail.version>
 
-        <!-- MicroProfile Standard Versions, from the build-parent-2.3.0.Final.pom -->
+        <!-- MicroProfile Standard Versions, from the build-parent-2.4.0.Final.pom -->
         <mp.config.version>1.3</mp.config.version>
-        <mp.fault-tolerance.version>1.1.3</mp.fault-tolerance.version>
+        <mp.fault-tolerance.version>2.0</mp.fault-tolerance.version>
         <mp.health.version>1.0</mp.health.version>
         <mp.metrics.version>1.1</mp.metrics.version>
         <mp.jwt.version>1.1</mp.jwt.version>
-        <mp.openapi.version>1.0.1</mp.openapi.version>
-        <mp.opentracing.version>1.2.1</mp.opentracing.version>
-        <mp.rest-client.version>1.1</mp.rest-client.version>
+        <mp.openapi.version>1.1.2</mp.openapi.version>
+        <mp.opentracing.version>1.3.1</mp.opentracing.version>
+        <mp.rest-client.version>1.2.1</mp.rest-client.version>
 
         <smallrye.config.version>1.3.5</smallrye.config.version>
-        <smallrye.fault-tolerance.version>1.1.0</smallrye.fault-tolerance.version>
+        <smallrye.fault-tolerance.version>2.0.1</smallrye.fault-tolerance.version>
         <smallrye.health.version>1.0.2</smallrye.health.version>
         <smallrye.metrics.version>1.1.3</smallrye.metrics.version>
-        <smallrye.jwt.version>1.1.0</smallrye.jwt.version>
-        <smallrye.openapi.version>1.0.3</smallrye.openapi.version>
-        <smallrye.opentracing.version>1.2.1</smallrye.opentracing.version>
-        <smallrye.rest-client.version>1.1.0</smallrye.rest-client.version>
+        <smallrye.jwt.version>1.1.1</smallrye.jwt.version>
+        <smallrye.openapi.version>1.1.1</smallrye.openapi.version>
+        <smallrye.opentracing.version>1.3.0</smallrye.opentracing.version>
+        <smallrye.rest-client.version>1.2.2</smallrye.rest-client.version>
 
-        <!-- Artifact versions provided by Thorntail build-parent-2.3.0.Final.pom -->
+        <!-- Artifact versions provided by Thorntail build-parent-2.4.0.Final.pom -->
         <resteasy.version>3.6.2.Final</resteasy.version>
         <javax.json.version>1.1.2</javax.json.version>
         <glassfish.javax.json.version>1.1.2</glassfish.javax.json.version>
@@ -50,12 +50,12 @@
         <infinispan.version>9.4.3.Final</infinispan.version>
         <!--<woodstox.version>5.0.3</woodstox.version>-->
 
-        <!-- does thorntail 2.3.0 use hibernate at all? There's a jpa-eclipselink fraction... -->
+        <!-- does thorntail 2.4.0 use hibernate at all? There's a jpa-eclipselink fraction... -->
         <!--<hibernate.version>5.3.7.Final</hibernate.version>-->
         <javax.validation.version>2.0.1.Final</javax.validation.version>
         <hibernate.validator.version>6.0.14.Final</hibernate.validator.version>
 
-        <!-- Thorntail 2.3.0.Final uses Weld 3.0.5 (corresponding to CDI 2.0) -->
+        <!-- Thorntail 2.4.0.Final uses Weld 3.0.5 (corresponding to CDI 2.0) -->
         <javax.inject.version>1</javax.inject.version>
         <weld.version>3.0.5.Final</weld.version>
 
