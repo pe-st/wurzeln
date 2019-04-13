@@ -12,6 +12,7 @@
 
     <modules>
         <module>jboss-eap-7.1</module>
+        <module>quarkus</module>
         <module>thorntail-2.2</module>
         <module>thorntail-2.3</module>
         <module>thorntail-2.4</module>

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>ch.schlau.wurzeln.root</groupId>
+        <artifactId>root</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>ch.schlau.wurzeln.root</groupId>
+    <artifactId>quarkus</artifactId>
+    <packaging>pom</packaging>
+
+    <name>${project.groupId}.${project.artifactId}</name>
+
+    <properties>
+        <!-- latest EE8 spec -->
+        <javax.javaee-api.version>8.0</javax.javaee-api.version>
+
+        <!-- latest Quarkus version -->
+        <quarkus.version>0.13.1</quarkus.version>
+
+        <!-- MicroProfile Standard Versions, from the quarkus/bom/pom.xml -->
+        <mp.config.version>1.3</mp.config.version>
+        <!--<mp.fault-tolerance.version>2.0</mp.fault-tolerance.version>-->
+        <!--<mp.health.version>1.0</mp.health.version>-->
+        <!--<mp.metrics.version>1.1</mp.metrics.version>-->
+        <!--<mp.jwt.version>1.1</mp.jwt.version>-->
+        <!--<mp.openapi.version>1.3.1</mp.openapi.version>-->
+        <mp.opentracing.version>1.3.1</mp.opentracing.version>
+        <mp.rest-client.version>1.2.1</mp.rest-client.version>
+        <mp.reactive-streams-operators.version>1.0</mp.reactive-streams-operators.version>
+
+        <smallrye.config.version>1.3.5</smallrye.config.version>
+        <smallrye.fault-tolerance.version>2.0.1</smallrye.fault-tolerance.version>
+        <smallrye.health.version>1.0.2</smallrye.health.version>
+        <smallrye.metrics.version>1.1.3</smallrye.metrics.version>
+        <smallrye.jwt.version>1.1.1</smallrye.jwt.version>
+        <smallrye.openapi.version>1.1.1</smallrye.openapi.version>
+        <smallrye.opentracing.version>1.3.0</smallrye.opentracing.version>
+        <smallrye.rest-client.version>1.2.2</smallrye.rest-client.version>
+        <smallrye.converter-api.version>1.0.3</smallrye.converter-api.version>
+        <smallrye.reactive-streams-operators.version>1.0.3</smallrye.reactive-streams-operators.version>
+        <smallrye.reactive-messaging.version>0.0.7</smallrye.reactive-messaging.version>
+
+        <!-- Artifact versions provided by the quarkus/bom/pom.xml -->
+        <resteasy.version>4.0.0.CR2</resteasy.version>
+        <javax.json.version>1.1.4</javax.json.version>
+        <glassfish.javax.json.version>1.1.4</glassfish.javax.json.version>
+        <javax.json.bind.version>1.0</javax.json.bind.version>
+        <yasson.version>1.0.3</yasson.version>
+        <jackson-2-version>2.9.8</jackson-2-version>
+        <infinispan.version>10.0.0.Beta2</infinispan.version>
+
+        <hibernate.version>5.4.2.Final</hibernate.version>
+        <javax.validation.version>2.0.1.Final</javax.validation.version>
+        <hibernate.validator.version>6.1.0.Alpha4</hibernate.validator.version>
+
+        <!-- Quarkus uses its ARC component for CDI, based on Weld -->
+        <javax.inject.version>1</javax.inject.version>
+        <!--<weld.version>3.0.5.Final</weld.version>-->
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- JavaEE version -->
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-api</artifactId>
+                <version>${javax.javaee-api.version}</version>
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- profile to test that the referenced versions exist for typical dependencies -->
+    <profiles>
+        <profile>
+            <id>dependencies-existence</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-enforcer-plugin</artifactId>
+                        <version>${maven.enforcer.plugin.version}</version>
+                        <configuration>
+                            <!-- skip dependencyConvergence check for Quarkus, there is too much noise in the smallrye dependencies -->
+                            <skip>true</skip>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+            <dependencies>
+                <!-- Quarkus dependencies -->
+                <dependency>
+                    <groupId>io.quarkus</groupId>
+                    <artifactId>quarkus-bom</artifactId>
+                    <version>${quarkus.version}</version>
+                    <type>pom</type>
+                </dependency>
+                <dependency>
+                    <groupId>io.quarkus</groupId>
+                    <artifactId>quarkus-arc</artifactId>
+                    <version>${quarkus.version}</version>
+                </dependency>
+                <!-- Microprofile dependencies -->
+                <dependency>
+                    <groupId>org.eclipse.microprofile.config</groupId>
+                    <artifactId>microprofile-config-api</artifactId>
+                    <version>${mp.config.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.eclipse.microprofile.opentracing</groupId>
+                    <artifactId>microprofile-opentracing-api</artifactId>
+                    <version>${mp.opentracing.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.eclipse.microprofile.rest.client</groupId>
+                    <artifactId>microprofile-rest-client-api</artifactId>
+                    <version>${mp.rest-client.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.eclipse.microprofile.reactive-streams-operators</groupId>
+                    <artifactId>microprofile-reactive-streams-operators-api</artifactId>
+                    <version>${mp.reactive-streams-operators.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.smallrye</groupId>
+                    <artifactId>smallrye-config</artifactId>
+                    <version>${smallrye.config.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.smallrye</groupId>
+                    <artifactId>smallrye-fault-tolerance</artifactId>
+                    <version>${smallrye.fault-tolerance.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.smallrye</groupId>
+                    <artifactId>smallrye-health</artifactId>
+                    <version>${smallrye.health.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.smallrye</groupId>
+                    <artifactId>smallrye-metrics</artifactId>
+                    <version>${smallrye.metrics.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.smallrye</groupId>
+                    <artifactId>smallrye-jwt</artifactId>
+                    <version>${smallrye.jwt.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.smallrye</groupId>
+                    <artifactId>smallrye-open-api</artifactId>
+                    <version>${smallrye.openapi.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.smallrye</groupId>
+                    <artifactId>smallrye-opentracing</artifactId>
+                    <version>${smallrye.opentracing.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.smallrye</groupId>
+                    <artifactId>smallrye-rest-client</artifactId>
+                    <version>${smallrye.rest-client.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.smallrye.reactive</groupId>
+                    <artifactId>smallrye-reactive-converter-api</artifactId>
+                    <version>${smallrye.converter-api.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.smallrye.reactive</groupId>
+                    <artifactId>smallrye-reactive-streams-operators</artifactId>
+                    <version>${smallrye.reactive-streams-operators.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.smallrye.reactive</groupId>
+                    <artifactId>smallrye-reactive-messaging-provider</artifactId>
+                    <version>${smallrye.reactive-messaging.version}</version>
+                </dependency>
+                <!-- Other dependencies -->
+                <dependency>
+                    <groupId>org.jboss.resteasy</groupId>
+                    <artifactId>resteasy-client</artifactId>
+                    <version>${resteasy.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>javax.json</groupId>
+                    <artifactId>javax.json-api</artifactId>
+                    <version>${javax.json.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.glassfish</groupId>
+                    <artifactId>javax.json</artifactId>
+                    <version>${glassfish.javax.json.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>javax.json.bind</groupId>
+                    <artifactId>javax.json.bind-api</artifactId>
+                    <version>${javax.json.bind.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-core</artifactId>
+                    <version>${jackson-2-version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>com.fasterxml.jackson.datatype</groupId>
+                    <artifactId>jackson-datatype-jsr310</artifactId>
+                    <version>${jackson-2-version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.infinispan</groupId>
+                    <artifactId>infinispan-core</artifactId>
+                    <version>${infinispan.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.infinispan</groupId>
+                    <artifactId>infinispan-jcache</artifactId>
+                    <version>${infinispan.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.hibernate.validator</groupId>
+                    <artifactId>hibernate-validator</artifactId>
+                    <version>${hibernate.validator.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>javax.activation</groupId>
+                    <artifactId>activation</artifactId>
+                    <version>${javax.activation.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>javax.annotation</groupId>
+                    <artifactId>javax.annotation-api</artifactId>
+                    <version>${javax.annotation-api.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>javax.inject</groupId>
+                    <artifactId>javax.inject</artifactId>
+                    <version>${javax.inject.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>javax.validation</groupId>
+                    <artifactId>validation-api</artifactId>
+                    <version>${javax.validation.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+</project>
