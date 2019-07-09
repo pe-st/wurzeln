@@ -9,5 +9,11 @@
         <ignoreVersion type="regex">\d+\.\d+\.\d+\.[a-z].*</ignoreVersion>
     </ignoreVersions>
     <rules>
+        <rule groupId="javax.jws" artifactId="jsr181-api" comparisonMethod="maven">
+            <ignoreVersions>
+                <!-- ignore versions like 1.0.0.MR1-redhat-8 -->
+                <ignoreVersion type="regex">.*-redhat.*</ignoreVersion>
+            </ignoreVersions>
+        </rule>
     </rules>
 </ruleset>

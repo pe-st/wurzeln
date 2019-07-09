@@ -7,7 +7,6 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>ch.schlau.wurzeln.root</groupId>
     <artifactId>wildfly-15</artifactId>
     <packaging>pom</packaging>
 
@@ -22,6 +21,24 @@
 
         <!-- latest Wildfly 15 dependencies -->
         <wildfly.bom.version>15.0.0.Final</wildfly.bom.version>
+
+        <!-- Java EE modules that were removed from Java SE after Java 8 -->
+        <!-- (see http://openjdk.java.net/jeps/320) -->
+        <javax.xml.bind.groupId>org.jboss.spec.javax.xml.bind</javax.xml.bind.groupId>
+        <javax.xml.bind.artifactId>jboss-jaxb-api_2.3_spec</javax.xml.bind.artifactId>
+        <javax.xml.bind.version>1.0.1.Final</javax.xml.bind.version>
+        <javax.xml.ws.groupId>org.jboss.spec.javax.xml.ws</javax.xml.ws.groupId>
+        <javax.xml.ws.artifactId>jboss-jaxws-api_2.3_spec</javax.xml.ws.artifactId>
+        <javax.xml.ws.version>1.0.0.Final</javax.xml.ws.version>
+        <javax.xml.soap.groupId>org.jboss.spec.javax.xml.soap</javax.xml.soap.groupId>
+        <javax.xml.soap.artifactId>jboss-saaj-api_1.3_spec</javax.xml.soap.artifactId>
+        <javax.xml.soap.version>1.0.6.Final</javax.xml.soap.version>
+        <javax.annotation.groupId>org.jboss.spec.javax.annotation</javax.annotation.groupId>
+        <javax.annotation.artifactId>jboss-annotations-api_1.3_spec</javax.annotation.artifactId>
+        <javax.annotation.version>1.0.1.Final</javax.annotation.version>
+        <javax.transaction.groupId>org.jboss.spec.javax.transaction</javax.transaction.groupId>
+        <javax.transaction.artifactId>jboss-transaction-api_1.2_spec</javax.transaction.artifactId>
+        <javax.transaction.version>1.1.1.Final</javax.transaction.version>
 
         <!-- MicroProfile Standard Versions provided by Wildfly 15 -->
         <mp.config.version>1.3</mp.config.version>
@@ -92,7 +109,7 @@
             <!-- this is not in the BOM -->
             <dependency>
                 <groupId>org.codehaus.woodstox</groupId>
-                <artifactId>woodstox-core-asl</artifactId>
+                <artifactId>woodstox-core</artifactId>
                 <version>${woodstox.version}</version>
                 <scope>provided</scope>
             </dependency>
@@ -247,11 +264,6 @@
                     <version>${javax.activation.version}</version>
                 </dependency>
                 <dependency>
-                    <groupId>javax.annotation</groupId>
-                    <artifactId>javax.annotation-api</artifactId>
-                    <version>${javax.annotation-api.version}</version>
-                </dependency>
-                <dependency>
                     <groupId>javax.inject</groupId>
                     <artifactId>javax.inject</artifactId>
                     <version>${javax.inject.version}</version>
@@ -260,6 +272,36 @@
                     <groupId>javax.validation</groupId>
                     <artifactId>validation-api</artifactId>
                     <version>${javax.validation.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>${javax.xml.bind.groupId}</groupId>
+                    <artifactId>${javax.xml.bind.artifactId}</artifactId>
+                    <version>${javax.xml.bind.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>${javax.xml.ws.groupId}</groupId>
+                    <artifactId>${javax.xml.ws.artifactId}</artifactId>
+                    <version>${javax.xml.ws.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>${javax.xml.soap.groupId}</groupId>
+                    <artifactId>${javax.xml.soap.artifactId}</artifactId>
+                    <version>${javax.xml.soap.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>${javax.annotation.groupId}</groupId>
+                    <artifactId>${javax.annotation.artifactId}</artifactId>
+                    <version>${javax.annotation.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>${javax.transaction.groupId}</groupId>
+                    <artifactId>${javax.transaction.artifactId}</artifactId>
+                    <version>${javax.transaction.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>javax.jws</groupId>
+                    <artifactId>jsr181-api</artifactId>
+                    <version>${javax.jws.version}</version>
                 </dependency>
             </dependencies>
         </profile>

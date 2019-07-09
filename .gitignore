@@ -1,3 +1,4 @@
+overlays/
 target/
 .sonar/
 .sonar_lock
@@ -10,6 +11,12 @@ target/
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# dumps from OpenJ9
+jitdump.*.dmp
+core.*.dmp
+javacore.*.txt
+Snap.*.trc
 
 # IntelliJ IDEA
 **/.idea/artifacts/
