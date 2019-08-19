@@ -90,6 +90,16 @@
                     <version>${nexus-staging.plugin.version}</version>
                 </plugin>
                 <plugin>
+                    <groupId>org.openapitools</groupId>
+                    <artifactId>openapi-generator-maven-plugin</artifactId>
+                    <version>${openapi-generator.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>io.swagger.codegen.v3</groupId>
+                    <artifactId>swagger-codegen-maven-plugin</artifactId>
+                    <version>${swagger-codegen.plugin.version}</version>
+                </plugin>
+                <plugin>
                     <groupId>org.wildfly.plugins</groupId>
                     <artifactId>wildfly-maven-plugin</artifactId>
                     <version>${wildfly.plugin.version}</version>
