@@ -5,14 +5,23 @@
         <!-- see http://www.mojohaus.org/versions-maven-plugin/version-rules.html -->
         <ignoreVersion type="regex">\d+\.\d+(\.\d+)?-.*</ignoreVersion>
 
-        <!-- ignore version like 4.12.0.redhat-003 or 1.4.2.jenkins-1 -->
+        <!-- ignore versions like 4.12.0.redhat-003 or 1.4.2.jenkins-1 -->
         <ignoreVersion type="regex">\d+\.\d+\.\d+\.[a-z].*</ignoreVersion>
+
+        <!-- ignore versions like 2.1.0.Beta1 (but still allow 2.0.2.Final) -->
+        <ignoreVersion type="regex">\d+\.\d+\.\d+\.[B].*</ignoreVersion>
     </ignoreVersions>
     <rules>
         <rule groupId="javax.jws" artifactId="jsr181-api" comparisonMethod="maven">
             <ignoreVersions>
                 <!-- ignore versions like 1.0.0.MR1-redhat-8 -->
                 <ignoreVersion type="regex">.*-redhat.*</ignoreVersion>
+            </ignoreVersions>
+        </rule>
+        <rule groupId="org.asciidoctor" artifactId="asciidoctor-maven-plugin" comparisonMethod="maven">
+            <ignoreVersions>
+                <!-- 1.6.0 didn't work for me last time I tried -->
+                <ignoreVersion>1.6.0</ignoreVersion>
             </ignoreVersions>
         </rule>
     </rules>

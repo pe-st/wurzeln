@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="mvn display available updates" type="MavenRunConfiguration" factoryName="Maven">
+  <configuration default="false" name="mvn dependency:tree [update-checker]" type="MavenRunConfiguration" factoryName="Maven">
     <MavenSettings>
       <option name="myGeneralSettings" />
       <option name="myRunnerSettings" />
@@ -10,8 +10,7 @@
           </option>
           <option name="goals">
             <list>
-              <option value="versions:display-dependency-updates" />
-              <option value="versions:display-plugin-updates" />
+              <option value="dependency:tree" />
             </list>
           </option>
           <option name="pomFileName" />
