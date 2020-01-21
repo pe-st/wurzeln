@@ -46,7 +46,7 @@
         <!--<yasson.version>1.0.2</yasson.version>-->
         <jackson-2-version>2.9.5</jackson-2-version>
         <!-- doesn't appear in build-parent, but it's what's packaged for the JPA fraction -->
-        <infinispan.version>9.4.3.Final</infinispan.version>
+        <infinispan.version>10.1.1.Final</infinispan.version>
         <!--<woodstox.version>5.0.3</woodstox.version>-->
 
         <!-- does thorntail 2.3.0 use hibernate at all? There's a jpa-eclipselink fraction... -->
