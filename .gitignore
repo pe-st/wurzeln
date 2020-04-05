@@ -23,6 +23,7 @@ Snap.*.trc
 
 # IntelliJ IDEA
 **/.idea/artifacts/
+**/.idea/codeStyles/
 **/.idea/dictionaries/
 **/.idea/kotlinc.xml
 **/.idea/libraries/
