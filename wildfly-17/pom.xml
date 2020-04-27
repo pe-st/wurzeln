@@ -73,7 +73,7 @@
         <jackson-2-version>2.9.9</jackson-2-version>
         <jackson-bom.version>2.9.9</jackson-bom.version>
 
-        <infinispan.version>9.4.14.Final</infinispan.version>
+        <infinispan.version>11.0.0.Dev04</infinispan.version>
         <hibernate.version>5.3.10.Final</hibernate.version>
 
         <!-- Hibernate 6.0.1.Final is the reference implementation for Bean Validation 2.0 (EE8) -->
