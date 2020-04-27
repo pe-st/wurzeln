@@ -81,7 +81,7 @@
         <!-- this BOM has versions 2.9.10 and 2.9.10.1 (jackson-databind) -->
         <jackson-bom.version>2.9.10.20191020</jackson-bom.version>
 
-        <infinispan.version>9.4.16.Final</infinispan.version>
+        <infinispan.version>11.0.0.Dev04</infinispan.version>
         <hibernate.version>5.3.13.Final</hibernate.version>
 
         <!-- Hibernate 6.0.1.Final is the reference implementation for Bean Validation 2.0 (EE8) -->
