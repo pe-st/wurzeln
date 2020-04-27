@@ -87,7 +87,7 @@
         <!-- Hibernate 6.0.1.Final is the reference implementation for Bean Validation 2.0 (EE8) -->
         <!-- Wildfly 18.0.1.Final uses Hibernate Validator 6.0.18.Final -->
         <jakarta.validation.version>2.0.2</jakarta.validation.version>
-        <hibernate.validator.version>6.0.18.Final</hibernate.validator.version>
+        <hibernate.validator.version>6.1.0.Final</hibernate.validator.version>
 
         <!-- Wildfly 18.0.1.Final uses Weld 3.1.2 (corresponding to CDI 2.0) -->
         <jakarta.inject.version>1.0</jakarta.inject.version>
