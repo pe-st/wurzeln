@@ -52,11 +52,15 @@
         <smallrye.opentracing.version>1.1.1</smallrye.opentracing.version>
         <!-- wildfly 17 is using resteasy-client-microprofile instead of smallrye-rest-client -->
 
-        <!--add opentracing-->
+        <!-- opentracing tracer implementation -->
+        <io.opentracing.version>0.31.0</io.opentracing.version>
+        <io.opentracing.contrib-jaxrs.version>0.1.7</io.opentracing.contrib-jaxrs.version>
+        <io.jaegertracing.version>0.34.0</io.jaegertracing.version>
 
         <!-- Artifact versions provided by Wildfly 17.0.0.Final -->
         <!-- (see wildfly-17.0.0.Final/modules/system/layers/base and Wildfly BOM) -->
         <resteasy.version>3.7.0.Final</resteasy.version>
+        <apache.httpclient.version>4.5.4</apache.httpclient.version>
         <!-- note that wildfly bundles the javax packages, but yasson depends on the jakarta.json ones -->
         <jakarta.json.version>1.1.5</jakarta.json.version>
         <javax.json.version>1.1.2</javax.json.version>
@@ -64,10 +68,12 @@
         <jakarta.json.bind.version>1.0.1</jakarta.json.bind.version>
         <javax.json.bind.version>1.0</javax.json.bind.version>
         <yasson.version>1.0.3</yasson.version>
+
         <!-- note that for new projects you should consider using JSON-B (yasson) instead of Jackson -->
         <jackson-2-version>2.9.9</jackson-2-version>
+        <jackson-bom.version>2.9.9</jackson-bom.version>
+
         <infinispan.version>9.4.14.Final</infinispan.version>
-        <woodstox.version>5.0.3</woodstox.version>
         <hibernate.version>5.3.10.Final</hibernate.version>
 
         <!-- Hibernate 6.0.1.Final is the reference implementation for Bean Validation 2.0 (EE8) -->
@@ -111,14 +117,14 @@
                 <type>pom</type>
             </dependency>
 
-            <!-- this is not in the BOM -->
+            <!-- Jackson BOM -->
             <dependency>
-                <groupId>org.codehaus.woodstox</groupId>
-                <artifactId>woodstox-core</artifactId>
-                <version>${woodstox.version}</version>
-                <scope>provided</scope>
+                <groupId>com.fasterxml.jackson</groupId>
+                <artifactId>jackson-bom</artifactId>
+                <version>${jackson-bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
 
@@ -182,6 +188,29 @@
                     <groupId>io.smallrye</groupId>
                     <artifactId>smallrye-opentracing</artifactId>
                     <version>${smallrye.opentracing.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <!-- avoid Dependency convergence error (wildfly-17 -->
+                            <!-- has opentracing-jaxrs2:0.1.7, smallrye-opentracing only 0.1.6) -->
+                            <groupId>io.opentracing.contrib</groupId>
+                            <artifactId>opentracing-jaxrs2</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+                <dependency>
+                    <groupId>io.opentracing</groupId>
+                    <artifactId>opentracing-api</artifactId>
+                    <version>${io.opentracing.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.opentracing.contrib</groupId>
+                    <artifactId>opentracing-jaxrs2</artifactId>
+                    <version>${io.opentracing.contrib-jaxrs.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.jaegertracing</groupId>
+                    <artifactId>jaeger-core</artifactId>
+                    <version>${io.jaegertracing.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.jboss.resteasy</groupId>
@@ -221,12 +250,10 @@
                 <dependency>
                     <groupId>com.fasterxml.jackson.core</groupId>
                     <artifactId>jackson-core</artifactId>
-                    <version>${jackson-2-version}</version>
                 </dependency>
                 <dependency>
                     <groupId>com.fasterxml.jackson.datatype</groupId>
                     <artifactId>jackson-datatype-jsr310</artifactId>
-                    <version>${jackson-2-version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.infinispan</groupId>
@@ -237,13 +264,6 @@
                     <groupId>org.infinispan</groupId>
                     <artifactId>infinispan-jcache</artifactId>
                     <version>${infinispan.version}</version>
-                </dependency>
-                <dependency>
-                    <!-- even though woodstox-core is in wildfly-17.0.0.Final/modules/system/layers/base/org/codehaus/woodstox, -->
-                    <!-- the group id is com.fasterxml.woodstox -->
-                    <groupId>com.fasterxml.woodstox</groupId>
-                    <artifactId>woodstox-core</artifactId>
-                    <version>${woodstox.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.hibernate</groupId>
