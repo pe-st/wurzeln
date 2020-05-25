@@ -26,6 +26,7 @@ Snap.*.trc
 **/.idea/codeStyles/
 **/.idea/dictionaries/
 **/.idea/kotlinc.xml
+**/.idea/jarRepositories.xml
 **/.idea/libraries/
 **/.idea/markdown-navigator.xml
 **/.idea/markdown-navigator/
