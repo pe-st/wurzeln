@@ -25,6 +25,7 @@
 
         <!-- Java EE modules that were removed from Java SE after Java 8 -->
         <!-- (see http://openjdk.java.net/jeps/320) -->
+        <jakarta.activation.version>1.2.1</jakarta.activation.version>
         <javax.xml.bind.groupId>org.jboss.spec.javax.xml.bind</javax.xml.bind.groupId>
         <javax.xml.bind.artifactId>jboss-jaxb-api_2.3_spec</javax.xml.bind.artifactId>
         <!--version.org.jboss.spec.javax.xml.bind-->

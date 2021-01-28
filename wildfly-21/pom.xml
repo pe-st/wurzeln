@@ -21,10 +21,11 @@
         <jboss-jakartaee-8.0.version>1.0.0.Final</jboss-jakartaee-8.0.version>
 
         <!-- latest Wildfly 21 dependencies -->
-        <wildfly.bom.version>21.0.0.Final</wildfly.bom.version>
+        <wildfly.bom.version>21.0.2.Final</wildfly.bom.version>
 
         <!-- Java EE modules that were removed from Java SE after Java 8 -->
         <!-- (see http://openjdk.java.net/jeps/320) -->
+        <jakarta.activation.version>1.2.1</jakarta.activation.version>
         <javax.xml.bind.groupId>org.jboss.spec.javax.xml.bind</javax.xml.bind.groupId>
         <javax.xml.bind.artifactId>jboss-jaxb-api_2.3_spec</javax.xml.bind.artifactId>
         <!--version.org.jboss.spec.javax.xml.bind-->
@@ -76,7 +77,7 @@
         <!-- Artifact versions provided by Wildfly 21.0.0.Final -->
         <!-- (see wildfly-21.0.0.Final/modules/system/layers/base and Wildfly BOM) -->
         <resteasy.version>3.13.2.Final</resteasy.version>
-        <apache.httpclient.version>4.5.12</apache.httpclient.version>
+        <apache.httpclient.version>4.5.13</apache.httpclient.version>
         <!-- note that wildfly provides jakarta.json* in the path modules/system/layers/base/javax/json/* -->
         <jakarta.json.version>1.1.6</jakarta.json.version>
         <glassfish.jakarta.json.version>1.1.6</glassfish.jakarta.json.version>
@@ -89,7 +90,7 @@
 
         <!-- note that infinispan-directory-provider uses an older version -->
         <infinispan.version>11.0.4.Final</infinispan.version>
-        <hibernate.version>5.3.18.Final</hibernate.version>
+        <hibernate.version>5.3.20.Final</hibernate.version>
 
         <!-- Hibernate 6.0.1.Final is the reference implementation for Bean Validation 2.0 (EE8) -->
         <!-- Wildfly 21.0.0.Final uses Hibernate Validator 6.0.20.Final -->
@@ -227,9 +228,7 @@
                     <exclusions>
                         <exclusion>
                             <!-- avoid Dependency convergence error (wildfly-21 -->
-                            <!-- has microprofile-metrics-api:2.4, smallrye-fault-tolerance already 2.3.2) -->
-                            <!-- Dependency convergence error (wildfly-21 -->
-                            <!-- avoid already excluded dependency) -->
+                            <!-- has microprofile-metrics-api:2.3, smallrye-fault-tolerance already 2.3.2) -->
                             <groupId>org.eclipse.microprofile.metrics</groupId>
                             <artifactId>microprofile-metrics-api</artifactId>
                         </exclusion>

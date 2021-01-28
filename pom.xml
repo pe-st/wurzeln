@@ -15,9 +15,11 @@
         <module>quarkus-1.8</module>
         <module>quarkus-1.9</module>
         <module>quarkus-1.10</module>
+        <module>quarkus-1.11</module>
         <module>wildfly-19</module>
         <module>wildfly-20</module>
         <module>wildfly-21</module>
+        <module>wildfly-22</module>
         <module>update-checker</module>
     </modules>
 
@@ -81,7 +83,7 @@
         <docker.plugin.version>0.34.1</docker.plugin.version>
         <jacoco.plugin.version>0.8.6</jacoco.plugin.version>
         <nexus-staging.plugin.version>1.6.8</nexus-staging.plugin.version>
-        <openapi-generator.plugin.version>5.0.0</openapi-generator.plugin.version>
+        <openapi-generator.plugin.version>5.0.1</openapi-generator.plugin.version>
         <swagger-codegen.plugin.version>3.0.24</swagger-codegen.plugin.version>
         <versions.plugin.version>2.7</versions.plugin.version>
         <wildfly.plugin.version>2.0.2.Final</wildfly.plugin.version>
@@ -111,15 +113,15 @@
         <!-- artifact versions -->
         <apache.commons.lang3.version>3.11</apache.commons.lang3.version>
         <logback.version>1.2.3</logback.version>
-        <lombok.version>1.18.16</lombok.version>
+        <lombok.version>1.18.18</lombok.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
-        <mapstruct.version>1.4.1.Final</mapstruct.version>
+        <mapstruct.version>1.4.2.Final</mapstruct.version>
         <slf4j.version>1.7.30</slf4j.version>
 
         <!-- latest Jackson version for projects independent of an application server (AS) -->
         <!-- most of the AS submodules redefine it with an older version -->
-        <jackson-2-version>2.12.0</jackson-2-version>
-        <jackson-bom.version>2.12.0</jackson-bom.version>
+        <jackson-2-version>2.12.1</jackson-2-version>
+        <jackson-bom.version>2.12.1</jackson-bom.version>
 
         <!-- latest version for projects independent of an application server (AS) -->
         <!-- with an AS it is redefined to be the version used by the AS's resteasy artifact -->
@@ -133,17 +135,18 @@
 
         <!-- byte code manipulation tools, mostly used for tests, but not exclusively -->
         <!-- note that byte-buddy pulls in asm, so asm.version should be the one used by the given byte-buddy -->
+        <!-- (check `version.asm` in maven3_repo\net\bytebuddy\byte-buddy-parent\x.y.z\byte-buddy-parent-x.y.z.pom) -->
         <asm.version>9.0</asm.version>
-        <byte-buddy.version>1.10.19</byte-buddy.version>
+        <byte-buddy.version>1.10.20</byte-buddy.version>
 
         <!-- testing and static analysis -->
         <opentest4j.version>1.2.0</opentest4j.version>
-        <junit.platform.version>1.7.0</junit.platform.version>
-        <junit.jupiter.version>5.7.0</junit.jupiter.version>
+        <junit.platform.version>1.7.1</junit.platform.version>
+        <junit.jupiter.version>5.7.1</junit.jupiter.version>
         <hamcrest.version>2.2</hamcrest.version>
-        <mockito.version>3.6.28</mockito.version>
-        <equalsverifier.version>3.5</equalsverifier.version>
-        <json.unit.version>2.22.0</json.unit.version>
+        <mockito.version>3.7.7</mockito.version>
+        <equalsverifier.version>3.5.4</equalsverifier.version>
+        <json.unit.version>2.24.0</json.unit.version>
         <jsonassert.version>1.5.0</jsonassert.version>
         <restassured.version>4.3.3</restassured.version>
         <wiremock.version>2.27.2</wiremock.version>
