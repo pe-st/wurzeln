@@ -413,11 +413,6 @@
                     <artifactId>jacoco-maven-plugin</artifactId>
                     <version>${jacoco.plugin.version}</version>
                 </dependency>
-                <dependency>
-                    <groupId>org.owasp</groupId>
-                    <artifactId>dependency-check-maven</artifactId>
-                    <version>${dependency-check.plugin.version}</version>
-                </dependency>
             </dependencies>
         </profile>
     </profiles>
