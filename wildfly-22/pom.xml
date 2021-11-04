@@ -93,10 +93,10 @@
         <jakarta.validation.version>2.0.2</jakarta.validation.version>
         <hibernate.validator.version>6.0.22.Final</hibernate.validator.version>
 
-        <!-- Wildfly 22.0.1.Final uses Weld 3.1.4 (corresponding to CDI 2.0) -->
+        <!-- Wildfly 22.0.1.Final uses Weld 3.1.5 (corresponding to CDI 2.0) -->
         <jakarta.inject.version>1.0.3</jakarta.inject.version>
         <!-- TODO use org.jboss.weld:weld-core-bom -->
-        <weld.version>3.1.4.Final</weld.version>
+        <weld.version>3.1.5.Final</weld.version>
 
         <!-- Latest Wildfly plugin -->
         <wildfly.maven.plugin.version>${wildfly.plugin.version}</wildfly.maven.plugin.version>
@@ -427,6 +427,14 @@
                     <groupId>${javax.xml.soap.groupId}</groupId>
                     <artifactId>${javax.xml.soap.artifactId}</artifactId>
                     <version>${javax.xml.soap.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <!-- Dependency convergence error -->
+                            <!-- (avoid dependency already excluded by Wildfly DepMgt) -->
+                            <groupId>jakarta.activation</groupId>
+                            <artifactId>jakarta.activation-api</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>${javax.annotation.groupId}</groupId>

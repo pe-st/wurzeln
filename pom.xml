@@ -12,15 +12,18 @@
 
     <modules>
         <module>jboss-eap-7.1</module>
-        <module>quarkus-1.10</module>
         <module>quarkus-1.11</module>
         <module>quarkus-1.12</module>
         <module>quarkus-1.13</module>
-        <module>wildfly-19</module>
-        <module>wildfly-20</module>
-        <module>wildfly-21</module>
+        <module>quarkus-2.0</module>
+        <module>quarkus-2.1</module>
+        <module>quarkus-2.2</module> <!-- 2.2 latest Quarkus Red Hat build: https://access.redhat.com/articles/4966181 -->
+        <module>quarkus-2.3</module>
+        <module>quarkus-2.4</module>
         <module>wildfly-22</module>
         <module>wildfly-23</module>
+        <module>wildfly-24</module>
+        <module>wildfly-25</module>
         <module>update-checker</module>
     </modules>
 
@@ -78,13 +81,13 @@
         <!-- for plugins see also the section in README.md -->
 
         <!-- non-apache maven plugin versions -->
-        <asciidoctor.plugin.version>2.1.0</asciidoctor.plugin.version>
+        <asciidoctor.plugin.version>2.2.1</asciidoctor.plugin.version>
         <build-helper.plugin.version>3.2.0</build-helper.plugin.version>
-        <docker.plugin.version>0.36.0</docker.plugin.version>
+        <docker.plugin.version>0.37.0</docker.plugin.version>
         <jacoco.plugin.version>0.8.7</jacoco.plugin.version>
         <nexus-staging.plugin.version>1.6.8</nexus-staging.plugin.version>
-        <openapi-generator.plugin.version>5.1.1</openapi-generator.plugin.version>
-        <swagger-codegen.plugin.version>3.0.26</swagger-codegen.plugin.version>
+        <openapi-generator.plugin.version>5.3.0</openapi-generator.plugin.version>
+        <swagger-codegen.plugin.version>3.0.29</swagger-codegen.plugin.version>
         <versions.plugin.version>2.7</versions.plugin.version>
         <wildfly.plugin.version>2.0.2.Final</wildfly.plugin.version>
 
@@ -100,28 +103,29 @@
         <maven.failsafe.plugin.version>2.22.2</maven.failsafe.plugin.version>
         <maven.install.plugin.version>2.5.2</maven.install.plugin.version>
         <maven.jar.plugin.version>3.2.0</maven.jar.plugin.version>
-        <maven.javadoc.plugin.version>3.3.0</maven.javadoc.plugin.version>
+        <maven.javadoc.plugin.version>3.3.1</maven.javadoc.plugin.version>
+        <maven.rar.plugin.version>2.4</maven.rar.plugin.version>
         <maven.release.plugin.version>2.5.3</maven.release.plugin.version>
         <maven.resources.plugin.version>3.2.0</maven.resources.plugin.version>
-        <maven.scm.plugin.version>1.11.2</maven.scm.plugin.version>
+        <maven.scm.plugin.version>1.12.0</maven.scm.plugin.version>
         <maven.shade.plugin.version>3.2.4</maven.shade.plugin.version>
         <maven.site.plugin.version>3.9.1</maven.site.plugin.version>
         <maven.source.plugin.version>3.2.1</maven.source.plugin.version>
         <maven.surefire.plugin.version>${maven.failsafe.plugin.version}</maven.surefire.plugin.version>
-        <maven.war.plugin.version>3.3.1</maven.war.plugin.version>
+        <maven.war.plugin.version>3.3.2</maven.war.plugin.version>
 
         <!-- artifact versions -->
         <apache.commons.lang3.version>3.12.0</apache.commons.lang3.version>
-        <logback.version>1.2.3</logback.version>
-        <lombok.version>1.18.20</lombok.version>
+        <logback.version>1.2.6</logback.version>
+        <lombok.version>1.18.22</lombok.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <mapstruct.version>1.4.2.Final</mapstruct.version>
-        <slf4j.version>1.7.30</slf4j.version>
+        <slf4j.version>1.7.32</slf4j.version>
 
         <!-- latest Jackson version for projects independent of an application server (AS) -->
         <!-- most of the AS submodules redefine it with an older version -->
-        <jackson-2-version>2.12.3</jackson-2-version>
-        <jackson-bom.version>2.12.3</jackson-bom.version>
+        <jackson-2-version>2.13.0</jackson-2-version>
+        <jackson-bom.version>2.13.0</jackson-bom.version>
 
         <!-- latest version for projects independent of an application server (AS) -->
         <!-- with an AS it is redefined to be the version used by the AS's resteasy artifact -->
@@ -131,22 +135,22 @@
         <!-- have slightly different version strings (3.0.1-b08-jbossorg-1 and 3.0.1.b08-redhat-1), -->
         <!-- but it's always 3.0.1 (except with Jakarta EE) -->
         <javax.el.version>3.0.1-b11</javax.el.version>
-        <jakarta.el.version>3.0.3</jakarta.el.version>
+        <jakarta.el.version>3.0.4</jakarta.el.version>
 
         <!-- byte code manipulation tools, mostly used for tests, but not exclusively -->
         <!-- note that byte-buddy pulls in asm, so asm.version should be the one used by the given byte-buddy -->
         <!-- (check `version.asm` in maven3_repo\net\bytebuddy\byte-buddy-parent\x.y.z\byte-buddy-parent-x.y.z.pom) -->
-        <asm.version>9.1</asm.version>
-        <byte-buddy.version>1.11.2</byte-buddy.version>
+        <asm.version>9.2</asm.version>
+        <byte-buddy.version>1.11.22</byte-buddy.version>
 
         <!-- testing and static analysis -->
         <opentest4j.version>1.2.0</opentest4j.version>
-        <junit.platform.version>1.7.2</junit.platform.version>
-        <junit.jupiter.version>5.7.2</junit.jupiter.version>
+        <junit.platform.version>1.8.1</junit.platform.version>
+        <junit.jupiter.version>5.8.1</junit.jupiter.version>
         <hamcrest.version>2.2</hamcrest.version>
-        <mockito.version>3.11.1</mockito.version>
-        <equalsverifier.version>3.6.1</equalsverifier.version>
-        <json.unit.version>2.26.0</json.unit.version>
+        <mockito.version>3.12.4</mockito.version>
+        <equalsverifier.version>3.7.2</equalsverifier.version>
+        <json.unit.version>2.28.0</json.unit.version>
         <jsonassert.version>1.5.0</jsonassert.version>
         <restassured.version>4.4.0</restassured.version>
         <wiremock.version>2.27.2</wiremock.version>
@@ -155,10 +159,6 @@
         <!-- Simulating this variable depending on the OS (see also the profiles below overriding it) -->
         <!-- This IP address is the standard virtualbox IP address for localhost, used on our Windows 7 machines -->
         <docker-host-internal>10.0.2.2</docker-host-internal>
-
-        <!-- CVSS (Common Vulnerabilities Scoring System) level limit for breaking the build -->
-        <!-- CVSS levels are in the range 0..10, the default value 11 never breaks the build -->
-        <owasp.failOnCvss>11</owasp.failOnCvss>
     </properties>
 
     <!-- no dependencies in this POM, as dependencies from a parent POM can't be excluded -->
