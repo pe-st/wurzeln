@@ -165,56 +165,152 @@
                     <groupId>org.eclipse.microprofile.config</groupId>
                     <artifactId>microprofile-config-api</artifactId>
                     <version>${mp.config.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <!-- microprofile-health-api is using a newer version -->
+                            <groupId>biz.aQute.bnd</groupId>
+                            <artifactId>biz.aQute.bnd.annotation</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>org.eclipse.microprofile.fault-tolerance</groupId>
                     <artifactId>microprofile-fault-tolerance-api</artifactId>
                     <version>${mp.fault-tolerance.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.osgi</groupId>
+                            <artifactId>org.osgi.annotation.versioning</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>org.eclipse.microprofile.health</groupId>
                     <artifactId>microprofile-health-api</artifactId>
                     <version>${mp.health.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.osgi</groupId>
+                            <artifactId>org.osgi.annotation.versioning</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>org.osgi</groupId>
+                            <artifactId>osgi.annotation</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>org.eclipse.microprofile.jwt</groupId>
                     <artifactId>microprofile-jwt-auth-api</artifactId>
                     <version>${mp.jwt.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.osgi</groupId>
+                            <artifactId>org.osgi.annotation.versioning</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>org.eclipse.microprofile.metrics</groupId>
                     <artifactId>microprofile-metrics-api</artifactId>
                     <version>${mp.metrics.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.osgi</groupId>
+                            <artifactId>org.osgi.annotation.versioning</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>org.eclipse.microprofile.openapi</groupId>
                     <artifactId>microprofile-openapi-api</artifactId>
                     <version>${mp.openapi.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.osgi</groupId>
+                            <artifactId>org.osgi.annotation.versioning</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>org.eclipse.microprofile.opentracing</groupId>
                     <artifactId>microprofile-opentracing-api</artifactId>
                     <version>${mp.opentracing.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <!-- Wildfly is using jboss-jaxrs-api_2.1_spec -->
+                            <groupId>jakarta.ws.rs</groupId>
+                            <artifactId>jakarta.ws.rs-api</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>org.osgi</groupId>
+                            <artifactId>org.osgi.annotation.versioning</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>io.smallrye.reactive</groupId>
                     <artifactId>smallrye-reactive-messaging-kafka-api</artifactId>
                     <version>${smallrye.reactive-messaging.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <!-- avoid Dependency convergence error (smallrye-reactive-messaging-api -->
+                            <!-- has already opentelemetry-api:1.6.0, wildfly only 1.5.0) -->
+                            <groupId>io.opentelemetry</groupId>
+                            <artifactId>opentelemetry-api</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <!-- Wildfly provides log4j-api already via jboss-logging -->
+                            <groupId>org.apache.logging.log4j</groupId>
+                            <artifactId>log4j-api</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>org.osgi</groupId>
+                            <artifactId>org.osgi.annotation.versioning</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>org.osgi</groupId>
+                            <artifactId>org.osgi.core</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>org.eclipse.microprofile.reactive.messaging</groupId>
                     <artifactId>microprofile-reactive-messaging-api</artifactId>
                     <version>${mp.reactive-messaging.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.osgi</groupId>
+                            <artifactId>org.osgi.annotation.versioning</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>org.eclipse.microprofile.reactive-streams-operators</groupId>
                     <artifactId>microprofile-reactive-streams-operators-api</artifactId>
                     <version>${mp.reactive-streams-operators.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.osgi</groupId>
+                            <artifactId>org.osgi.annotation.versioning</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>org.eclipse.microprofile.rest.client</groupId>
                     <artifactId>microprofile-rest-client-api</artifactId>
                     <version>${mp.rest-client.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <!-- Wildfly is using jboss-jaxrs-api_2.1_spec -->
+                            <groupId>jakarta.ws.rs</groupId>
+                            <artifactId>jakarta.ws.rs-api</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>org.osgi</groupId>
+                            <artifactId>org.osgi.annotation.versioning</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>io.smallrye.common</groupId>
@@ -231,6 +327,18 @@
                     <artifactId>smallrye-fault-tolerance</artifactId>
                     <version>${smallrye.fault-tolerance.version}</version>
                     <exclusions>
+                        <exclusion>
+                            <!-- avoid Dependency convergence error (smallrye-fault-tolerance:5.1.0 -->
+                            <!-- has smallrye-common-annotation:1.6.0, wildfly still 1.5.0) -->
+                            <groupId>io.smallrye.common</groupId>
+                            <artifactId>smallrye-common-annotation</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <!-- avoid Dependency convergence error (smallrye-fault-tolerance:5.1.0 -->
+                            <!-- has smallrye-reactive-converter-api:2.5.1, wildfly still 2.1.1) -->
+                            <groupId>io.smallrye.reactive</groupId>
+                            <artifactId>smallrye-reactive-converter-api</artifactId>
+                        </exclusion>
                         <exclusion>
                             <!-- Dependency convergence error -->
                             <!-- avoid dependency already excluded by Wildfly DepMgt -->
@@ -263,12 +371,29 @@
                             <groupId>org.eclipse.microprofile.jwt</groupId>
                             <artifactId>microprofile-jwt-auth-api</artifactId>
                         </exclusion>
+                        <exclusion>
+                            <!-- Wildfly is using jakarta.enterprise.cdi-api -->
+                            <groupId>javax.enterprise</groupId>
+                            <artifactId>cdi-api</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <!-- Wildfly is using jboss-servlet-api_4.0_spec -->
+                            <groupId>jakarta.servlet</groupId>
+                            <artifactId>jakarta.servlet-api</artifactId>
+                        </exclusion>
                     </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>io.smallrye</groupId>
                     <artifactId>smallrye-metrics</artifactId>
                     <version>${smallrye.metrics.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <!-- Wildfly is using jboss-jaxrs-api_2.1_spec -->
+                            <groupId>jakarta.ws.rs</groupId>
+                            <artifactId>jakarta.ws.rs-api</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>io.smallrye</groupId>
@@ -293,6 +418,11 @@
                             <!-- has microprofile-opentracing-api:1.1, wildfly already 2.0) -->
                             <groupId>org.eclipse.microprofile.opentracing</groupId>
                             <artifactId>microprofile-opentracing-api</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <!-- Wildfly is using jboss-jaxrs-api_2.1_spec -->
+                            <groupId>jakarta.ws.rs</groupId>
+                            <artifactId>jakarta.ws.rs-api</artifactId>
                         </exclusion>
                     </exclusions>
                 </dependency>
@@ -349,6 +479,15 @@
                             <groupId>io.netty</groupId>
                             <artifactId>*</artifactId>
                         </exclusion>
+                        <exclusion>
+                            <!-- Wildfly provides log4j-api already via jboss-logging -->
+                            <groupId>org.apache.logging.log4j</groupId>
+                            <artifactId>log4j-api</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>org.osgi</groupId>
+                            <artifactId>org.osgi.core</artifactId>
+                        </exclusion>
                     </exclusions>
                 </dependency>
                 <dependency>
@@ -372,6 +511,11 @@
                             <groupId>org.eclipse.microprofile.opentracing</groupId>
                             <artifactId>microprofile-opentracing-api</artifactId>
                         </exclusion>
+                        <exclusion>
+                            <!-- Wildfly is using jakarta.annotation-api -->
+                            <groupId>javax.annotation</groupId>
+                            <artifactId>javax.annotation-api</artifactId>
+                        </exclusion>
                     </exclusions>
                 </dependency>
                 <dependency>
@@ -383,6 +527,13 @@
                     <groupId>org.jboss.resteasy</groupId>
                     <artifactId>resteasy-client</artifactId>
                     <version>${resteasy.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <!-- Wildfly provides log4j-api already via jboss-logging -->
+                            <groupId>org.apache.logging.log4j</groupId>
+                            <artifactId>log4j-api</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>jakarta.json</groupId>
@@ -416,11 +567,30 @@
                     <groupId>org.infinispan</groupId>
                     <artifactId>infinispan-core</artifactId>
                     <version>${infinispan.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <!-- Wildfly is using jakarta.annotation-api -->
+                            <groupId>javax.annotation</groupId>
+                            <artifactId>javax.annotation-api</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <!-- Wildfly is using jakarta.enterprise.cdi-api -->
+                            <groupId>javax.enterprise</groupId>
+                            <artifactId>cdi-api</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>org.infinispan</groupId>
                     <artifactId>infinispan-jcache</artifactId>
                     <version>${infinispan.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <!-- Wildfly is using jakarta.annotation-api -->
+                            <groupId>javax.annotation</groupId>
+                            <artifactId>javax.annotation-api</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>org.hibernate</groupId>

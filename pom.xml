@@ -11,16 +11,11 @@
     <name>${project.groupId}.${project.artifactId}</name>
 
     <modules>
-        <module>jboss-eap-7.1</module>
-        <module>quarkus-1.11</module>
-        <module>quarkus-1.12</module>
-        <module>quarkus-1.13</module>
         <module>quarkus-2.0</module>
         <module>quarkus-2.1</module>
         <module>quarkus-2.2</module> <!-- 2.2 latest Quarkus Red Hat build: https://access.redhat.com/articles/4966181 -->
         <module>quarkus-2.3</module>
         <module>quarkus-2.4</module>
-        <module>wildfly-22</module>
         <module>wildfly-23</module>
         <module>wildfly-24</module>
         <module>wildfly-25</module>
@@ -99,7 +94,7 @@
         <maven.deploy.plugin.version>2.8.2</maven.deploy.plugin.version>
         <maven.ear.plugin.version>3.2.0</maven.ear.plugin.version>
         <maven.ejb.plugin.version>3.1.0</maven.ejb.plugin.version>
-        <maven.enforcer.plugin.version>3.0.0-M3</maven.enforcer.plugin.version>
+        <maven.enforcer.plugin.version>3.0.0</maven.enforcer.plugin.version>
         <maven.failsafe.plugin.version>2.22.2</maven.failsafe.plugin.version>
         <maven.install.plugin.version>2.5.2</maven.install.plugin.version>
         <maven.jar.plugin.version>3.2.0</maven.jar.plugin.version>
