@@ -17,7 +17,7 @@
 
     <properties>
         <!-- latest Quarkus version -->
-        <quarkus.version>2.4.1.Final</quarkus.version>
+        <quarkus.version>2.4.2.Final</quarkus.version>
 
         <!-- Quarkus 2 requires Java 11, also for its maven plugin -->
         <java.release>11</java.release>
@@ -58,8 +58,8 @@
         <smallrye.fault-tolerance.version>5.2.1</smallrye.fault-tolerance.version>
         <smallrye.graphql.version>1.3.5</smallrye.graphql.version>
         <smallrye.health.version>3.1.2</smallrye.health.version>
-        <smallrye.jwt.version>3.3.0</smallrye.jwt.version>
-        <smallrye.metrics.version>3.0.3</smallrye.metrics.version>
+        <smallrye.jwt.version>3.3.1</smallrye.jwt.version>
+        <smallrye.metrics.version>3.0.4</smallrye.metrics.version>
         <smallrye.openapi.version>2.1.15</smallrye.openapi.version>
         <smallrye.opentracing.version>2.0.1</smallrye.opentracing.version>
         <smallrye.reactive-attribute-processor.version>3.10.1</smallrye.reactive-attribute-processor.version>
@@ -77,7 +77,7 @@
         <io.jaegertracing.version>1.6.0</io.jaegertracing.version>
 
         <!-- Artifact versions provided by Quarkus x.y -->
-        <resteasy.version>4.7.0.Final</resteasy.version>
+        <resteasy.version>4.7.3.Final</resteasy.version>
         <apache.httpclient.version>4.5.13</apache.httpclient.version>
         <!-- quarkus is excluding jakarta.json-api in favor of the transitive dependency of yasson (see maven3_repo\org\eclipse\yasson\x.x\*.pom) -->
         <jakarta.json.version>1.1.6</jakarta.json.version>
@@ -97,6 +97,8 @@
         <hibernate.validator.version>6.2.0.Final</hibernate.validator.version>
         <!-- ojdbc version in the quarkus-jdbc-oracle extension -->
         <oracle.ojdbc.version>21.3.0.0</oracle.ojdbc.version>
+        <!-- kafka version in the kafka extensions -->
+        <kafka.version>2.8.1</kafka.version>
 
         <!-- Quarkus x.y uses Quarkus ARC x.y (based on CDI 2.0) -->
         <jakarta.inject.version>1.0</jakarta.inject.version>
@@ -107,7 +109,7 @@
         <asm.version>9.2</asm.version>
         <!-- I found the hibernate dependency using 1.11.20, but any newer version using ASM 9.2 should be fine too -->
         <!-- (unfortunately I don't know if there is a way to express this with maven -->
-        <!-- so just using the same version as in com.six-group.ao.root:root) -->
+        <!-- so just using the same version as in ch.schlau.wurzeln.root:root) -->
         <byte-buddy.version>1.11.22</byte-buddy.version>
 
         <!-- it seems that the quarkus testing integration works best using the junit mentioned in the quarkus BOM -->
@@ -166,6 +168,11 @@
                     <version>${mp.config.version}</version>
                     <exclusions>
                         <exclusion>
+                            <!-- microprofile-health-api is using a newer version -->
+                            <groupId>biz.aQute.bnd</groupId>
+                            <artifactId>biz.aQute.bnd.annotation</artifactId>
+                        </exclusion>
+                        <exclusion>
                             <groupId>org.osgi</groupId>
                             <artifactId>org.osgi.annotation.versioning</artifactId>
                         </exclusion>
@@ -204,6 +211,10 @@
                         <exclusion>
                             <groupId>org.osgi</groupId>
                             <artifactId>org.osgi.annotation.versioning</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>org.osgi</groupId>
+                            <artifactId>osgi.annotation</artifactId>
                         </exclusion>
                     </exclusions>
                 </dependency>
@@ -246,6 +257,11 @@
                     <version>${mp.opentracing.version}</version>
                     <exclusions>
                         <exclusion>
+                            <!-- Quarkus is using jboss-jaxrs-api_2.1_spec -->
+                            <groupId>jakarta.ws.rs</groupId>
+                            <artifactId>jakarta.ws.rs-api</artifactId>
+                        </exclusion>
+                        <exclusion>
                             <groupId>org.osgi</groupId>
                             <artifactId>org.osgi.annotation.versioning</artifactId>
                         </exclusion>
@@ -261,6 +277,11 @@
                     <artifactId>microprofile-rest-client-api</artifactId>
                     <version>${mp.rest-client.version}</version>
                     <exclusions>
+                        <exclusion>
+                            <!-- Quarkus is using jboss-jaxrs-api_2.1_spec -->
+                            <groupId>jakarta.ws.rs</groupId>
+                            <artifactId>jakarta.ws.rs-api</artifactId>
+                        </exclusion>
                         <exclusion>
                             <groupId>javax.inject</groupId>
                             <artifactId>javax.inject</artifactId>
@@ -291,6 +312,11 @@
                         <exclusion>
                             <groupId>org.jboss.logging</groupId>
                             <artifactId>jboss-logging</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <!-- Quarkus is using jakarta.annotation-api -->
+                            <groupId>javax.annotation</groupId>
+                            <artifactId>javax.annotation-api</artifactId>
                         </exclusion>
                     </exclusions>
                 </dependency>
@@ -348,6 +374,11 @@
                     <version>${smallrye.metrics.version}</version>
                     <exclusions>
                         <exclusion>
+                            <!-- Quarkus is using jboss-jaxrs-api_2.1_spec -->
+                            <groupId>jakarta.ws.rs</groupId>
+                            <artifactId>jakarta.ws.rs-api</artifactId>
+                        </exclusion>
+                        <exclusion>
                             <groupId>org.jboss.logging</groupId>
                             <artifactId>jboss-logging</artifactId>
                         </exclusion>
@@ -381,6 +412,16 @@
                             <groupId>org.jboss.logging</groupId>
                             <artifactId>jboss-logging</artifactId>
                         </exclusion>
+                        <exclusion>
+                            <!-- Quarkus is using jakarta.annotation-api -->
+                            <groupId>javax.annotation</groupId>
+                            <artifactId>javax.annotation-api</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <!-- Quarkus is using jboss-jaxrs-api_2.1_spec -->
+                            <groupId>jakarta.ws.rs</groupId>
+                            <artifactId>jakarta.ws.rs-api</artifactId>
+                        </exclusion>
                     </exclusions>
                 </dependency>
                 <dependency>
@@ -391,6 +432,10 @@
                         <exclusion>
                             <groupId>org.jboss.logging</groupId>
                             <artifactId>jboss-logging</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>org.osgi</groupId>
+                            <artifactId>org.osgi.annotation.versioning</artifactId>
                         </exclusion>
                     </exclusions>
                 </dependency>
@@ -424,6 +469,13 @@
                     <groupId>io.smallrye.reactive</groupId>
                     <artifactId>smallrye-mutiny-vertx-core</artifactId>
                     <version>${smallrye.mutiny.vertx.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <!-- Quarkus provides log4j-api already via jboss-logging -->
+                            <groupId>org.apache.logging.log4j</groupId>
+                            <artifactId>log4j-api</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>io.opentelemetry</groupId>
@@ -453,20 +505,17 @@
                 </dependency>
                 <dependency>
                     <groupId>org.jboss.resteasy</groupId>
-                    <artifactId>resteasy-client</artifactId>
+                    <artifactId>resteasy-client-api</artifactId>
                     <version>${resteasy.version}</version>
                     <exclusions>
                         <exclusion>
-                            <groupId>commons-codec</groupId>
-                            <artifactId>commons-codec</artifactId>
-                        </exclusion>
-                        <exclusion>
-                            <groupId>commons-io</groupId>
-                            <artifactId>commons-io</artifactId>
-                        </exclusion>
-                        <exclusion>
                             <groupId>org.jboss.logging</groupId>
                             <artifactId>jboss-logging</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <!-- Quarkus provides log4j-api already via jboss-logging -->
+                            <groupId>org.apache.logging.log4j</groupId>
+                            <artifactId>log4j-api</artifactId>
                         </exclusion>
                     </exclusions>
                 </dependency>
@@ -499,12 +548,34 @@
                             <groupId>org.jboss.logging</groupId>
                             <artifactId>jboss-logging</artifactId>
                         </exclusion>
+                        <exclusion>
+                            <!-- Quarkus is using jakarta.annotation-api -->
+                            <groupId>javax.annotation</groupId>
+                            <artifactId>javax.annotation-api</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <!-- Quarkus is using jakarta.enterprise.cdi-api -->
+                            <groupId>javax.enterprise</groupId>
+                            <artifactId>cdi-api</artifactId>
+                        </exclusion>
                     </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>org.infinispan</groupId>
                     <artifactId>infinispan-jcache</artifactId>
                     <version>${infinispan.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <!-- Quarkus is using jakarta.annotation-api -->
+                            <groupId>javax.annotation</groupId>
+                            <artifactId>javax.annotation-api</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <!-- Quarkus is using jakarta.enterprise.cdi-api -->
+                            <groupId>javax.enterprise</groupId>
+                            <artifactId>cdi-api</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>com.oracle.database.jdbc</groupId>

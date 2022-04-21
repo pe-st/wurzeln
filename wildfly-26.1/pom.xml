@@ -7,7 +7,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>wildfly-25</artifactId>
+    <artifactId>wildfly-26.1</artifactId>
     <packaging>pom</packaging>
 
     <name>${project.groupId}.${project.artifactId}</name>
@@ -20,9 +20,9 @@
         <!-- don't know where to find this version, could also be 1.0.1.Final -->
         <jboss-jakartaee-8.0.version>1.0.0.Final</jboss-jakartaee-8.0.version>
 
-        <!-- latest Wildfly 25 dependencies -->
+        <!-- latest Wildfly 26 dependencies -->
         <!-- see https://github.com/wildfly/boms/releases -->
-        <wildfly.bom.version>25.0.1.Final</wildfly.bom.version>
+        <wildfly.bom.version>26.1.0.Final</wildfly.bom.version>
 
         <!-- Java EE modules that were removed from Java SE after Java 8 -->
         <!-- (see http://openjdk.java.net/jeps/320) -->
@@ -48,65 +48,65 @@
         <!--version.org.jboss.spec.javax.transaction-->
         <javax.transaction.version>2.0.0.Final</javax.transaction.version>
 
-        <!-- MicroProfile Standard Versions provided by Wildfly 25 -->
-        <!-- see also https://mvnrepository.com/artifact/org.wildfly.bom/wildfly-microprofile/25.0.0.Final -->
+        <!-- MicroProfile Standard Versions provided by Wildfly 26 -->
+        <!-- see also https://mvnrepository.com/artifact/org.wildfly.bom/wildfly-microprofile/26.1.0.Final -->
         <mp.config.version>2.0</mp.config.version>
         <mp.fault-tolerance.version>3.0</mp.fault-tolerance.version>
         <mp.health.version>3.1</mp.health.version>
         <mp.jwt.version>1.2.1</mp.jwt.version>
         <mp.metrics.version>3.0</mp.metrics.version>
-        <mp.openapi.version>2.0</mp.openapi.version>
+        <mp.openapi.version>2.0.1</mp.openapi.version>
         <mp.opentracing.version>2.0</mp.opentracing.version>
         <!-- mp.reactive-messaging classes included in smallrye.reactive-messaging, no dependency on upstream API -->
         <!-- but it is defined anyway in the wildfly-microprofile BOM -->
         <mp.reactive-messaging.version>2.0.1</mp.reactive-messaging.version>
         <mp.reactive-streams-operators.version>2.0</mp.reactive-streams-operators.version>
         <mp.rest-client.version>2.0</mp.rest-client.version>
-        <smallrye.common.version>1.6.0</smallrye.common.version>
-        <smallrye.config.version>2.5.1</smallrye.config.version>
+        <smallrye.common.version>1.8.0</smallrye.common.version>
+        <smallrye.config.version>2.6.1</smallrye.config.version>
         <smallrye.fault-tolerance.version>5.2.1</smallrye.fault-tolerance.version>
         <smallrye.health.version>3.1.1</smallrye.health.version>
         <smallrye.jwt.version>3.1.1</smallrye.jwt.version>
         <smallrye.metrics.version>3.0.3</smallrye.metrics.version>
-        <smallrye.openapi.version>2.1.10</smallrye.openapi.version>
+        <smallrye.openapi.version>2.1.21</smallrye.openapi.version>
         <smallrye.opentracing.version>2.0.0</smallrye.opentracing.version>
         <smallrye.reactive-converter-api.version>2.6.0</smallrye.reactive-converter-api.version>
-        <smallrye.reactive-messaging.version>3.10.1</smallrye.reactive-messaging.version>
-        <smallrye.mutiny.reactive-streams-operators.version>0.18.1</smallrye.mutiny.reactive-streams-operators.version>
-        <smallrye.mutiny.vertx.version>2.11.0</smallrye.mutiny.vertx.version>
-        <!-- Wildfly 25 is using resteasy-client-microprofile instead of smallrye-rest-client -->
+        <smallrye.reactive-messaging.version>3.13.0</smallrye.reactive-messaging.version>
+        <smallrye.mutiny.reactive-streams-operators.version>1.1.2</smallrye.mutiny.reactive-streams-operators.version>
+        <smallrye.mutiny.vertx.version>2.15.1</smallrye.mutiny.vertx.version>
+        <!-- Wildfly 26 is using resteasy-client-microprofile instead of smallrye-rest-client -->
 
         <!-- tracer implementations -->
-        <io.opentelemetry.version>1.5.0</io.opentelemetry.version>
+        <io.opentelemetry.version>1.9.1</io.opentelemetry.version>
         <io.opentracing.version>0.33.0</io.opentracing.version>
         <io.opentracing.contrib-jaxrs.version>1.0.0</io.opentracing.contrib-jaxrs.version>
         <io.jaegertracing.version>1.6.0</io.jaegertracing.version>
 
-        <!-- Artifact versions provided by Wildfly 25.0.0.Final -->
-        <!-- (see wildfly-25.0.0.Final/modules/system/layers/base and Wildfly BOM) -->
-        <resteasy.version>4.7.2.Final</resteasy.version>
+        <!-- Artifact versions provided by Wildfly 26.1.0.Final -->
+        <!-- (see wildfly-26.1.0.Final/modules/system/layers/base and Wildfly BOM) -->
+        <resteasy.version>4.7.4.Final</resteasy.version>
         <apache.httpclient.version>4.5.13</apache.httpclient.version>
         <!-- note that wildfly provides jakarta.json* in the path modules/system/layers/base/javax/json/* -->
         <jakarta.json.version>1.1.6</jakarta.json.version>
         <glassfish.jakarta.json.version>1.1.6</glassfish.jakarta.json.version>
         <jakarta.json.bind.version>1.0.2</jakarta.json.bind.version>
-        <yasson.version>1.0.9</yasson.version>
+        <yasson.version>1.0.10</yasson.version>
 
         <!-- note that for new projects you should consider using JSON-B (yasson) instead of Jackson -->
-        <jackson-2-version>2.12.3</jackson-2-version>
-        <jackson-bom.version>2.12.3</jackson-bom.version>
+        <jackson-2-version>2.12.6</jackson-2-version>
+        <jackson-bom.version>2.12.6.20220326</jackson-bom.version>
 
         <!-- note that infinispan-directory-provider uses an older version -->
-        <infinispan.version>12.1.7.Final</infinispan.version>
-        <hibernate.version>5.3.23.Final</hibernate.version>
+        <infinispan.version>13.0.8.Final</infinispan.version>
+        <hibernate.version>5.3.24.Final</hibernate.version>
 
         <!-- Hibernate 6.0.1.Final is the reference implementation for Bean Validation 2.0 (EE8) -->
-        <!-- Wildfly 25.0.0.Final uses Hibernate Validator 6.0.20.Final -->
+        <!-- Wildfly 26.1.0.Final uses Hibernate Validator 6.0.20.Final -->
         <jakarta.validation.version>2.0.2</jakarta.validation.version>
-        <hibernate.validator.version>6.0.22.Final</hibernate.validator.version>
+        <hibernate.validator.version>6.0.23.Final</hibernate.validator.version>
 
-        <!-- Wildfly 25.0.0.Final uses Weld 3.1.x (corresponding to CDI 2.0) -->
-        <jakarta.inject.version>1.0.3</jakarta.inject.version>
+        <!-- Wildfly 26.1.0.Final uses Weld 3.1.x (corresponding to CDI 2.0) -->
+        <jakarta.inject.version>1.0.5</jakarta.inject.version>
         <!-- TODO use org.jboss.weld:weld-core-bom -->
         <weld.version>3.1.8.Final</weld.version>
 
@@ -401,7 +401,7 @@
                     <version>${smallrye.openapi.version}</version>
                     <exclusions>
                         <exclusion>
-                            <!-- avoid Dependency convergence error (wildfly 25 -->
+                            <!-- avoid Dependency convergence error (wildfly 26 -->
                             <!-- has microprofile-openapi-api:2.0, smallrye-open-api-core already 2.0.1-RC1) -->
                             <groupId>org.eclipse.microprofile.openapi</groupId>
                             <artifactId>microprofile-openapi-api</artifactId>
@@ -527,12 +527,6 @@
                     <groupId>org.jboss.resteasy</groupId>
                     <artifactId>resteasy-client-api</artifactId>
                     <version>${resteasy.version}</version>
-                    <exclusions>
-                        <exclusion>
-                            <groupId>org.jboss.logging</groupId>
-                            <artifactId>jboss-logging</artifactId>
-                        </exclusion>
-                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>jakarta.json</groupId>
@@ -571,11 +565,6 @@
                             <!-- Wildfly is using jakarta.annotation-api -->
                             <groupId>javax.annotation</groupId>
                             <artifactId>javax.annotation-api</artifactId>
-                        </exclusion>
-                        <exclusion>
-                            <!-- Wildfly is using jakarta.enterprise.cdi-api -->
-                            <groupId>javax.enterprise</groupId>
-                            <artifactId>cdi-api</artifactId>
                         </exclusion>
                     </exclusions>
                 </dependency>

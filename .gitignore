@@ -32,6 +32,7 @@ Snap.*.trc
 **/.idea/markdown-navigator/
 **/.idea/runConfigurations.xml
 **/.idea/saveactions_settings.xml
+**/.idea/sonarlint.xml
 **/.idea/sonarlint/issuestore/
 **/.idea/tasks.xml
 **/.idea/uiDesigner.xml
