@@ -22,7 +22,7 @@
 
         <!-- latest Wildfly 26 dependencies -->
         <!-- see https://github.com/wildfly/boms/releases -->
-        <wildfly.bom.version>26.1.0.Final</wildfly.bom.version>
+        <wildfly.bom.version>26.1.1.Final</wildfly.bom.version>
 
         <!-- Java EE modules that were removed from Java SE after Java 8 -->
         <!-- (see http://openjdk.java.net/jeps/320) -->
@@ -63,9 +63,9 @@
         <mp.reactive-streams-operators.version>2.0</mp.reactive-streams-operators.version>
         <mp.rest-client.version>2.0</mp.rest-client.version>
         <smallrye.common.version>1.8.0</smallrye.common.version>
-        <smallrye.config.version>2.6.1</smallrye.config.version>
+        <smallrye.config.version>2.10.0</smallrye.config.version>
         <smallrye.fault-tolerance.version>5.2.1</smallrye.fault-tolerance.version>
-        <smallrye.health.version>3.1.1</smallrye.health.version>
+        <smallrye.health.version>3.2.1</smallrye.health.version>
         <smallrye.jwt.version>3.1.1</smallrye.jwt.version>
         <smallrye.metrics.version>3.0.3</smallrye.metrics.version>
         <smallrye.openapi.version>2.1.21</smallrye.openapi.version>
@@ -84,7 +84,7 @@
 
         <!-- Artifact versions provided by Wildfly 26.1.0.Final -->
         <!-- (see wildfly-26.1.0.Final/modules/system/layers/base and Wildfly BOM) -->
-        <resteasy.version>4.7.4.Final</resteasy.version>
+        <resteasy.version>4.7.6.Final</resteasy.version>
         <apache.httpclient.version>4.5.13</apache.httpclient.version>
         <!-- note that wildfly provides jakarta.json* in the path modules/system/layers/base/javax/json/* -->
         <jakarta.json.version>1.1.6</jakarta.json.version>
@@ -97,7 +97,7 @@
         <jackson-bom.version>2.12.6.20220326</jackson-bom.version>
 
         <!-- note that infinispan-directory-provider uses an older version -->
-        <infinispan.version>13.0.8.Final</infinispan.version>
+        <infinispan.version>13.0.10.Final</infinispan.version>
         <hibernate.version>5.3.24.Final</hibernate.version>
 
         <!-- Hibernate 6.0.1.Final is the reference implementation for Bean Validation 2.0 (EE8) -->
@@ -108,7 +108,7 @@
         <!-- Wildfly 26.1.0.Final uses Weld 3.1.x (corresponding to CDI 2.0) -->
         <jakarta.inject.version>1.0.5</jakarta.inject.version>
         <!-- TODO use org.jboss.weld:weld-core-bom -->
-        <weld.version>3.1.8.Final</weld.version>
+        <weld.version>3.1.9.Final</weld.version>
 
         <!-- Latest Wildfly plugin -->
         <wildfly.maven.plugin.version>${wildfly.plugin.version}</wildfly.maven.plugin.version>

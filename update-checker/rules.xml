@@ -8,8 +8,8 @@
         <!-- ignore versions like 4.12.0.redhat-003 or 1.4.2.jenkins-1 -->
         <ignoreVersion type="regex">\d+\.\d+\.\d+\.[a-z].*</ignoreVersion>
 
-        <!-- ignore versions like 2.1.0.Beta1 and 1.4.0.CR1 (but still allow 2.0.2.Final) -->
-        <ignoreVersion type="regex">\d+\.\d+\.\d+\.[BC].*</ignoreVersion>
+        <!-- ignore versions like 4.0.0.Alpha1, 2.1.0.Beta1 and 1.4.0.CR1 (but still allow 2.0.2.Final) -->
+        <ignoreVersion type="regex">\d+\.\d+\.\d+\.[ABC].*</ignoreVersion>
     </ignoreVersions>
     <rules>
         <rule groupId="javax.jws" artifactId="jsr181-api" comparisonMethod="maven">
