@@ -15,7 +15,6 @@
         <module>quarkus-2.8</module>
         <module>quarkus-2.9</module>
         <module>quarkus-2.10</module>
-        <module>wildfly-24</module>
         <module>wildfly-25</module>
         <module>wildfly-26</module>
         <module>wildfly-26.1</module>
