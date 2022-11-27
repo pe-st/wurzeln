@@ -15,9 +15,14 @@
         <module>quarkus-2.8</module>
         <module>quarkus-2.9</module>
         <module>quarkus-2.10</module>
+        <module>quarkus-2.11</module>
+        <module>quarkus-2.12</module>
+        <module>quarkus-2.13</module>
+        <module>quarkus-2.14</module>
         <module>wildfly-25</module>
         <module>wildfly-26</module>
         <module>wildfly-26.1</module>
+        <module>wildfly-27</module>
         <module>update-checker</module>
     </modules>
 
@@ -77,53 +82,55 @@
         <!-- non-apache maven plugin versions -->
         <asciidoctor.plugin.version>2.2.2</asciidoctor.plugin.version>
         <build-helper.plugin.version>3.3.0</build-helper.plugin.version>
-        <docker.plugin.version>0.40.1</docker.plugin.version>
+        <docker.plugin.version>0.40.2</docker.plugin.version>
         <jacoco.plugin.version>0.8.8</jacoco.plugin.version>
         <nexus-staging.plugin.version>1.6.8</nexus-staging.plugin.version>
-        <openapi-generator.plugin.version>6.0.0</openapi-generator.plugin.version>
-        <swagger-codegen.plugin.version>3.0.34</swagger-codegen.plugin.version>
-        <versions.plugin.version>2.11.0</versions.plugin.version>
-        <wildfly.plugin.version>3.0.1.Final</wildfly.plugin.version>
+        <openapi-generator.plugin.version>6.2.1</openapi-generator.plugin.version>
+        <swagger-codegen.plugin.version>3.0.36</swagger-codegen.plugin.version>
+        <versions.plugin.version>2.14.0</versions.plugin.version>
+        <wildfly.plugin.version>4.0.0.Final</wildfly.plugin.version>
 
         <!-- apache maven plugin versions (in alphabetical order) -->
-        <maven.assembly.plugin.version>3.3.0</maven.assembly.plugin.version>
+        <maven.assembly.plugin.version>3.4.2</maven.assembly.plugin.version>
         <maven.clean.plugin.version>3.2.0</maven.clean.plugin.version>
         <maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
         <maven.dependency.plugin.version>3.2.0</maven.dependency.plugin.version>
-        <maven.deploy.plugin.version>2.8.2</maven.deploy.plugin.version>
-        <maven.ear.plugin.version>3.2.0</maven.ear.plugin.version>
+        <maven.deploy.plugin.version>3.0.0</maven.deploy.plugin.version>
+        <maven.ear.plugin.version>3.3.0</maven.ear.plugin.version>
         <maven.ejb.plugin.version>3.2.1</maven.ejb.plugin.version>
         <maven.enforcer.plugin.version>3.1.0</maven.enforcer.plugin.version>
         <maven.failsafe.plugin.version>2.22.2</maven.failsafe.plugin.version>
-        <maven.install.plugin.version>2.5.2</maven.install.plugin.version>
-        <maven.jar.plugin.version>3.2.2</maven.jar.plugin.version>
-        <maven.javadoc.plugin.version>3.4.0</maven.javadoc.plugin.version>
-        <maven.rar.plugin.version>2.4</maven.rar.plugin.version>
+        <maven.install.plugin.version>3.1.0</maven.install.plugin.version>
+        <maven.jar.plugin.version>3.3.0</maven.jar.plugin.version>
+        <maven.javadoc.plugin.version>3.4.1</maven.javadoc.plugin.version>
+        <maven.rar.plugin.version>3.0.0</maven.rar.plugin.version>
         <maven.release.plugin.version>2.5.3</maven.release.plugin.version>
-        <maven.resources.plugin.version>3.2.0</maven.resources.plugin.version>
+        <maven.resources.plugin.version>3.3.0</maven.resources.plugin.version>
         <maven.scm.plugin.version>1.13.0</maven.scm.plugin.version>
-        <maven.shade.plugin.version>3.3.0</maven.shade.plugin.version>
-        <maven.site.plugin.version>3.12.0</maven.site.plugin.version>
+        <maven.shade.plugin.version>3.4.1</maven.shade.plugin.version>
+        <maven.site.plugin.version>3.12.1</maven.site.plugin.version>
         <maven.source.plugin.version>3.2.1</maven.source.plugin.version>
         <maven.surefire.plugin.version>${maven.failsafe.plugin.version}</maven.surefire.plugin.version>
         <maven.war.plugin.version>3.3.2</maven.war.plugin.version>
 
         <!-- artifact versions -->
         <apache.commons.lang3.version>3.12.0</apache.commons.lang3.version>
+        <!-- use a logback version compatible with slf4j, see below -->
         <logback.version>1.2.11</logback.version>
         <lombok.version>1.18.24</lombok.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
-        <mapstruct.version>1.5.2.Final</mapstruct.version>
+        <mapstruct.version>1.5.3.Final</mapstruct.version>
+        <!-- there's 2.0.6 now, but we want to do some tests first before using it -->
         <slf4j.version>1.7.36</slf4j.version>
 
         <!-- latest Jackson version for projects independent of an application server (AS) -->
         <!-- most of the AS submodules redefine it with an older version -->
-        <jackson-2-version>2.13.3</jackson-2-version>
-        <jackson-bom.version>2.13.3</jackson-bom.version>
+        <jackson-2-version>2.14.1</jackson-2-version>
+        <jackson-bom.version>2.14.1</jackson-bom.version>
 
         <!-- latest version for projects independent of an application server (AS) -->
         <!-- with an AS it is redefined to be the version used by the AS's resteasy artifact -->
-        <apache.httpclient.version>4.5.13</apache.httpclient.version>
+        <apache.httpclient.version>4.5.14</apache.httpclient.version>
 
         <!-- Java Expression Language (JSR 341) generally defined; the application servers -->
         <!-- have slightly different version strings (3.0.1-b08-jbossorg-1 and 3.0.1.b08-redhat-1), -->
@@ -134,19 +141,19 @@
         <!-- byte code manipulation tools, mostly used for tests, but not exclusively -->
         <!-- note that byte-buddy pulls in asm, so asm.version should be the one used by the given byte-buddy -->
         <!-- (check `version.asm` in maven3_repo\net\bytebuddy\byte-buddy-parent\x.y.z\byte-buddy-parent-x.y.z.pom) -->
-        <asm.version>9.3</asm.version>
-        <byte-buddy.version>1.12.11</byte-buddy.version>
+        <asm.version>9.4</asm.version>
+        <byte-buddy.version>1.12.20</byte-buddy.version>
 
         <!-- testing and static analysis -->
         <opentest4j.version>1.2.0</opentest4j.version>
-        <junit.platform.version>1.8.2</junit.platform.version>
-        <junit.jupiter.version>5.8.2</junit.jupiter.version>
+        <junit.platform.version>1.9.1</junit.platform.version>
+        <junit.jupiter.version>5.9.1</junit.jupiter.version>
         <hamcrest.version>2.2</hamcrest.version>
-        <mockito.version>4.6.1</mockito.version>
-        <equalsverifier.version>3.10</equalsverifier.version>
-        <json.unit.version>2.35.0</json.unit.version>
-        <jsonassert.version>1.5.0</jsonassert.version>
-        <restassured.version>5.1.1</restassured.version>
+        <mockito.version>4.10.0</mockito.version>
+        <equalsverifier.version>3.12.3</equalsverifier.version>
+        <json.unit.version>2.36.0</json.unit.version>
+        <jsonassert.version>1.5.1</jsonassert.version>
+        <restassured.version>5.3.0</restassured.version>
         <wiremock.version>2.27.2</wiremock.version>
 
         <!-- Docker has a special DNS name 'host.docker.internal', but only starting with Docker 18.03... -->

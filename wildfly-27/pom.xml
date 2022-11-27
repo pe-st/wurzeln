@@ -7,108 +7,87 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>wildfly-26.1</artifactId>
+    <artifactId>wildfly-27</artifactId>
     <packaging>pom</packaging>
 
     <name>${project.groupId}.${project.artifactId}</name>
 
     <properties>
         <!-- latest EE8 spec -->
-        <jakarta.jakartaee-api.version>8.0.0</jakarta.jakartaee-api.version>
+        <jakarta.jakartaee-api.version>10.0.0</jakarta.jakartaee-api.version>
 
-        <!-- EE8 spec with JBoss additions -->
-        <!-- don't know where to find this version, could also be 1.0.1.Final -->
-        <jboss-jakartaee-8.0.version>1.0.0.Final</jboss-jakartaee-8.0.version>
-
-        <!-- latest Wildfly 26 dependencies -->
+        <!-- latest Wildfly 27 dependencies -->
         <!-- see https://github.com/wildfly/boms/releases -->
-        <wildfly.bom.version>26.1.2.Final</wildfly.bom.version>
+        <wildfly.bom.version>27.0.0.Final</wildfly.bom.version>
 
         <!-- Java EE modules that were removed from Java SE after Java 8 -->
-        <!-- (see http://openjdk.java.net/jeps/320) -->
-        <jakarta.activation.version>1.2.2</jakarta.activation.version>
-        <javax.xml.bind.groupId>org.jboss.spec.javax.xml.bind</javax.xml.bind.groupId>
-        <javax.xml.bind.artifactId>jboss-jaxb-api_2.3_spec</javax.xml.bind.artifactId>
-        <!--version.org.jboss.spec.javax.xml.bind-->
-        <javax.xml.bind.version>2.0.1.Final</javax.xml.bind.version>
-        <javax.xml.ws.groupId>org.jboss.spec.javax.xml.ws</javax.xml.ws.groupId>
-        <javax.xml.ws.artifactId>jboss-jaxws-api_2.3_spec</javax.xml.ws.artifactId>
-        <!--version.org.jboss.spec.javax.xml.ws-->
-        <javax.xml.ws.version>2.0.0.Final</javax.xml.ws.version>
-        <javax.xml.soap.groupId>org.jboss.spec.javax.xml.soap</javax.xml.soap.groupId>
-        <javax.xml.soap.artifactId>jboss-saaj-api_1.4_spec</javax.xml.soap.artifactId>
-        <!--version.org.jboss.spec.javax.xml.soap-->
-        <javax.xml.soap.version>1.0.2.Final</javax.xml.soap.version>
-        <javax.annotation.groupId>org.jboss.spec.javax.annotation</javax.annotation.groupId>
-        <javax.annotation.artifactId>jboss-annotations-api_1.3_spec</javax.annotation.artifactId>
-        <!--version.org.jboss.spec.javax.annotation-->
-        <javax.annotation.version>2.0.1.Final</javax.annotation.version>
-        <javax.transaction.groupId>org.jboss.spec.javax.transaction</javax.transaction.groupId>
-        <javax.transaction.artifactId>jboss-transaction-api_1.3_spec</javax.transaction.artifactId>
-        <!--version.org.jboss.spec.javax.transaction-->
-        <javax.transaction.version>2.0.0.Final</javax.transaction.version>
+        <jakarta.activation.version>2.1.1.jbossorg-1</jakarta.activation.version>
+        <jakarta.xml.bind-api.version>4.0.0</jakarta.xml.bind-api.version>
+        <jakarta.xml.soap-api.version>3.0.0</jakarta.xml.soap-api.version>
+        <jakarta.xml.ws-api.version>4.0.0</jakarta.xml.ws-api.version>
+        <jakarta.annotation.version>2.1.1</jakarta.annotation.version>
+        <jakarta.transaction.version>2.0.1</jakarta.transaction.version>
 
-        <!-- MicroProfile Standard Versions provided by Wildfly 26 -->
-        <!-- see also https://mvnrepository.com/artifact/org.wildfly.bom/wildfly-microprofile/26.1.2.Final -->
-        <mp.config.version>2.0</mp.config.version>
-        <mp.fault-tolerance.version>3.0</mp.fault-tolerance.version>
-        <mp.health.version>3.1</mp.health.version>
-        <mp.jwt.version>1.2.1</mp.jwt.version>
-        <mp.metrics.version>3.0</mp.metrics.version>
-        <mp.openapi.version>2.0.1</mp.openapi.version>
-        <mp.opentracing.version>2.0</mp.opentracing.version>
+        <!-- MicroProfile Standard Versions provided by Wildfly 27 -->
+        <!-- see also https://mvnrepository.com/artifact/org.wildfly.bom/wildfly-microprofile/27.0.0.Final -->
+        <mp.config.version>3.0.1</mp.config.version>
+        <mp.fault-tolerance.version>4.0.2</mp.fault-tolerance.version>
+        <mp.health.version>4.0</mp.health.version>
+        <mp.jwt.version>2.0</mp.jwt.version>
+        <mp.metrics.version>4.0</mp.metrics.version>
+        <mp.openapi.version>3.0</mp.openapi.version>
+        <mp.opentracing.version>3.0</mp.opentracing.version>
         <!-- mp.reactive-messaging classes included in smallrye.reactive-messaging, no dependency on upstream API -->
         <!-- but it is defined anyway in the wildfly-microprofile BOM -->
-        <mp.reactive-messaging.version>2.0.1</mp.reactive-messaging.version>
-        <mp.reactive-streams-operators.version>2.0</mp.reactive-streams-operators.version>
-        <mp.rest-client.version>2.0</mp.rest-client.version>
-        <smallrye.common.version>1.8.0</smallrye.common.version>
-        <smallrye.config.version>2.10.0</smallrye.config.version>
-        <smallrye.fault-tolerance.version>5.2.1</smallrye.fault-tolerance.version>
-        <smallrye.health.version>3.2.1</smallrye.health.version>
-        <smallrye.jwt.version>3.1.1</smallrye.jwt.version>
-        <smallrye.metrics.version>3.0.3</smallrye.metrics.version>
-        <smallrye.openapi.version>2.1.21</smallrye.openapi.version>
-        <smallrye.opentracing.version>2.0.0</smallrye.opentracing.version>
+        <mp.reactive-messaging.version>3.0</mp.reactive-messaging.version>
+        <mp.reactive-streams-operators.version>3.0</mp.reactive-streams-operators.version>
+        <mp.rest-client.version>3.0</mp.rest-client.version>
+        <smallrye.common.version>2.0.0</smallrye.common.version>
+        <smallrye.config.version>3.0.0</smallrye.config.version>
+        <smallrye.fault-tolerance.version>6.0.0</smallrye.fault-tolerance.version>
+        <smallrye.health.version>4.0.0</smallrye.health.version>
+        <smallrye.jwt.version>4.0.0</smallrye.jwt.version>
+        <smallrye.metrics.version>4.0.0</smallrye.metrics.version>
+        <smallrye.openapi.version>3.0.1</smallrye.openapi.version>
+        <smallrye.opentracing.version>3.0.0</smallrye.opentracing.version>
         <smallrye.reactive-converter-api.version>2.6.0</smallrye.reactive-converter-api.version>
-        <smallrye.reactive-messaging.version>3.13.0</smallrye.reactive-messaging.version>
-        <smallrye.mutiny.reactive-streams-operators.version>1.1.2</smallrye.mutiny.reactive-streams-operators.version>
-        <smallrye.mutiny.vertx.version>2.15.1</smallrye.mutiny.vertx.version>
-        <!-- Wildfly 26 is using resteasy-client-microprofile instead of smallrye-rest-client -->
+        <smallrye.reactive-messaging.version>4.0.0</smallrye.reactive-messaging.version>
+        <smallrye.mutiny.reactive-streams-operators.version>1.7.0</smallrye.mutiny.reactive-streams-operators.version>
+        <smallrye.mutiny.vertx.version>2.26.0</smallrye.mutiny.vertx.version>
+        <!-- Wildfly 27 is using resteasy-client-microprofile instead of smallrye-rest-client -->
 
         <!-- tracer implementations -->
-        <io.opentelemetry.version>1.9.1</io.opentelemetry.version>
+        <io.opentelemetry.version>1.12.0</io.opentelemetry.version>
         <io.opentracing.version>0.33.0</io.opentracing.version>
         <io.opentracing.contrib-jaxrs.version>1.0.0</io.opentracing.contrib-jaxrs.version>
         <io.jaegertracing.version>1.6.0</io.jaegertracing.version>
 
-        <!-- Artifact versions provided by Wildfly 26.1.2.Final -->
-        <!-- (see wildfly-26.1.2.Final/modules/system/layers/base and Wildfly BOM) -->
-        <resteasy.version>4.7.7.Final</resteasy.version>
+        <!-- Artifact versions provided by Wildfly 27.0.0.Final -->
+        <!-- (see wildfly-27.0.0.Final/modules/system/layers/base and Wildfly BOM) -->
+        <resteasy.version>6.2.1.Final</resteasy.version>
         <apache.httpclient.version>4.5.13</apache.httpclient.version>
         <!-- note that wildfly provides jakarta.json* in the path modules/system/layers/base/javax/json/* -->
-        <jakarta.json.version>1.1.6</jakarta.json.version>
-        <glassfish.jakarta.json.version>1.1.6</glassfish.jakarta.json.version>
-        <jakarta.json.bind.version>1.0.2</jakarta.json.bind.version>
-        <yasson.version>1.0.10</yasson.version>
+        <jakarta.json.version>2.1.1</jakarta.json.version>
+        <jakarta.json.bind.version>3.0.0</jakarta.json.bind.version>
+        <parsson.version>1.1.1</parsson.version>
+        <yasson.version>3.0.1</yasson.version>
 
         <!-- note that for new projects you should consider using JSON-B (yasson) instead of Jackson -->
-        <jackson-2-version>2.12.7</jackson-2-version>
-        <jackson-bom.version>2.12.7</jackson-bom.version>
+        <jackson-2-version>2.13.4</jackson-2-version>
+        <jackson-bom.version>2.13.4</jackson-bom.version>
 
         <!-- note that infinispan-directory-provider uses an older version -->
-        <infinispan.version>13.0.10.Final</infinispan.version>
-        <hibernate.version>5.3.28.Final</hibernate.version>
+        <infinispan.version>14.0.2.Final</infinispan.version>
+        <hibernate.version>6.1.5.Final</hibernate.version>
 
-        <!-- Hibernate 6.0.1.Final is the reference implementation for Bean Validation 2.0 (EE8) -->
-        <!-- Wildfly 26.1.2.Final uses Hibernate Validator 6.0.xx.Final -->
-        <jakarta.validation.version>2.0.2</jakarta.validation.version>
-        <hibernate.validator.version>6.0.23.Final</hibernate.validator.version>
+        <!-- Wildfly 27.0.0.Final uses Hibernate Validator 8.0.xx.Final -->
+        <jakarta.validation.version>3.0.2</jakarta.validation.version>
+        <hibernate.validator.version>8.0.0.Final</hibernate.validator.version>
 
-        <!-- Wildfly 26.1.2.Final uses Weld 3.1.x (corresponding to CDI 2.0) -->
-        <jakarta.inject.version>1.0.5</jakarta.inject.version>
+        <!-- Wildfly 27.0.0.Final uses Weld 5.1.x (corresponding to CDI 4.0) -->
+        <jakarta.inject.version>2.0.1</jakarta.inject.version>
         <!-- TODO use org.jboss.weld:weld-core-bom -->
-        <weld.version>3.1.9.Final</weld.version>
+        <weld.version>5.1.0.Final</weld.version>
 
         <!-- Latest Wildfly plugin -->
         <wildfly.maven.plugin.version>${wildfly.plugin.version}</wildfly.maven.plugin.version>
@@ -124,19 +103,17 @@
                 <scope>provided</scope>
             </dependency>
 
-            <!-- JBoss specific JavaEE artifacts  -->
-            <dependency>
-                <groupId>org.jboss.spec</groupId>
-                <artifactId>jboss-jakartaee-8.0</artifactId>
-                <version>${jboss-jakartaee-8.0.version}</version>
-                <scope>provided</scope>
-                <type>pom</type>
-            </dependency>
-
-            <!-- Wildfly BOM -->
+            <!-- Wildfly BOMs -->
             <dependency>
                 <groupId>org.wildfly.bom</groupId>
-                <artifactId>wildfly-jakartaee8</artifactId>
+                <artifactId>wildfly-ee</artifactId>
+                <version>${wildfly.bom.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>wildfly-microprofile</artifactId>
                 <version>${wildfly.bom.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
@@ -162,6 +139,17 @@
             </activation>
             <dependencies>
                 <dependency>
+                    <groupId>jakarta.platform</groupId>
+                    <artifactId>jakarta.jakartaee-api</artifactId>
+                    <version>${jakarta.jakartaee-api.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>jakarta.el</groupId>
+                            <artifactId>jakarta.el-api</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+                <dependency>
                     <groupId>org.eclipse.microprofile.config</groupId>
                     <artifactId>microprofile-config-api</artifactId>
                     <version>${mp.config.version}</version>
@@ -170,6 +158,10 @@
                             <!-- microprofile-health-api is using a newer version -->
                             <groupId>biz.aQute.bnd</groupId>
                             <artifactId>biz.aQute.bnd.annotation</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>jakarta.interceptor</groupId>
+                            <artifactId>jakarta.interceptor-api</artifactId>
                         </exclusion>
                     </exclusions>
                 </dependency>
@@ -254,6 +246,10 @@
                     <version>${smallrye.reactive-messaging.version}</version>
                     <exclusions>
                         <exclusion>
+                            <groupId>io.smallrye.common</groupId>
+                            <artifactId>smallrye-common-annotation</artifactId>
+                        </exclusion>
+                        <exclusion>
                             <!-- avoid Dependency convergence error (smallrye-reactive-messaging-api -->
                             <!-- has already opentelemetry-api:1.6.0, wildfly only 1.5.0) -->
                             <groupId>io.opentelemetry</groupId>
@@ -310,6 +306,10 @@
                             <groupId>org.osgi</groupId>
                             <artifactId>org.osgi.annotation.versioning</artifactId>
                         </exclusion>
+                        <exclusion>
+                            <groupId>jakarta.annotation</groupId>
+                            <artifactId>jakarta.annotation-api</artifactId>
+                        </exclusion>
                     </exclusions>
                 </dependency>
                 <dependency>
@@ -327,6 +327,10 @@
                     <artifactId>smallrye-fault-tolerance</artifactId>
                     <version>${smallrye.fault-tolerance.version}</version>
                     <exclusions>
+                        <exclusion>
+                            <groupId>org.jboss.logging</groupId>
+                            <artifactId>jboss-logging</artifactId>
+                        </exclusion>
                         <exclusion>
                             <!-- avoid Dependency convergence error (smallrye-fault-tolerance:5.1.0 -->
                             <!-- has smallrye-common-annotation:1.6.0, wildfly still 1.5.0) -->
@@ -358,6 +362,10 @@
                             <groupId>io.smallrye.reactive</groupId>
                             <artifactId>mutiny</artifactId>
                         </exclusion>
+                        <exclusion>
+                            <groupId>jakarta.json</groupId>
+                            <artifactId>jakarta.json-api</artifactId>
+                        </exclusion>
                     </exclusions>
                 </dependency>
                 <dependency>
@@ -366,10 +374,20 @@
                     <version>${smallrye.jwt.version}</version>
                     <exclusions>
                         <exclusion>
+                            <!-- avoid Dependency convergence error (io.smallrye:smallrye-jwt:jar:4.0.0:compile
+    +-org.eclipse.microprofile.config:microprofile-config-api:jar:3.0) -->
+                            <groupId>org.eclipse.microprofile.config</groupId>
+                            <artifactId>microprofile-config-api</artifactId>
+                        </exclusion>
+                        <exclusion>
                             <!-- avoid Dependency convergence error (smallrye-jwt -->
                             <!-- has microprofile-jwt-auth-api:1.2, wildfly already 1.2.1) -->
                             <groupId>org.eclipse.microprofile.jwt</groupId>
                             <artifactId>microprofile-jwt-auth-api</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>jakarta.annotation</groupId>
+                            <artifactId>jakarta.annotation-api</artifactId>
                         </exclusion>
                         <exclusion>
                             <!-- Wildfly is using jakarta.enterprise.cdi-api -->
@@ -389,6 +407,10 @@
                     <version>${smallrye.metrics.version}</version>
                     <exclusions>
                         <exclusion>
+                            <groupId>org.jboss.logging</groupId>
+                            <artifactId>jboss-logging</artifactId>
+                        </exclusion>
+                        <exclusion>
                             <!-- Wildfly is using jboss-jaxrs-api_2.1_spec -->
                             <groupId>jakarta.ws.rs</groupId>
                             <artifactId>jakarta.ws.rs-api</artifactId>
@@ -401,10 +423,10 @@
                     <version>${smallrye.openapi.version}</version>
                     <exclusions>
                         <exclusion>
-                            <!-- avoid Dependency convergence error (wildfly 26 -->
-                            <!-- has microprofile-openapi-api:2.0, smallrye-open-api-core already 2.0.1-RC1) -->
-                            <groupId>org.eclipse.microprofile.openapi</groupId>
-                            <artifactId>microprofile-openapi-api</artifactId>
+                            <!-- avoid Dependency convergence error (io.smallrye:smallrye-jwt:jar:4.0.0:compile
+    +-org.eclipse.microprofile.config:microprofile-config-api:jar:3.0) -->
+                            <groupId>org.eclipse.microprofile.config</groupId>
+                            <artifactId>microprofile-config-api</artifactId>
                         </exclusion>
                     </exclusions>
                 </dependency>
@@ -414,10 +436,10 @@
                     <version>${smallrye.opentracing.version}</version>
                     <exclusions>
                         <exclusion>
-                            <!-- avoid Dependency convergence error (smallrye-opentracing:2.0.0 via opentracing-interceptors:0.1.3 -->
-                            <!-- has microprofile-opentracing-api:1.1, wildfly already 2.0) -->
-                            <groupId>org.eclipse.microprofile.opentracing</groupId>
-                            <artifactId>microprofile-opentracing-api</artifactId>
+                            <!-- avoid Dependency convergence error (io.smallrye:smallrye-jwt:jar:4.0.0:compile
+    +-org.eclipse.microprofile.config:microprofile-config-api:jar:3.0) -->
+                            <groupId>org.eclipse.microprofile.config</groupId>
+                            <artifactId>microprofile-config-api</artifactId>
                         </exclusion>
                         <exclusion>
                             <!-- Wildfly is using jboss-jaxrs-api_2.1_spec -->
@@ -437,12 +459,6 @@
                     <version>${smallrye.reactive-messaging.version}</version>
                     <exclusions>
                         <exclusion>
-                            <!-- avoid Dependency convergence error (smallrye-reactive-messaging-provider -->
-                            <!-- has already opentelemetry-api:1.6.0, wildfly only 1.5.0) -->
-                            <groupId>io.opentelemetry</groupId>
-                            <artifactId>opentelemetry-api</artifactId>
-                        </exclusion>
-                        <exclusion>
                             <!-- Dependency convergence error -->
                             <!-- avoid dependency already excluded by Wildfly DepMgt -->
                             <groupId>jakarta.annotation</groupId>
@@ -455,10 +471,9 @@
                     <artifactId>mutiny-reactive-streams-operators</artifactId>
                     <version>${smallrye.mutiny.reactive-streams-operators.version}</version>
                     <exclusions>
-                        <!-- avoid Could not transfer artifact ...:microprofile-reactive-streams-operators-core:pom:2.0 from/to artifactory, is this temporary? -->
                         <exclusion>
                             <groupId>org.eclipse.microprofile.reactive-streams-operators</groupId>
-                            <artifactId>microprofile-reactive-streams-operators-core</artifactId>
+                            <artifactId>microprofile-reactive-streams-operators-api</artifactId>
                         </exclusion>
                     </exclusions>
                 </dependency>
@@ -468,10 +483,8 @@
                     <version>${smallrye.mutiny.vertx.version}</version>
                     <exclusions>
                         <exclusion>
-                            <!-- avoid Dependency convergence error (smallrye-mutiny-vertx-core -->
-                            <!-- has already mutiny:0.19.2, wildfly only 0.18.1) -->
-                            <groupId>io.smallrye.reactive</groupId>
-                            <artifactId>mutiny</artifactId>
+                            <groupId>io.smallrye.common</groupId>
+                            <artifactId>smallrye-common-annotation</artifactId>
                         </exclusion>
                         <exclusion>
                             <!-- Dependency convergence error -->
@@ -527,6 +540,16 @@
                     <groupId>org.jboss.resteasy</groupId>
                     <artifactId>resteasy-client-api</artifactId>
                     <version>${resteasy.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.reactivestreams</groupId>
+                            <artifactId>reactive-streams</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>jakarta.xml.bind</groupId>
+                            <artifactId>jakarta.xml.bind-api</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>jakarta.json</groupId>
@@ -534,9 +557,9 @@
                     <version>${jakarta.json.version}</version>
                 </dependency>
                 <dependency>
-                    <groupId>org.glassfish</groupId>
-                    <artifactId>jakarta.json</artifactId>
-                    <version>${glassfish.jakarta.json.version}</version>
+                    <groupId>org.eclipse.parsson</groupId>
+                    <artifactId>parsson</artifactId>
+                    <version>${parsson.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>jakarta.json.bind</groupId>
@@ -547,6 +570,16 @@
                     <groupId>org.eclipse</groupId>
                     <artifactId>yasson</artifactId>
                     <version>${yasson.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>jakarta.json</groupId>
+                            <artifactId>jakarta.json-api</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>org.eclipse.parsson</groupId>
+                            <artifactId>parsson</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>com.fasterxml.jackson.core</groupId>
@@ -562,9 +595,17 @@
                     <version>${infinispan.version}</version>
                     <exclusions>
                         <exclusion>
+                            <groupId>org.jboss.logging</groupId>
+                            <artifactId>jboss-logging</artifactId>
+                        </exclusion>
+                        <exclusion>
                             <!-- Wildfly is using jakarta.annotation-api -->
                             <groupId>javax.annotation</groupId>
                             <artifactId>javax.annotation-api</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>jakarta.transaction</groupId>
+                            <artifactId>jakarta.transaction-api</artifactId>
                         </exclusion>
                     </exclusions>
                 </dependency>
@@ -581,7 +622,7 @@
                     </exclusions>
                 </dependency>
                 <dependency>
-                    <groupId>org.hibernate</groupId>
+                    <groupId>org.hibernate.orm</groupId>
                     <artifactId>hibernate-core</artifactId>
                     <version>${hibernate.version}</version>
                     <exclusions>
@@ -591,26 +632,56 @@
                             <groupId>jakarta.xml.bind</groupId>
                             <artifactId>jakarta.xml.bind-api</artifactId>
                         </exclusion>
+                        <exclusion>
+                            <groupId>org.jboss.logging</groupId>
+                            <artifactId>jboss-logging</artifactId>
+                        </exclusion>
                     </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>org.hibernate.validator</groupId>
                     <artifactId>hibernate-validator</artifactId>
                     <version>${hibernate.validator.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.jboss.logging</groupId>
+                            <artifactId>jboss-logging</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>org.jboss.weld</groupId>
                     <artifactId>weld-core-impl</artifactId>
                     <version>${weld.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>jakarta.enterprise</groupId>
+                            <artifactId>jakarta.enterprise.cdi-api</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>jakarta.interceptor</groupId>
+                            <artifactId>jakarta.interceptor-api</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>jakarta.el</groupId>
+                            <artifactId>jakarta.el-api</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>org.jboss.weld.se</groupId>
                     <artifactId>weld-se-core</artifactId>
                     <version>${weld.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>jakarta.enterprise</groupId>
+                            <artifactId>jakarta.enterprise.cdi-api</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
-                    <groupId>com.sun.activation</groupId>
-                    <artifactId>jakarta.activation</artifactId>
+                    <groupId>jakarta.activation</groupId>
+                    <artifactId>jakarta.activation-api</artifactId>
                     <version>${jakarta.activation.version}</version>
                 </dependency>
                 <dependency>
@@ -624,38 +695,31 @@
                     <version>${jakarta.validation.version}</version>
                 </dependency>
                 <dependency>
-                    <groupId>${javax.xml.bind.groupId}</groupId>
-                    <artifactId>${javax.xml.bind.artifactId}</artifactId>
-                    <version>${javax.xml.bind.version}</version>
+                    <groupId>jakarta.xml.bind</groupId>
+                    <artifactId>jakarta.xml.bind-api</artifactId>
+                    <version>${jakarta.xml.bind-api.version}</version>
                 </dependency>
                 <dependency>
-                    <groupId>${javax.xml.ws.groupId}</groupId>
-                    <artifactId>${javax.xml.ws.artifactId}</artifactId>
-                    <version>${javax.xml.ws.version}</version>
+                    <groupId>jakarta.xml.ws</groupId>
+                    <artifactId>jakarta.xml.ws-api</artifactId>
+                    <version>${jakarta.xml.ws-api.version}</version>
                 </dependency>
                 <dependency>
-                    <groupId>${javax.xml.soap.groupId}</groupId>
-                    <artifactId>${javax.xml.soap.artifactId}</artifactId>
-                    <version>${javax.xml.soap.version}</version>
-                    <exclusions>
-                        <exclusion>
-                            <!-- Dependency convergence error -->
-                            <!-- (avoid dependency already excluded by Wildfly DepMgt) -->
-                            <groupId>jakarta.activation</groupId>
-                            <artifactId>jakarta.activation-api</artifactId>
-                        </exclusion>
-                    </exclusions>
+                    <groupId>jakarta.xml.soap</groupId>
+                    <artifactId>jakarta.xml.soap-api</artifactId>
+                    <version>${jakarta.xml.soap-api.version}</version>
                 </dependency>
                 <dependency>
-                    <groupId>${javax.annotation.groupId}</groupId>
-                    <artifactId>${javax.annotation.artifactId}</artifactId>
-                    <version>${javax.annotation.version}</version>
+                    <groupId>jakarta.annotation</groupId>
+                    <artifactId>jakarta.annotation-api</artifactId>
+                    <version>${jakarta.annotation.version}</version>
                 </dependency>
                 <dependency>
-                    <groupId>${javax.transaction.groupId}</groupId>
-                    <artifactId>${javax.transaction.artifactId}</artifactId>
-                    <version>${javax.transaction.version}</version>
+                    <groupId>jakarta.transaction</groupId>
+                    <artifactId>jakarta.transaction-api</artifactId>
+                    <version>${jakarta.transaction.version}</version>
                 </dependency>
+
                 <dependency>
                     <groupId>javax.jws</groupId>
                     <artifactId>jsr181-api</artifactId>

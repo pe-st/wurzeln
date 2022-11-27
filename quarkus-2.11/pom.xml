@@ -7,7 +7,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>quarkus-2.10</artifactId>
+    <artifactId>quarkus-2.11</artifactId>
     <packaging>pom</packaging>
 
     <name>${project.groupId}.${project.artifactId}</name>
@@ -17,7 +17,7 @@
 
     <properties>
         <!-- latest Quarkus version -->
-        <quarkus.version>2.10.3.Final</quarkus.version>
+        <quarkus.version>2.11.3.Final</quarkus.version>
 
         <!-- Quarkus 2 requires Java 11, also for its maven plugin -->
         <java.release>11</java.release>
@@ -55,26 +55,26 @@
         <smallrye.common.version>1.13.0</smallrye.common.version>
         <smallrye.config.version>2.10.1</smallrye.config.version>
         <smallrye.context-propagation.version>1.2.2</smallrye.context-propagation.version>
-        <smallrye.fault-tolerance.version>5.4.1</smallrye.fault-tolerance.version>
+        <smallrye.fault-tolerance.version>5.5.0</smallrye.fault-tolerance.version>
         <smallrye.graphql.version>1.6.0</smallrye.graphql.version>
         <smallrye.health.version>3.2.1</smallrye.health.version>
         <smallrye.jwt.version>3.5.3</smallrye.jwt.version>
         <smallrye.metrics.version>3.0.5</smallrye.metrics.version>
-        <smallrye.openapi.version>2.1.22</smallrye.openapi.version>
+        <smallrye.openapi.version>2.1.23</smallrye.openapi.version>
         <smallrye.opentracing.version>2.1.0</smallrye.opentracing.version>
         <smallrye.reactive-attribute-processor.version>3.17.0</smallrye.reactive-attribute-processor.version>
         <smallrye.reactive-converter-api.version>2.7.0</smallrye.reactive-converter-api.version>
-        <smallrye.reactive-messaging.version>3.7.1</smallrye.reactive-messaging.version>
+        <smallrye.reactive-messaging.version>3.18.0</smallrye.reactive-messaging.version>
         <smallrye.reactive-streams-operators.version>1.0.13</smallrye.reactive-streams-operators.version>
         <smallrye.mutiny.reactive-streams-operators.version>1.6.0</smallrye.mutiny.reactive-streams-operators.version>
-        <smallrye.mutiny.vertx.version>2.22.0</smallrye.mutiny.vertx.version>
+        <smallrye.mutiny.vertx.version>2.24.1</smallrye.mutiny.vertx.version>
         <!-- quarkus is using resteasy-client-microprofile instead of smallrye-rest-client -->
 
         <!-- tracer implementations -->
-        <io.opentelemetry.version>1.13.0</io.opentelemetry.version>
+        <io.opentelemetry.version>1.15.0</io.opentelemetry.version>
         <io.opentracing.version>0.33.0</io.opentracing.version>
         <io.opentracing.contrib-jaxrs.version>1.0.0</io.opentracing.contrib-jaxrs.version>
-        <io.jaegertracing.version>1.8.0</io.jaegertracing.version>
+        <io.jaegertracing.version>1.8.1</io.jaegertracing.version>
 
         <!-- Artifact versions provided by Quarkus x.y -->
         <resteasy.version>4.7.5.Final</resteasy.version>
@@ -90,11 +90,11 @@
         <jackson-bom.version>2.13.3</jackson-bom.version>
 
         <infinispan.version>13.0.10.Final</infinispan.version>
-        <hibernate.version>5.6.9.Final</hibernate.version>
+        <hibernate.version>5.6.10.Final</hibernate.version>
 
         <!-- Hibernate 6.0.1.Final is the reference implementation for Bean Validation 2.0 (EE8) -->
         <jakarta.validation.version>2.0.2</jakarta.validation.version>
-        <hibernate.validator.version>6.2.3.Final</hibernate.validator.version>
+        <hibernate.validator.version>6.2.4.Final</hibernate.validator.version>
         <!-- ojdbc version in the quarkus-jdbc-oracle extension -->
         <oracle.ojdbc.version>21.5.0.0</oracle.ojdbc.version>
         <!-- kafka version in the kafka extensions -->
