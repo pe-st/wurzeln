@@ -9,6 +9,5 @@
         <module name="update-checker" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.8" />
   </component>
 </project>

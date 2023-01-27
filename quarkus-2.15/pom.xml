@@ -7,7 +7,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>quarkus-2.14</artifactId>
+    <artifactId>quarkus-2.15</artifactId>
     <packaging>pom</packaging>
 
     <name>${project.groupId}.${project.artifactId}</name>
@@ -17,7 +17,7 @@
 
     <properties>
         <!-- latest Quarkus version -->
-        <quarkus.version>2.14.3.Final</quarkus.version>
+        <quarkus.version>2.15.3.Final</quarkus.version>
 
         <!-- Java EE modules that were removed from Java SE after Java 8 -->
         <!-- (see http://openjdk.java.net/jeps/320) -->
@@ -50,25 +50,25 @@
         <mp.reactive-streams-operators.version>1.0.1</mp.reactive-streams-operators.version>
         <mp.rest-client.version>2.0</mp.rest-client.version>
         <smallrye.common.version>1.13.2</smallrye.common.version>
-        <smallrye.config.version>2.12.1</smallrye.config.version>
+        <smallrye.config.version>2.13.1</smallrye.config.version>
         <smallrye.context-propagation.version>1.2.2</smallrye.context-propagation.version>
-        <smallrye.fault-tolerance.version>5.5.0</smallrye.fault-tolerance.version>
-        <smallrye.graphql.version>1.8.3</smallrye.graphql.version>
-        <smallrye.health.version>3.3.0</smallrye.health.version>
+        <smallrye.fault-tolerance.version>5.6.0</smallrye.fault-tolerance.version>
+        <smallrye.graphql.version>1.9.1</smallrye.graphql.version>
+        <smallrye.health.version>3.3.1</smallrye.health.version>
         <smallrye.jwt.version>3.5.4</smallrye.jwt.version>
         <smallrye.metrics.version>3.0.5</smallrye.metrics.version>
         <smallrye.openapi.version>2.3.1</smallrye.openapi.version>
         <smallrye.opentracing.version>2.1.1</smallrye.opentracing.version>
         <smallrye.reactive-attribute-processor.version>3.21.0</smallrye.reactive-attribute-processor.version>
         <smallrye.reactive-converter-api.version>2.7.0</smallrye.reactive-converter-api.version>
-        <smallrye.reactive-messaging.version>3.21.0</smallrye.reactive-messaging.version>
+        <smallrye.reactive-messaging.version>3.22.0</smallrye.reactive-messaging.version>
         <smallrye.reactive-streams-operators.version>1.0.13</smallrye.reactive-streams-operators.version>
         <smallrye.mutiny.reactive-streams-operators.version>1.8.0</smallrye.mutiny.reactive-streams-operators.version>
-        <smallrye.mutiny.vertx.version>2.27.0</smallrye.mutiny.vertx.version>
+        <smallrye.mutiny.vertx.version>2.29.0</smallrye.mutiny.vertx.version>
         <!-- quarkus is using resteasy-client-microprofile instead of smallrye-rest-client -->
 
         <!-- tracer implementations -->
-        <io.opentelemetry.version>1.18.0</io.opentelemetry.version>
+        <io.opentelemetry.version>1.19.0</io.opentelemetry.version>
         <io.opentracing.version>0.33.0</io.opentracing.version>
         <io.opentracing.contrib-jaxrs.version>1.0.0</io.opentracing.contrib-jaxrs.version>
         <io.jaegertracing.version>1.8.1</io.jaegertracing.version>
@@ -83,10 +83,10 @@
         <yasson.version>1.0.11</yasson.version>
 
         <!-- note that for new projects you should consider using JSON-B (yasson) instead of Jackson -->
-        <jackson-2-version>2.13.4</jackson-2-version>
-        <jackson-bom.version>2.13.4</jackson-bom.version>
+        <jackson-2-version>2.14.1</jackson-2-version>
+        <jackson-bom.version>2.14.1</jackson-bom.version>
 
-        <infinispan.version>14.0.1.Final</infinispan.version>
+        <infinispan.version>14.0.4.Final</infinispan.version>
         <hibernate.version>5.6.14.Final</hibernate.version>
 
         <!-- Hibernate 6.0.1.Final is the reference implementation for Bean Validation 2.0 (EE8) -->
@@ -334,6 +334,10 @@
                         <exclusion>
                             <groupId>org.slf4j</groupId>
                             <artifactId>slf4j-api</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>com.google.protobuf</groupId>
+                            <artifactId>protobuf-java</artifactId>
                         </exclusion>
                     </exclusions>
                 </dependency>
