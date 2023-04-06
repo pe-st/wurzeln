@@ -33,7 +33,7 @@ Snap.*.trc
 **/.idea/runConfigurations.xml
 **/.idea/saveactions_settings.xml
 **/.idea/sonarlint.xml
-**/.idea/sonarlint/issuestore/
+**/.idea/sonarlint/
 **/.idea/tasks.xml
 **/.idea/uiDesigner.xml
 **/.idea/workspace.xml

@@ -664,4 +664,22 @@
             </dependencies>
         </profile>
     </profiles>
+
+    <repositories>
+        <repository>
+            <!-- this is needed for org.glassfish.jaxb:jaxb-runtime:jar:2.3.3-b02-jbossorg-2 -->
+            <id>gael-repository</id>
+            <name>Gael Repository</name>
+            <url>https://repository.gael-systems.com/repository/public/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>

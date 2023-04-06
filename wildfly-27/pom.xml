@@ -740,4 +740,23 @@
             </dependencies>
         </profile>
     </profiles>
+
+
+    <repositories>
+        <repository>
+            <!-- this is needed for many "x-jbossorg-n" versions of jakarta.* artifacts -->
+            <id>jboss-releases</id>
+            <name>JBoss Releases Repository</name>
+            <url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>
