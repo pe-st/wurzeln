@@ -18,7 +18,7 @@
 
         <!-- latest Wildfly 27 dependencies -->
         <!-- see https://github.com/wildfly/boms/releases -->
-        <wildfly.bom.version>27.0.0.Final</wildfly.bom.version>
+        <wildfly.bom.version>27.0.1.Final</wildfly.bom.version>
 
         <!-- Java EE modules that were removed from Java SE after Java 8 -->
         <jakarta.activation.version>2.1.1.jbossorg-1</jakarta.activation.version>
@@ -28,8 +28,14 @@
         <jakarta.annotation.version>2.1.1</jakarta.annotation.version>
         <jakarta.transaction.version>2.0.1</jakarta.transaction.version>
 
+        <!-- Jakarta EE modules where wildfly uses a "org.jboss.spec" dependency -->
+        <!-- "org.jboss.spec.jakarta.el:jboss-el-api_5.0_spec" instead of "jakarta.el:jakarta.el-api", -->
+        <!-- which uses org.glassfish:jakarta.el:5.0.0-M1 internally -->
+        <version.org.jboss.spec.jakarta.el>4.0.0.Final</version.org.jboss.spec.jakarta.el>
+        <jakarta.el.version>5.0.0-M1</jakarta.el.version>
+
         <!-- MicroProfile Standard Versions provided by Wildfly 27 -->
-        <!-- see also https://mvnrepository.com/artifact/org.wildfly.bom/wildfly-microprofile/27.0.0.Final -->
+        <!-- see also https://mvnrepository.com/artifact/org.wildfly.bom/wildfly-microprofile/27.x.x.Final -->
         <mp.config.version>3.0.1</mp.config.version>
         <mp.fault-tolerance.version>4.0.2</mp.fault-tolerance.version>
         <mp.health.version>4.0</mp.health.version>
@@ -62,8 +68,8 @@
         <io.opentracing.contrib-jaxrs.version>1.0.0</io.opentracing.contrib-jaxrs.version>
         <io.jaegertracing.version>1.6.0</io.jaegertracing.version>
 
-        <!-- Artifact versions provided by Wildfly 27.0.0.Final -->
-        <!-- (see wildfly-27.0.0.Final/modules/system/layers/base and Wildfly BOM) -->
+        <!-- Artifact versions provided by Wildfly 27.x.x.Final -->
+        <!-- (see wildfly-27.x.x.Final/modules/system/layers/base and Wildfly BOM) -->
         <resteasy.version>6.2.1.Final</resteasy.version>
         <apache.httpclient.version>4.5.13</apache.httpclient.version>
         <!-- note that wildfly provides jakarta.json* in the path modules/system/layers/base/javax/json/* -->
@@ -74,17 +80,17 @@
 
         <!-- note that for new projects you should consider using JSON-B (yasson) instead of Jackson -->
         <jackson-2-version>2.13.4</jackson-2-version>
-        <jackson-bom.version>2.13.4</jackson-bom.version>
+        <jackson-bom.version>2.13.4.20221013</jackson-bom.version>
 
         <!-- note that infinispan-directory-provider uses an older version -->
         <infinispan.version>14.0.2.Final</infinispan.version>
         <hibernate.version>6.1.5.Final</hibernate.version>
 
-        <!-- Wildfly 27.0.0.Final uses Hibernate Validator 8.0.xx.Final -->
+        <!-- Wildfly 27.x.x.Final uses Hibernate Validator 8.0.xx.Final -->
         <jakarta.validation.version>3.0.2</jakarta.validation.version>
         <hibernate.validator.version>8.0.0.Final</hibernate.validator.version>
 
-        <!-- Wildfly 27.0.0.Final uses Weld 5.1.x (corresponding to CDI 4.0) -->
+        <!-- Wildfly 27.x.x.Final uses Weld 5.1.x (corresponding to CDI 4.0) -->
         <jakarta.inject.version>2.0.1</jakarta.inject.version>
         <!-- TODO use org.jboss.weld:weld-core-bom -->
         <weld.version>5.1.0.Final</weld.version>
@@ -648,6 +654,12 @@
                             <artifactId>jboss-logging</artifactId>
                         </exclusion>
                     </exclusions>
+                </dependency>
+                <dependency>
+                    <!-- wildfly still uses org.jboss.spec.jakarta.el:jboss-el-api_5.0_spec instead of jakarta.el:jakarta.el-api -->
+                    <groupId>org.jboss.spec.jakarta.el</groupId>
+                    <artifactId>jboss-el-api_5.0_spec</artifactId>
+                    <version>${version.org.jboss.spec.jakarta.el}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.jboss.weld</groupId>
