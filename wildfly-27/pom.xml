@@ -13,7 +13,7 @@
     <name>${project.groupId}.${project.artifactId}</name>
 
     <properties>
-        <!-- latest EE8 spec -->
+        <!-- latest EE10 spec -->
         <jakarta.jakartaee-api.version>10.0.0</jakarta.jakartaee-api.version>
 
         <!-- latest Wildfly 27 dependencies -->
@@ -94,6 +94,9 @@
         <jakarta.inject.version>2.0.1</jakarta.inject.version>
         <!-- TODO use org.jboss.weld:weld-core-bom -->
         <weld.version>5.1.0.Final</weld.version>
+
+        <!-- Logging API supported by Wildfly -->
+        <slf4j.version>1.7.36</slf4j.version>
 
         <!-- Latest Wildfly plugin -->
         <wildfly.maven.plugin.version>${wildfly.plugin.version}</wildfly.maven.plugin.version>
@@ -257,7 +260,7 @@
                         </exclusion>
                         <exclusion>
                             <!-- avoid Dependency convergence error (smallrye-reactive-messaging-api -->
-                            <!-- has already opentelemetry-api:1.6.0, wildfly only 1.5.0) -->
+                            <!-- has already opentelemetry-api:1.18.0, wildfly only 1.12.0) -->
                             <groupId>io.opentelemetry</groupId>
                             <artifactId>opentelemetry-api</artifactId>
                         </exclusion>
@@ -464,6 +467,12 @@
                     <artifactId>smallrye-reactive-messaging-provider</artifactId>
                     <version>${smallrye.reactive-messaging.version}</version>
                     <exclusions>
+                        <exclusion>
+                            <!-- avoid Dependency convergence error (smallrye-reactive-messaging-api -->
+                            <!-- has already opentelemetry-api:1.18.0, wildfly only 1.12.0) -->
+                            <groupId>io.opentelemetry</groupId>
+                            <artifactId>opentelemetry-api</artifactId>
+                        </exclusion>
                         <exclusion>
                             <!-- Dependency convergence error -->
                             <!-- avoid dependency already excluded by Wildfly DepMgt -->
@@ -731,16 +740,9 @@
                     <artifactId>jakarta.transaction-api</artifactId>
                     <version>${jakarta.transaction.version}</version>
                 </dependency>
-
-                <dependency>
-                    <groupId>javax.jws</groupId>
-                    <artifactId>jsr181-api</artifactId>
-                    <version>${javax.jws.version}</version>
-                </dependency>
             </dependencies>
         </profile>
     </profiles>
-
 
     <repositories>
         <repository>
