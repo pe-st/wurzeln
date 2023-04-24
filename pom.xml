@@ -15,8 +15,6 @@
         <module>quarkus-2.14</module>
         <module>quarkus-2.15</module>
         <module>quarkus-2.16</module>
-        <module>wildfly-25</module>
-        <module>wildfly-26</module>
         <module>wildfly-26.1</module>
         <module>wildfly-27</module>
         <module>wildfly-28</module>
@@ -110,18 +108,16 @@
 
         <!-- artifact versions -->
         <apache.commons.lang3.version>3.12.0</apache.commons.lang3.version>
-        <!-- use a logback version compatible with slf4j, see below -->
-        <logback.version>1.2.12</logback.version>
+        <logback.version>1.4.7</logback.version>
         <lombok.version>1.18.26</lombok.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
-        <mapstruct.version>1.5.3.Final</mapstruct.version>
-        <!-- there's 2.0.6 now, but we want to do some tests first before using it -->
-        <slf4j.version>1.7.36</slf4j.version>
+        <mapstruct.version>1.5.5.Final</mapstruct.version>
+        <slf4j.version>2.0.7</slf4j.version>
 
         <!-- latest Jackson version for projects independent of an application server (AS) -->
         <!-- most of the AS submodules redefine it with an older version -->
-        <jackson-2-version>2.14.2</jackson-2-version>
-        <jackson-bom.version>2.14.2</jackson-bom.version>
+        <jackson-2-version>2.15.0</jackson-2-version>
+        <jackson-bom.version>2.15.0</jackson-bom.version>
 
         <!-- latest version for projects independent of an application server (AS) -->
         <!-- with an AS it is redefined to be the version used by the AS's resteasy artifact -->
@@ -144,7 +140,7 @@
         <junit.platform.version>1.9.2</junit.platform.version>
         <junit.jupiter.version>5.9.2</junit.jupiter.version>
         <hamcrest.version>2.2</hamcrest.version>
-        <mockito.version>5.2.0</mockito.version>
+        <mockito.version>5.3.1</mockito.version>
         <equalsverifier.version>3.14.1</equalsverifier.version>
         <json.unit.version>2.37.0</json.unit.version>
         <jsonassert.version>1.5.1</jsonassert.version>
