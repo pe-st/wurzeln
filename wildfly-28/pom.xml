@@ -185,19 +185,6 @@
                     <version>${mp.openapi.version}</version>
                 </dependency>
                 <dependency>
-                    <groupId>io.smallrye.reactive</groupId>
-                    <artifactId>smallrye-reactive-messaging-kafka-api</artifactId>
-                    <version>${smallrye.reactive-messaging.version}</version>
-                    <exclusions>
-                        <exclusion>
-                            <!-- avoid Dependency convergence error (smallrye-reactive-messaging -->
-                            <!-- has already opentelemetry-api:1.22.0, wildfly only 1.20.0) -->
-                            <groupId>io.opentelemetry</groupId>
-                            <artifactId>opentelemetry-api</artifactId>
-                        </exclusion>
-                    </exclusions>
-                </dependency>
-                <dependency>
                     <groupId>org.eclipse.microprofile.reactive.messaging</groupId>
                     <artifactId>microprofile-reactive-messaging-api</artifactId>
                     <version>${mp.reactive-messaging.version}</version>
@@ -270,6 +257,19 @@
                 </dependency>
                 <dependency>
                     <groupId>io.smallrye.reactive</groupId>
+                    <artifactId>smallrye-reactive-messaging-kafka-api</artifactId>
+                    <version>${smallrye.reactive-messaging.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <!-- avoid Dependency convergence error (smallrye-reactive-messaging -->
+                            <!-- has already opentelemetry-api:1.22.0, wildfly only 1.20.0) -->
+                            <groupId>io.opentelemetry</groupId>
+                            <artifactId>opentelemetry-api</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+                <dependency>
+                    <groupId>io.smallrye.reactive</groupId>
                     <artifactId>smallrye-reactive-messaging-provider</artifactId>
                     <version>${smallrye.reactive-messaging.version}</version>
                     <exclusions>
@@ -330,10 +330,7 @@
                 <dependency>
                     <groupId>com.fasterxml.jackson.core</groupId>
                     <artifactId>jackson-core</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>com.fasterxml.jackson.datatype</groupId>
-                    <artifactId>jackson-datatype-jsr310</artifactId>
+                    <version>${jackson-2-version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.infinispan</groupId>
