@@ -18,7 +18,7 @@
 
         <!-- latest Wildfly 28 dependencies -->
         <!-- see https://github.com/wildfly/boms/releases -->
-        <wildfly.bom.version>28.0.0.Final</wildfly.bom.version>
+        <wildfly.bom.version>28.0.1.Final</wildfly.bom.version>
 
         <!-- Java EE modules that were removed from Java SE after Java 8 -->
         <jakarta.activation.version>2.1.1.jbossorg-1</jakarta.activation.version>
@@ -53,7 +53,7 @@
         <smallrye.health.version>4.0.0</smallrye.health.version>
         <smallrye.jwt.version>4.2.0</smallrye.jwt.version>
         <smallrye.openapi.version>3.2.0</smallrye.openapi.version>
-        <smallrye.opentelemetry.version>2.3.0</smallrye.opentelemetry.version>
+        <smallrye.opentelemetry.version>2.3.2</smallrye.opentelemetry.version>
         <smallrye.reactive-converter-api.version>2.6.0</smallrye.reactive-converter-api.version>
         <smallrye.reactive-messaging.version>4.3.0</smallrye.reactive-messaging.version>
         <smallrye.mutiny.reactive-streams-operators.version>2.1.0</smallrye.mutiny.reactive-streams-operators.version>
@@ -65,7 +65,7 @@
 
         <!-- Artifact versions provided by Wildfly 28.x.x.Final -->
         <!-- (see wildfly-28.x.x.Final/modules/system/layers/base and Wildfly BOM) -->
-        <resteasy.version>6.2.3.Final</resteasy.version>
+        <resteasy.version>6.2.4.Final</resteasy.version>
         <apache.httpclient.version>4.5.14</apache.httpclient.version>
         <!-- note that wildfly provides jakarta.json* in the path modules/system/layers/base/javax/json/* -->
         <jakarta.json.version>2.1.1</jakarta.json.version>
