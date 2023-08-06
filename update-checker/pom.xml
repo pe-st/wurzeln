@@ -86,6 +86,18 @@
                                     </ignoreVersion>
                                 </ignoreVersions>
                             </rule>
+                            <rule>
+                                <groupId>net.javacrumbs.json-unit</groupId>
+                                <artifactId>json-unit</artifactId>
+                                <comparisonMethod>maven</comparisonMethod>
+                                <ignoreVersions>
+                                    <!-- json-unit 3.x requires Java 17 -->
+                                    <ignoreVersion>
+                                        <type>regex</type>
+                                        <version>3\..*</version>
+                                    </ignoreVersion>
+                                </ignoreVersions>
+                            </rule>
                         </rules>
                     </ruleSet>
                 </configuration>
@@ -446,6 +458,11 @@
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
                     <version>${build-helper.plugin.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>extra-enforcer-rules</artifactId>
+                    <version>${extra-enforcer-rules.plugin.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>io.fabric8</groupId>
