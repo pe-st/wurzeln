@@ -61,7 +61,8 @@
         <smallrye.mutiny.vertx.version>3.3.0</smallrye.mutiny.vertx.version>
         <!-- quarkus is using resteasy-client-microprofile instead of smallrye-rest-client -->
 
-        <!-- tracer implementations -->
+        <!-- observability implementations -->
+        <io.micrometer.version>1.10.6</io.micrometer.version>
         <io.opentelemetry.version>1.23.1</io.opentelemetry.version>
         <io.opentracing.version>0.33.0</io.opentracing.version>
         <io.opentracing.contrib-jaxrs.version>1.0.0</io.opentracing.contrib-jaxrs.version>
@@ -360,6 +361,11 @@
                     <groupId>io.smallrye.reactive</groupId>
                     <artifactId>smallrye-mutiny-vertx-core</artifactId>
                     <version>${smallrye.mutiny.vertx.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.micrometer</groupId>
+                    <artifactId>micrometer-core</artifactId>
+                    <version>${io.micrometer.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>io.opentelemetry</groupId>

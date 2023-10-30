@@ -60,7 +60,8 @@
         <smallrye.mutiny.vertx.version>3.0.0</smallrye.mutiny.vertx.version>
         <!-- Wildfly 28 is using resteasy-client-microprofile instead of smallrye-rest-client -->
 
-        <!-- tracer implementations -->
+        <!-- observability implementations -->
+        <io.micrometer.version>1.9.3</io.micrometer.version>
         <io.opentelemetry.version>1.20.0</io.opentelemetry.version>
 
         <!-- Artifact versions provided by Wildfly 28.x.x.Final -->
@@ -297,6 +298,11 @@
                             <artifactId>vertx-core</artifactId>
                         </exclusion>
                     </exclusions>
+                </dependency>
+                <dependency>
+                    <groupId>io.micrometer</groupId>
+                    <artifactId>micrometer-core</artifactId>
+                    <version>${io.micrometer.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>io.opentelemetry</groupId>

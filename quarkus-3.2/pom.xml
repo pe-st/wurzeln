@@ -17,7 +17,10 @@
 
     <properties>
         <!-- latest Quarkus version -->
-        <quarkus.version>3.2.2.Final</quarkus.version>
+        <quarkus.version>3.2.7.Final</quarkus.version>
+
+        <!-- Quarkus 3.2 requires Java 17, at least for its maven plugin -->
+        <java.release>17</java.release>
 
         <!-- Java EE modules that were removed from Java SE after Java 8 -->
         <!-- (see http://openjdk.java.net/jeps/320) -->
@@ -46,9 +49,9 @@
         <smallrye.common.version>2.1.0</smallrye.common.version>
         <smallrye.config.version>3.3.2</smallrye.config.version>
         <smallrye.context-propagation.version>2.1.0</smallrye.context-propagation.version>
-        <smallrye.fault-tolerance.version>6.2.4</smallrye.fault-tolerance.version>
+        <smallrye.fault-tolerance.version>6.2.6</smallrye.fault-tolerance.version>
         <smallrye.graphql.version>2.2.1</smallrye.graphql.version>
-        <smallrye.health.version>4.0.2</smallrye.health.version>
+        <smallrye.health.version>4.0.4</smallrye.health.version>
         <smallrye.jwt.version>4.3.0</smallrye.jwt.version>
         <smallrye.metrics.version>4.0.0</smallrye.metrics.version>
         <smallrye.openapi.version>3.4.0</smallrye.openapi.version>
@@ -61,7 +64,8 @@
         <smallrye.mutiny.vertx.version>3.5.0</smallrye.mutiny.vertx.version>
         <!-- quarkus is using resteasy-client-microprofile instead of smallrye-rest-client -->
 
-        <!-- tracer implementations -->
+        <!-- observability implementations -->
+        <io.micrometer.version>1.11.1</io.micrometer.version>
         <io.opentelemetry.version>1.25.0</io.opentelemetry.version>
         <io.opentracing.version>0.33.0</io.opentracing.version>
         <io.opentracing.contrib-jaxrs.version>1.0.0</io.opentracing.contrib-jaxrs.version>
@@ -80,13 +84,13 @@
         <jackson-bom.version>2.15.2</jackson-bom.version>
 
         <infinispan.version>14.0.11.Final</infinispan.version>
-        <hibernate.version>6.2.6.Final</hibernate.version>
+        <hibernate.version>6.2.7.Final</hibernate.version>
 
         <!-- Hibernate 7.0.0.Alpha5 is a compatible implementation for Bean Validation 3.0 (EE9/EE10) -->
         <jakarta.validation.version>3.0.2</jakarta.validation.version>
         <hibernate.validator.version>8.0.1.Final</hibernate.validator.version>
         <!-- ojdbc version in the quarkus-jdbc-oracle extension -->
-         <oracle.ojdbc.version>23.2.0.0</oracle.ojdbc.version>
+        <oracle.ojdbc.version>23.2.0.0</oracle.ojdbc.version>
         <!-- kafka version in the kafka extensions -->
         <kafka.version>3.4.0</kafka.version>
 
@@ -303,6 +307,10 @@
                             <artifactId>jackson-databind</artifactId>
                         </exclusion>
                         <exclusion>
+                            <groupId>io.smallrye</groupId>
+                            <artifactId>jandex</artifactId>
+                        </exclusion>
+                        <exclusion>
                             <groupId>org.jboss.logging</groupId>
                             <artifactId>jboss-logging</artifactId>
                         </exclusion>
@@ -360,6 +368,11 @@
                     <groupId>io.smallrye.reactive</groupId>
                     <artifactId>smallrye-mutiny-vertx-core</artifactId>
                     <version>${smallrye.mutiny.vertx.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.micrometer</groupId>
+                    <artifactId>micrometer-core</artifactId>
+                    <version>${io.micrometer.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>io.opentelemetry</groupId>
@@ -445,7 +458,7 @@
                 </dependency>
                 <dependency>
                     <groupId>com.oracle.database.jdbc</groupId>
-                    <artifactId>ojdbc8</artifactId>
+                    <artifactId>ojdbc11</artifactId>
                     <version>${oracle.ojdbc.version}</version>
                 </dependency>
                 <dependency>
@@ -464,6 +477,10 @@
                     <artifactId>hibernate-core</artifactId>
                     <version>${hibernate.version}</version>
                     <exclusions>
+                        <exclusion>
+                            <groupId>io.smallrye</groupId>
+                            <artifactId>jandex</artifactId>
+                        </exclusion>
                         <exclusion>
                             <groupId>org.hibernate.common</groupId>
                             <artifactId>hibernate-commons-annotations</artifactId>

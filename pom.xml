@@ -11,15 +11,11 @@
     <name>${project.groupId}.${project.artifactId}</name>
 
     <modules>
-        <module>quarkus-2.13</module> <!-- 2.13 latest Quarkus Red Hat build: https://access.redhat.com/articles/4966181 -->
-        <module>quarkus-2.14</module>
-        <module>quarkus-2.15</module>
         <module>quarkus-2.16</module>
         <module>quarkus-3.0</module>
-        <module>quarkus-3.1</module>
-        <module>quarkus-3.2</module>
+        <module>quarkus-3.2</module> <!-- 3.2 has LTS (https://quarkus.io/blog/lts-releases/) and is latest Red Hat build: https://access.redhat.com/articles/4966181 -->
+        <module>quarkus-3.4</module>
         <module>wildfly-26.1</module>
-        <module>wildfly-27</module>
         <module>wildfly-28</module>
         <module>wildfly-29</module>
         <module>update-checker</module>
@@ -29,7 +25,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <!-- Override this with `11` in your application POM if so desired. -->
+        <!-- Override this with `17` in your application POM if so desired. -->
         <!-- Until Java 8 is a thing of the past we have to live with two versioning schemes (see JEP223): -->
         <!-- - the Java release (the 'de facto' Java major version number, e.g. 8 for Java 1.8, and 9 for Java 9), -->
         <!--   supported in the compiler plugin as `<release>` for JDK 9 and later -->
@@ -78,50 +74,50 @@
         <!-- non-apache maven plugin versions -->
         <asciidoctor.plugin.version>2.2.4</asciidoctor.plugin.version>
         <build-helper.plugin.version>3.4.0</build-helper.plugin.version>
-        <docker.plugin.version>0.43.0</docker.plugin.version>
+        <docker.plugin.version>0.43.4</docker.plugin.version>
         <extra-enforcer-rules.plugin.version>1.7.0</extra-enforcer-rules.plugin.version>
-        <jacoco.plugin.version>0.8.10</jacoco.plugin.version>
+        <jacoco.plugin.version>0.8.11</jacoco.plugin.version>
         <nexus-staging.plugin.version>1.6.13</nexus-staging.plugin.version>
-        <openapi-generator.plugin.version>6.6.0</openapi-generator.plugin.version>
-        <swagger-codegen.plugin.version>3.0.46</swagger-codegen.plugin.version>
-        <versions.plugin.version>2.16.0</versions.plugin.version>
+        <openapi-generator.plugin.version>7.0.1</openapi-generator.plugin.version>
+        <swagger-codegen.plugin.version>3.0.49</swagger-codegen.plugin.version>
+        <versions.plugin.version>2.16.1</versions.plugin.version>
         <wildfly.plugin.version>4.2.0.Final</wildfly.plugin.version>
 
         <!-- apache maven plugin versions (in alphabetical order) -->
         <maven.assembly.plugin.version>3.6.0</maven.assembly.plugin.version>
         <maven.clean.plugin.version>3.3.1</maven.clean.plugin.version>
         <maven.compiler.plugin.version>3.11.0</maven.compiler.plugin.version>
-        <maven.dependency.plugin.version>3.6.0</maven.dependency.plugin.version>
+        <maven.dependency.plugin.version>3.6.1</maven.dependency.plugin.version>
         <maven.deploy.plugin.version>3.1.1</maven.deploy.plugin.version>
         <maven.ear.plugin.version>3.3.0</maven.ear.plugin.version>
         <maven.ejb.plugin.version>3.2.1</maven.ejb.plugin.version>
-        <maven.enforcer.plugin.version>3.3.0</maven.enforcer.plugin.version>
-        <maven.failsafe.plugin.version>3.1.2</maven.failsafe.plugin.version>
+        <maven.enforcer.plugin.version>3.4.1</maven.enforcer.plugin.version>
+        <maven.failsafe.plugin.version>3.2.1</maven.failsafe.plugin.version>
         <maven.install.plugin.version>3.1.1</maven.install.plugin.version>
         <maven.jar.plugin.version>3.3.0</maven.jar.plugin.version>
-        <maven.javadoc.plugin.version>3.5.0</maven.javadoc.plugin.version>
+        <maven.javadoc.plugin.version>3.6.0</maven.javadoc.plugin.version>
         <maven.rar.plugin.version>3.0.0</maven.rar.plugin.version>
         <maven.release.plugin.version>3.0.1</maven.release.plugin.version>
         <maven.resources.plugin.version>3.3.1</maven.resources.plugin.version>
         <maven.scm.plugin.version>2.0.1</maven.scm.plugin.version>
-        <maven.shade.plugin.version>3.5.0</maven.shade.plugin.version>
+        <maven.shade.plugin.version>3.5.1</maven.shade.plugin.version>
         <maven.site.plugin.version>3.12.1</maven.site.plugin.version>
         <maven.source.plugin.version>3.3.0</maven.source.plugin.version>
         <maven.surefire.plugin.version>${maven.failsafe.plugin.version}</maven.surefire.plugin.version>
         <maven.war.plugin.version>3.4.0</maven.war.plugin.version>
 
         <!-- artifact versions -->
-        <apache.commons.lang3.version>3.12.0</apache.commons.lang3.version>
-        <logback.version>1.4.8</logback.version>
-        <lombok.version>1.18.28</lombok.version>
+        <apache.commons.lang3.version>3.13.0</apache.commons.lang3.version>
+        <logback.version>1.4.11</logback.version>
+        <lombok.version>1.18.30</lombok.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
-        <slf4j.version>2.0.7</slf4j.version>
+        <slf4j.version>2.0.9</slf4j.version>
 
         <!-- latest Jackson version for projects independent of an application server (AS) -->
         <!-- most of the AS submodules redefine it with an older version -->
-        <jackson-2-version>2.15.2</jackson-2-version>
-        <jackson-bom.version>2.15.2</jackson-bom.version>
+        <jackson-2-version>2.15.3</jackson-2-version>
+        <jackson-bom.version>2.15.3</jackson-bom.version>
 
         <!-- latest version for projects independent of an application server (AS) -->
         <!-- with an AS it is redefined to be the version used by the AS's resteasy artifact -->
@@ -136,20 +132,21 @@
         <!-- byte code manipulation tools, mostly used for tests, but not exclusively -->
         <!-- note that byte-buddy pulls in asm, so asm.version should be the one used by the given byte-buddy -->
         <!-- (check `version.asm` in maven3_repo\net\bytebuddy\byte-buddy-parent\x.y.z\byte-buddy-parent-x.y.z.pom) -->
-        <asm.version>9.5</asm.version>
-        <byte-buddy.version>1.14.5</byte-buddy.version>
+        <asm.version>9.6</asm.version>
+        <byte-buddy.version>1.14.9</byte-buddy.version>
 
         <!-- testing and static analysis -->
         <opentest4j.version>1.3.0</opentest4j.version>
         <junit.platform.version>1.10.0</junit.platform.version>
         <junit.jupiter.version>5.10.0</junit.jupiter.version>
         <hamcrest.version>2.2</hamcrest.version>
-        <mockito.version>5.4.0</mockito.version>
-        <equalsverifier.version>3.15</equalsverifier.version>
-        <json.unit.version>2.38.0</json.unit.version> <!-- 3.x requires Java 17 -->
+        <mockito.version>5.6.0</mockito.version>
+        <equalsverifier.version>3.15.2</equalsverifier.version>
+        <json.unit.version>3.2.2</json.unit.version>
         <jsonassert.version>1.5.1</jsonassert.version>
-        <restassured.version>5.3.1</restassured.version>
-        <wiremock.version>2.27.2</wiremock.version>
+        <restassured.version>5.3.2</restassured.version>
+        <wiremock2.version>2.27.2</wiremock2.version>
+        <wiremock.version>3.2.0</wiremock.version>
 
         <!-- Docker has a special DNS name 'host.docker.internal', but only starting with Docker 18.03... -->
         <!-- Simulating this variable depending on the OS (see also the profiles below overriding it) -->
@@ -422,9 +419,15 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
-                <groupId>com.github.tomakehurst</groupId>
+                <groupId>org.wiremock</groupId>
                 <artifactId>wiremock</artifactId>
                 <version>${wiremock.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.github.tomakehurst</groupId>
+                <artifactId>wiremock</artifactId>
+                <version>${wiremock2.version}</version>
                 <scope>test</scope>
                 <exclusions>
                     <exclusion>

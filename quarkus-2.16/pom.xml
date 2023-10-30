@@ -17,7 +17,7 @@
 
     <properties>
         <!-- latest Quarkus version -->
-        <quarkus.version>2.16.8.Final</quarkus.version>
+        <quarkus.version>2.16.12.Final</quarkus.version>
 
         <!-- Java EE modules that were removed from Java SE after Java 8 -->
         <!-- (see http://openjdk.java.net/jeps/320) -->
@@ -75,7 +75,7 @@
         <io.jaegertracing.version>1.8.1</io.jaegertracing.version>
 
         <!-- Artifact versions provided by Quarkus x.y -->
-        <resteasy.version>4.7.7.Final</resteasy.version>
+        <resteasy.version>4.7.9.Final</resteasy.version>
         <apache.httpclient.version>4.5.14</apache.httpclient.version>
         <!-- quarkus is excluding jakarta.json-api in favor of the transitive dependency of yasson (see maven3_repo\org\eclipse\yasson\x.x\*.pom) -->
         <jakarta.json.version>1.1.6</jakarta.json.version>

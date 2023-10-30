@@ -18,7 +18,7 @@
 
         <!-- latest Wildfly 29 dependencies -->
         <!-- see https://github.com/wildfly/boms/releases -->
-        <wildfly.bom.version>29.0.0.Final</wildfly.bom.version>
+        <wildfly.bom.version>29.0.1.Final</wildfly.bom.version>
 
         <!-- Java EE modules that were removed from Java SE after Java 8 -->
         <jakarta.activation.version>2.1.2</jakarta.activation.version>
@@ -60,12 +60,13 @@
         <smallrye.mutiny.vertx.version>3.3.0</smallrye.mutiny.vertx.version>
         <!-- Wildfly 29 is using resteasy-client-microprofile instead of smallrye-rest-client -->
 
-        <!-- tracer implementations -->
+        <!-- observability implementations -->
+        <io.micrometer.version>1.9.3</io.micrometer.version>
         <io.opentelemetry.version>1.20.0</io.opentelemetry.version>
 
         <!-- Artifact versions provided by Wildfly 29.x.x.Final -->
         <!-- (see wildfly-29.x.x.Final/modules/system/layers/base and Wildfly BOM) -->
-        <resteasy.version>6.2.4.Final</resteasy.version>
+        <resteasy.version>6.2.5.Final</resteasy.version>
         <apache.httpclient.version>4.5.14</apache.httpclient.version>
         <!-- note that wildfly provides jakarta.json* in the path modules/system/layers/base/javax/json/* -->
         <jakarta.json.version>2.1.2</jakarta.json.version>
@@ -297,6 +298,11 @@
                             <artifactId>vertx-core</artifactId>
                         </exclusion>
                     </exclusions>
+                </dependency>
+                <dependency>
+                    <groupId>io.micrometer</groupId>
+                    <artifactId>micrometer-core</artifactId>
+                    <version>${io.micrometer.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>io.opentelemetry</groupId>
