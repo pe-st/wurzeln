@@ -5,12 +5,14 @@
       <option name="myRunnerSettings" />
       <option name="myRunnerParameters">
         <MavenRunnerParameters>
+          <option name="cmdOptions" />
           <option name="profiles">
             <set />
           </option>
           <option name="goals">
             <list>
               <option value="dependency:tree" />
+              <option value="-Dverbose=true" />
             </list>
           </option>
           <option name="pomFileName" />
@@ -19,8 +21,11 @@
               <entry key="dependencies-existence" value="true" />
             </map>
           </option>
+          <option name="projectsCmdOptionValues">
+            <list />
+          </option>
           <option name="resolveToWorkspace" value="false" />
-          <option name="workingDirPath" value="$PROJECT_DIR$/wildfly-28" />
+          <option name="workingDirPath" value="$PROJECT_DIR$/quarkus-3.5" />
         </MavenRunnerParameters>
       </option>
     </MavenSettings>

@@ -22,6 +22,7 @@ javacore.*.txt
 Snap.*.trc
 
 # IntelliJ IDEA
+*.iml
 **/.idea/artifacts/
 **/.idea/codeStyles/
 **/.idea/dictionaries/
