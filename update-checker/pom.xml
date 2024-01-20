@@ -489,6 +489,11 @@
                     <version>${swagger-codegen.plugin.version}</version>
                 </dependency>
                 <dependency>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>versions-maven-plugin</artifactId>
+                    <version>${versions.plugin.version}</version>
+                </dependency>
+                <dependency>
                     <groupId>org.wildfly.plugins</groupId>
                     <artifactId>wildfly-maven-plugin</artifactId>
                     <version>${wildfly.plugin.version}</version>
