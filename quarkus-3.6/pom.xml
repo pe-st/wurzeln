@@ -17,7 +17,7 @@
 
     <properties>
         <!-- latest Quarkus version -->
-        <quarkus.version>3.6.3</quarkus.version>
+        <quarkus.version>3.6.6</quarkus.version>
 
         <!-- Quarkus >= 3.2 requires Java 17, at least for its maven plugin -->
         <java.release>17</java.release>
@@ -81,7 +81,7 @@
         <jackson-bom.version>2.15.3</jackson-bom.version>
 
         <infinispan.version>14.0.21.Final</infinispan.version>
-        <hibernate.version>6.2.13.Final</hibernate.version>
+        <hibernate.version>6.2.19.Final</hibernate.version>
 
         <!-- Hibernate 7.0.0.Alpha5 is a compatible implementation for Bean Validation 3.0 (EE9/EE10) -->
         <jakarta.validation.version>3.0.2</jakarta.validation.version>
