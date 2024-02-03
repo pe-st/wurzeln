@@ -13,6 +13,8 @@
     <file url="file://$PROJECT_DIR$/quarkus-3.5/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/quarkus-3.6/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/quarkus-3.6/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus-3.7/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quarkus-3.7/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/update-checker/src/main/java" charset="UTF-8" />
@@ -25,6 +27,8 @@
     <file url="file://$PROJECT_DIR$/wildfly-29/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wildfly-30/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wildfly-30/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/wildfly-31/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/wildfly-31/src/main/resources" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
