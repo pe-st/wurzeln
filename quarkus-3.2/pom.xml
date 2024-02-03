@@ -17,7 +17,7 @@
 
     <properties>
         <!-- latest Quarkus version -->
-        <quarkus.version>3.2.9.Final</quarkus.version>
+        <quarkus.version>3.2.10.Final</quarkus.version>
 
         <!-- Quarkus 3.2 requires Java 17, at least for its maven plugin -->
         <java.release>17</java.release>
@@ -56,9 +56,9 @@
         <smallrye.metrics.version>4.0.0</smallrye.metrics.version>
         <smallrye.openapi.version>3.4.0</smallrye.openapi.version>
         <smallrye.opentracing.version>3.0.3</smallrye.opentracing.version>
-        <smallrye.reactive-attribute-processor.version>4.6.0</smallrye.reactive-attribute-processor.version>
+        <smallrye.reactive-attribute-processor.version>4.6.1</smallrye.reactive-attribute-processor.version>
         <smallrye.reactive-converter-api.version>3.0.1</smallrye.reactive-converter-api.version>
-        <smallrye.reactive-messaging.version>4.6.0</smallrye.reactive-messaging.version>
+        <smallrye.reactive-messaging.version>4.6.1</smallrye.reactive-messaging.version>
         <smallrye.reactive-streams-operators.version>1.0.13</smallrye.reactive-streams-operators.version>
         <smallrye.mutiny.reactive-streams-operators.version>2.3.1</smallrye.mutiny.reactive-streams-operators.version>
         <smallrye.mutiny.vertx.version>3.7.2</smallrye.mutiny.vertx.version>
@@ -72,11 +72,11 @@
         <io.jaegertracing.version>1.8.1</io.jaegertracing.version>
 
         <!-- Artifact versions provided by Quarkus x.y -->
-        <resteasy.version>6.2.4.Final</resteasy.version>
+        <resteasy.version>6.2.7.Final</resteasy.version>
         <apache.httpclient.version>4.5.14</apache.httpclient.version>
         <jakarta.json.version>2.1.2</jakarta.json.version>
         <jakarta.json.bind.version>3.0.0</jakarta.json.bind.version>
-        <parsson.version>1.1.2</parsson.version>
+        <parsson.version>1.1.5</parsson.version>
         <yasson.version>3.0.3</yasson.version>
 
         <!-- note that for new projects you should consider using JSON-B (yasson) instead of Jackson -->
@@ -84,7 +84,7 @@
         <jackson-bom.version>2.15.2</jackson-bom.version>
 
         <infinispan.version>14.0.11.Final</infinispan.version>
-        <hibernate.version>6.2.13.Final</hibernate.version>
+        <hibernate.version>6.2.18.Final</hibernate.version>
 
         <!-- Hibernate 7.0.0.Alpha5 is a compatible implementation for Bean Validation 3.0 (EE9/EE10) -->
         <jakarta.validation.version>3.0.2</jakarta.validation.version>

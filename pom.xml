@@ -17,10 +17,12 @@
         <module>quarkus-3.4</module>
         <module>quarkus-3.5</module>
         <module>quarkus-3.6</module>
+        <module>quarkus-3.7</module>
         <module>wildfly-26.1</module>
         <module>wildfly-28</module>
         <module>wildfly-29</module>
         <module>wildfly-30</module>
+        <module>wildfly-31</module>
         <module>update-checker</module>
     </modules>
 
@@ -84,7 +86,7 @@
         <openapi-generator.plugin.version>7.2.0</openapi-generator.plugin.version>
         <swagger-codegen.plugin.version>3.0.52</swagger-codegen.plugin.version>
         <versions.plugin.version>2.16.2</versions.plugin.version>
-        <wildfly.plugin.version>4.2.1.Final</wildfly.plugin.version>
+        <wildfly.plugin.version>4.2.2.Final</wildfly.plugin.version>
 
         <!-- apache maven plugin versions (in alphabetical order) -->
         <maven.assembly.plugin.version>3.6.0</maven.assembly.plugin.version>
@@ -143,7 +145,7 @@
         <junit.platform.version>1.10.1</junit.platform.version>
         <junit.jupiter.version>5.10.1</junit.jupiter.version>
         <hamcrest.version>2.2</hamcrest.version>
-        <mockito.version>5.9.0</mockito.version>
+        <mockito.version>5.10.0</mockito.version>
         <equalsverifier.version>3.15.6</equalsverifier.version>
         <json.unit.version>3.2.2</json.unit.version>
         <jsonassert.version>1.5.1</jsonassert.version>
