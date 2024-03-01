@@ -18,7 +18,7 @@
 
         <!-- latest Wildfly 31 dependencies -->
         <!-- see https://github.com/wildfly/boms/releases -->
-        <wildfly.bom.version>31.0.0.Final</wildfly.bom.version>
+        <wildfly.bom.version>31.0.1.Final</wildfly.bom.version>
 
         <!-- Java EE modules that were removed from Java SE after Java 8 -->
         <jakarta.activation.version>2.1.2</jakarta.activation.version>
@@ -79,8 +79,8 @@
         <jackson-bom.version>2.15.3</jackson-bom.version>
 
         <!-- note that infinispan-directory-provider uses an older version -->
-        <infinispan.version>14.0.21.Final</infinispan.version>
-        <hibernate.version>6.4.2.Final</hibernate.version>
+        <infinispan.version>14.0.24.Final</infinispan.version>
+        <hibernate.version>6.4.4.Final</hibernate.version>
 
         <!-- Wildfly 31.x.x.Final uses Hibernate Validator 8.0.xx.Final -->
         <jakarta.validation.version>3.0.2</jakarta.validation.version>
@@ -96,9 +96,6 @@
 
         <!-- Latest Wildfly plugin -->
         <wildfly.maven.plugin.version>${wildfly.plugin.version}</wildfly.maven.plugin.version>
-
-        <!-- wildfly-microprofile 31.0.0.Final overwrites snappy-java with an older and vulnerable version (1.1.8.4) -->
-        <version.org.xerial.snappy>1.1.10.5</version.org.xerial.snappy>
     </properties>
 
     <dependencyManagement>
@@ -134,12 +131,6 @@
                 <version>${jackson-bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-            <!-- wildfly-microprofile 31.0.0.Final overwrites snappy-java with an older and vulnerable version (1.1.8.4) -->
-            <dependency>
-                <groupId>org.xerial.snappy</groupId>
-                <artifactId>snappy-java</artifactId>
-                <version>${version.org.xerial.snappy}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
