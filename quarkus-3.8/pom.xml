@@ -17,7 +17,7 @@
 
     <properties>
         <!-- latest Quarkus version -->
-        <quarkus.version>3.8.1</quarkus.version>
+        <quarkus.version>3.8.3</quarkus.version>
 
         <!-- Quarkus >= 3.2 requires Java 17, at least for its maven plugin -->
         <java.release>17</java.release>
@@ -55,12 +55,12 @@
         <smallrye.jwt.version>4.4.0</smallrye.jwt.version>
         <smallrye.metrics.version>4.0.0</smallrye.metrics.version>
         <smallrye.openapi.version>3.10.0</smallrye.openapi.version>
-        <smallrye.reactive-attribute-processor.version>4.16.2</smallrye.reactive-attribute-processor.version>
+        <smallrye.reactive-attribute-processor.version>4.18.0</smallrye.reactive-attribute-processor.version>
         <smallrye.reactive-converter-api.version>3.0.1</smallrye.reactive-converter-api.version>
-        <smallrye.reactive-messaging.version>4.16.2</smallrye.reactive-messaging.version>
+        <smallrye.reactive-messaging.version>4.18.0</smallrye.reactive-messaging.version>
         <smallrye.reactive-streams-operators.version>1.0.13</smallrye.reactive-streams-operators.version>
-        <smallrye.mutiny.reactive-streams-operators.version>2.5.7</smallrye.mutiny.reactive-streams-operators.version>
-        <smallrye.mutiny.vertx.version>3.9.0</smallrye.mutiny.vertx.version>
+        <smallrye.mutiny.reactive-streams-operators.version>2.5.8</smallrye.mutiny.reactive-streams-operators.version>
+        <smallrye.mutiny.vertx.version>3.10.0</smallrye.mutiny.vertx.version>
         <!-- quarkus is using resteasy-client-microprofile instead of smallrye-rest-client -->
 
         <!-- observability implementations -->
@@ -80,7 +80,7 @@
         <jackson-2-version>2.16.1</jackson-2-version>
         <jackson-bom.version>2.16.1</jackson-bom.version>
 
-        <infinispan.version>14.0.24.Final</infinispan.version>
+        <infinispan.version>14.0.25.Final</infinispan.version>
         <hibernate.version>6.4.4.Final</hibernate.version>
 
         <!-- Hibernate 7.0.0.Alpha5 is a compatible implementation for Bean Validation 3.0 (EE9/EE10) -->
@@ -101,8 +101,8 @@
         <byte-buddy.version>1.14.11</byte-buddy.version>
 
         <!-- it seems that the quarkus testing integration works best using the junit mentioned in the quarkus BOM -->
-        <junit.jupiter.version>5.10.2</junit.jupiter.version>
-        <junit.platform.version>1.10.2</junit.platform.version>
+        <junit.jupiter.version>5.10.1</junit.jupiter.version>
+        <junit.platform.version>1.10.1</junit.platform.version>
     </properties>
 
     <dependencyManagement>
