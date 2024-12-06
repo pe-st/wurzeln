@@ -2,7 +2,7 @@
 
 ## Commands
 
-```
+```bash
 mvn clean install
 mvn clean verify -P dependencies-existence
 

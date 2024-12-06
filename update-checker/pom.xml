@@ -44,9 +44,9 @@
                                 <version>\d+\.\d+\.\d+\.(Final-)?[a-z].*</version>
                             </ignoreVersion>
                             <ignoreVersion>
-                                <!-- ignore versions like 4.0.0.Alpha1, 2.1.0.Beta1 and 1.4.0.CR1 (but still allow 2.0.2.Final) -->
+                                <!-- ignore versions like 4.0.0.Alpha1, 2.1.0.Beta1, 1.4.0.CR1 or 1.6.0.RC1 (but still allow 2.0.2.Final) -->
                                 <type>regex</type>
-                                <version>\d+\.\d+\.\d+\.[ABC].*</version>
+                                <version>\d+\.\d+\.\d+\.[ABCR].*</version>
                             </ignoreVersion>
                         </ignoreVersions>
                         <rules>
@@ -232,6 +232,15 @@
                 <dependency>
                     <groupId>org.glassfish</groupId>
                     <artifactId>jakarta.el</artifactId>
+                </dependency>
+
+                <dependency>
+                    <groupId>org.bouncycastle</groupId>
+                    <artifactId>bcprov-jdk18on</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>io.opentelemetry.instrumentation</groupId>
+                    <artifactId>opentelemetry-instrumentation-annotations</artifactId>
                 </dependency>
 
                 <!-- testing -->
@@ -474,14 +483,19 @@
                     <version>${docker.plugin.version}</version>
                 </dependency>
                 <dependency>
-                    <groupId>org.sonatype.plugins</groupId>
-                    <artifactId>nexus-staging-maven-plugin</artifactId>
-                    <version>${nexus-staging.plugin.version}</version>
+                    <groupId>io.smallrye</groupId>
+                    <artifactId>jandex-maven-plugin</artifactId>
+                    <version>${jandex.plugin.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.openapitools</groupId>
                     <artifactId>openapi-generator-maven-plugin</artifactId>
                     <version>${openapi-generator.plugin.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.sonatype.plugins</groupId>
+                    <artifactId>nexus-staging-maven-plugin</artifactId>
+                    <version>${nexus-staging.plugin.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>io.swagger.codegen.v3</groupId>

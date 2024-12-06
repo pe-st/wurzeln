@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>ch.schlau.wurzeln.root</groupId>
@@ -7,7 +8,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>quarkus-3.2</artifactId>
+    <artifactId>quarkus-3.16</artifactId>
     <packaging>pom</packaging>
 
     <name>${project.groupId}.${project.artifactId}</name>
@@ -17,99 +18,108 @@
 
     <properties>
         <!-- latest Quarkus version -->
-        <quarkus.version>3.2.11.Final</quarkus.version>
+        <quarkus.version>3.16.2</quarkus.version>
 
-        <!-- Quarkus 3.2 requires Java 17, at least for its maven plugin -->
+        <!-- Quarkus >= 3.2 requires Java 17, at least for its maven plugin -->
         <java.release>17</java.release>
 
         <!-- Java EE modules that were removed from Java SE after Java 8 -->
         <!-- (see http://openjdk.java.net/jeps/320) -->
-        <jakarta.activation.version>2.1.2</jakarta.activation.version>
-        <jakarta.xml.bind-api.version>4.0.0</jakarta.xml.bind-api.version>
-        <jakarta.annotation.version>2.1.1</jakarta.annotation.version>
+        <jakarta.activation.version>2.1.3</jakarta.activation.version>
+        <jakarta.xml.bind-api.version>4.0.2</jakarta.xml.bind-api.version>
+        <jakarta.annotation.version>3.0.0</jakarta.annotation.version>
         <jakarta.transaction.version>2.0.1</jakarta.transaction.version>
 
         <jakarta.el.version>5.0.1</jakarta.el.version>
 
         <!-- MicroProfile Standard Versions, from the quarkus-bom-x.x.x.Final.pom -->
         <!-- or as transitive dependency from the smallrye artifacts -->
-        <mp.config.version>3.0.3</mp.config.version>
+        <mp.config.version>3.1</mp.config.version>
         <mp.context-propagation.version>1.3</mp.context-propagation.version>
-        <mp.fault-tolerance.version>4.0.2</mp.fault-tolerance.version>
+        <mp.fault-tolerance.version>4.1.1</mp.fault-tolerance.version>
         <mp.graphql.version>2.0</mp.graphql.version> <!-- transitive from smallrye.graphql.version -->
         <mp.health.version>4.0.1</mp.health.version>
         <mp.jwt.version>2.1</mp.jwt.version>
         <mp.lra.version>2.0</mp.lra.version>
         <mp.metrics.version>4.0.1</mp.metrics.version>
-        <mp.openapi.version>3.1.1</mp.openapi.version>
+        <mp.openapi.version>3.1.2</mp.openapi.version>
         <mp.opentracing.version>3.0</mp.opentracing.version>
         <!-- mp.reactive-messaging classes included in smallrye.reactive-messaging, no dependency on upstream API -->
-        <mp.reactive-streams-operators.version>3.0</mp.reactive-streams-operators.version>
+        <mp.reactive-streams-operators.version>3.0.1</mp.reactive-streams-operators.version>
         <mp.rest-client.version>3.0.1</mp.rest-client.version>
-        <smallrye.common.version>2.1.0</smallrye.common.version>
-        <smallrye.config.version>3.3.2</smallrye.config.version>
-        <smallrye.context-propagation.version>2.1.0</smallrye.context-propagation.version>
-        <smallrye.fault-tolerance.version>6.2.6</smallrye.fault-tolerance.version>
-        <smallrye.graphql.version>2.2.3</smallrye.graphql.version>
-        <smallrye.health.version>4.0.4</smallrye.health.version>
-        <smallrye.jwt.version>4.4.0</smallrye.jwt.version>
+        <smallrye.common.version>2.7.0</smallrye.common.version>
+        <smallrye.config.version>3.9.1</smallrye.config.version>
+        <smallrye.context-propagation.version>2.1.2</smallrye.context-propagation.version>
+        <smallrye.fault-tolerance.version>6.5.0</smallrye.fault-tolerance.version>
+        <smallrye.graphql.version>2.11.0</smallrye.graphql.version>
+        <smallrye.health.version>4.1.0</smallrye.health.version>
+        <smallrye.jandex.version>3.2.3</smallrye.jandex.version>
+        <smallrye.jwt.version>4.6.0</smallrye.jwt.version>
         <smallrye.metrics.version>4.0.0</smallrye.metrics.version>
-        <smallrye.openapi.version>3.4.0</smallrye.openapi.version>
-        <smallrye.opentracing.version>3.0.3</smallrye.opentracing.version>
-        <smallrye.reactive-attribute-processor.version>4.6.1</smallrye.reactive-attribute-processor.version>
+        <smallrye.openapi.version>3.13.0</smallrye.openapi.version>
+        <smallrye.reactive-attribute-processor.version>4.25.0</smallrye.reactive-attribute-processor.version>
         <smallrye.reactive-converter-api.version>3.0.1</smallrye.reactive-converter-api.version>
-        <smallrye.reactive-messaging.version>4.6.1</smallrye.reactive-messaging.version>
+        <smallrye.reactive-messaging.version>4.25.0</smallrye.reactive-messaging.version>
         <smallrye.reactive-streams-operators.version>1.0.13</smallrye.reactive-streams-operators.version>
-        <smallrye.mutiny.reactive-streams-operators.version>2.3.1</smallrye.mutiny.reactive-streams-operators.version>
-        <smallrye.mutiny.vertx.version>3.7.2</smallrye.mutiny.vertx.version>
+        <smallrye.mutiny.reactive-streams-operators.version>2.6.2</smallrye.mutiny.reactive-streams-operators.version>
+        <smallrye.mutiny.vertx.version>3.15.0</smallrye.mutiny.vertx.version>
         <!-- quarkus is using resteasy-client-microprofile instead of smallrye-rest-client -->
 
+        <!-- smallrye maven plugins -->
+        <jandex.plugin.version>${smallrye.jandex.version}</jandex.plugin.version>
+
         <!-- observability implementations -->
-        <io.micrometer.version>1.11.1</io.micrometer.version>
-        <io.opentelemetry.version>1.25.0</io.opentelemetry.version>
+        <io.micrometer.version>1.13.6</io.micrometer.version>
+        <io.opentelemetry.version>1.42.1</io.opentelemetry.version>
+        <io.opentelemetry.instrumentation.version>2.8.0</io.opentelemetry.instrumentation.version>
         <io.opentracing.version>0.33.0</io.opentracing.version>
-        <io.opentracing.contrib-jaxrs.version>1.0.0</io.opentracing.contrib-jaxrs.version>
-        <io.jaegertracing.version>1.8.1</io.jaegertracing.version>
 
         <!-- Artifact versions provided by Quarkus x.y -->
-        <resteasy.version>6.2.7.Final</resteasy.version>
+        <resteasy.version>6.2.10.Final</resteasy.version>
         <apache.httpclient.version>4.5.14</apache.httpclient.version>
-        <jakarta.json.version>2.1.2</jakarta.json.version>
-        <jakarta.json.bind.version>3.0.0</jakarta.json.bind.version>
-        <parsson.version>1.1.5</parsson.version>
-        <yasson.version>3.0.3</yasson.version>
+        <jakarta.json.version>2.1.3</jakarta.json.version>
+        <jakarta.json.bind.version>3.0.1</jakarta.json.bind.version>
+        <parsson.version>1.1.7</parsson.version>
+        <yasson.version>3.0.4</yasson.version>
 
         <!-- note that for new projects you should consider using JSON-B (yasson) instead of Jackson -->
-        <jackson-2-version>2.15.2</jackson-2-version>
-        <jackson-bom.version>2.15.2</jackson-bom.version>
+        <jackson-2-version>2.18.1</jackson-2-version>
+        <jackson-bom.version>2.18.1</jackson-bom.version>
 
-        <infinispan.version>14.0.11.Final</infinispan.version>
-        <hibernate.version>6.2.18.Final</hibernate.version>
+        <infinispan.version>15.0.10.Final</infinispan.version>
+        <hibernate.version>6.6.1.Final</hibernate.version>
 
         <!-- Hibernate 7.0.0.Alpha5 is a compatible implementation for Bean Validation 3.0 (EE9/EE10) -->
         <jakarta.validation.version>3.0.2</jakarta.validation.version>
         <hibernate.validator.version>8.0.1.Final</hibernate.validator.version>
         <!-- ojdbc version in the quarkus-jdbc-oracle extension -->
-        <oracle.ojdbc.version>23.3.0.23.09</oracle.ojdbc.version>
+        <oracle.ojdbc.version>23.5.0.24.07</oracle.ojdbc.version>
         <!-- kafka version in the kafka extensions -->
-        <kafka.version>3.4.0</kafka.version>
+        <kafka.version>3.7.1</kafka.version>
 
-        <!-- Quarkus x.y uses Quarkus ARC x.y (based on CDI 4.0) -->
+        <!-- Quarkus x.y uses Quarkus ARC x.y (based on CDI 4.1) -->
         <jakarta.inject.version>2.0.1</jakarta.inject.version>
 
         <!-- Logging API supported by Quarkus (logback for testing must be compatible with slf4j) -->
         <slf4j.version>2.0.6</slf4j.version>
 
-        <asm.version>9.5</asm.version>
-        <byte-buddy.version>1.14.7</byte-buddy.version>
+        <asm.version>9.7.1</asm.version>
+        <byte-buddy.version>1.14.18</byte-buddy.version>
 
         <!-- it seems that the quarkus testing integration works best using the junit mentioned in the quarkus BOM -->
-        <junit.jupiter.version>5.9.3</junit.jupiter.version>
-        <junit.platform.version>1.9.3</junit.platform.version>
+        <junit.jupiter.version>5.10.5</junit.jupiter.version>
+        <junit.platform.version>1.10.5</junit.platform.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!-- Must include Bouncy Castle before the Quarkus BOM to make sure the latest version is not overridden -->
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk18on</artifactId>
+                <version>${bouncycastle.version}</version>
+            </dependency>
+
             <!-- Quarkus BOM -->
             <dependency>
                 <groupId>io.quarkus</groupId>
@@ -133,6 +143,25 @@
                         <goals>
                             <goal>build</goal>
                         </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>enforce-java</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireJavaVersion>
+                                    <version>${java.release}</version>
+                                </requireJavaVersion>
+                            </rules>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -269,7 +298,16 @@
                             <groupId>org.jboss.logging</groupId>
                             <artifactId>jboss-logging</artifactId>
                         </exclusion>
+                        <exclusion>
+                            <groupId>org.eclipse.parsson</groupId>
+                            <artifactId>jakarta.json</artifactId>
+                        </exclusion>
                     </exclusions>
+                </dependency>
+                <dependency>
+                    <groupId>io.smallrye</groupId>
+                    <artifactId>jandex</artifactId>
+                    <version>${smallrye.jandex.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>io.smallrye</groupId>
@@ -310,17 +348,6 @@
                             <groupId>io.smallrye</groupId>
                             <artifactId>jandex</artifactId>
                         </exclusion>
-                        <exclusion>
-                            <groupId>org.jboss.logging</groupId>
-                            <artifactId>jboss-logging</artifactId>
-                        </exclusion>
-                    </exclusions>
-                </dependency>
-                <dependency>
-                    <groupId>io.smallrye</groupId>
-                    <artifactId>smallrye-opentracing</artifactId>
-                    <version>${smallrye.opentracing.version}</version>
-                    <exclusions>
                         <exclusion>
                             <groupId>org.jboss.logging</groupId>
                             <artifactId>jboss-logging</artifactId>
@@ -380,29 +407,14 @@
                     <version>${io.opentelemetry.version}</version>
                 </dependency>
                 <dependency>
+                    <groupId>io.opentelemetry.instrumentation</groupId>
+                    <artifactId>opentelemetry-instrumentation-annotations</artifactId>
+                    <version>${io.opentelemetry.instrumentation.version}</version>
+                </dependency>
+                <dependency>
                     <groupId>io.opentracing</groupId>
                     <artifactId>opentracing-api</artifactId>
                     <version>${io.opentracing.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>io.opentracing.contrib</groupId>
-                    <artifactId>opentracing-jaxrs2</artifactId>
-                    <version>${io.opentracing.contrib-jaxrs.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>io.jaegertracing</groupId>
-                    <artifactId>jaeger-core</artifactId>
-                    <version>${io.jaegertracing.version}</version>
-                    <exclusions>
-                        <exclusion>
-                            <groupId>org.slf4j</groupId>
-                            <artifactId>slf4j-api</artifactId>
-                        </exclusion>
-                        <exclusion>
-                            <groupId>com.google.code.gson</groupId>
-                            <artifactId>gson</artifactId>
-                        </exclusion>
-                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>org.jboss.resteasy</groupId>
@@ -434,6 +446,12 @@
                     <groupId>org.eclipse</groupId>
                     <artifactId>yasson</artifactId>
                     <version>${yasson.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.eclipse.parsson</groupId>
+                            <artifactId>jakarta.json</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>com.fasterxml.jackson.core</groupId>

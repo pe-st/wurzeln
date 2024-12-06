@@ -63,6 +63,7 @@
         <!-- observability implementations -->
         <io.micrometer.version>1.9.13</io.micrometer.version>
         <io.opentelemetry.version>1.20.0</io.opentelemetry.version>
+        <io.opentelemetry.instrumentation.version>1.20.0</io.opentelemetry.instrumentation.version>
 
         <!-- Artifact versions provided by Wildfly 30.x.x.Final -->
         <!-- (see wildfly-30.x.x.Final/modules/system/layers/base and Wildfly BOM) -->

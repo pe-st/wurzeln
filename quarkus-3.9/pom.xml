@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>ch.schlau.wurzeln.root</groupId>
@@ -17,7 +18,7 @@
 
     <properties>
         <!-- latest Quarkus version -->
-        <quarkus.version>3.9.2</quarkus.version>
+        <quarkus.version>3.9.5</quarkus.version>
 
         <!-- Quarkus >= 3.2 requires Java 17, at least for its maven plugin -->
         <java.release>17</java.release>
@@ -50,8 +51,9 @@
         <smallrye.config.version>3.7.1</smallrye.config.version>
         <smallrye.context-propagation.version>2.1.0</smallrye.context-propagation.version>
         <smallrye.fault-tolerance.version>6.2.6</smallrye.fault-tolerance.version>
-        <smallrye.graphql.version>2.8.1</smallrye.graphql.version>
+        <smallrye.graphql.version>2.8.2</smallrye.graphql.version>
         <smallrye.health.version>4.1.0</smallrye.health.version>
+        <smallrye.jandex.version>3.1.6</smallrye.jandex.version>
         <smallrye.jwt.version>4.5.0</smallrye.jwt.version>
         <smallrye.metrics.version>4.0.0</smallrye.metrics.version>
         <smallrye.openapi.version>3.10.0</smallrye.openapi.version>
@@ -63,9 +65,13 @@
         <smallrye.mutiny.vertx.version>3.11.0</smallrye.mutiny.vertx.version>
         <!-- quarkus is using resteasy-client-microprofile instead of smallrye-rest-client -->
 
+        <!-- smallrye maven plugins -->
+        <jandex.plugin.version>${smallrye.jandex.version}</jandex.plugin.version>
+
         <!-- observability implementations -->
         <io.micrometer.version>1.12.4</io.micrometer.version>
         <io.opentelemetry.version>1.32.0</io.opentelemetry.version>
+        <io.opentelemetry.instrumentation.version>1.32.0</io.opentelemetry.instrumentation.version>
         <io.opentracing.version>0.33.0</io.opentracing.version>
 
         <!-- Artifact versions provided by Quarkus x.y -->
@@ -77,10 +83,10 @@
         <yasson.version>3.0.3</yasson.version>
 
         <!-- note that for new projects you should consider using JSON-B (yasson) instead of Jackson -->
-        <jackson-2-version>2.16.1</jackson-2-version>
-        <jackson-bom.version>2.16.1</jackson-bom.version>
+        <jackson-2-version>2.17.0</jackson-2-version>
+        <jackson-bom.version>2.17.0</jackson-bom.version>
 
-        <infinispan.version>15.0.0.Final</infinispan.version>
+        <infinispan.version>15.0.1.Final</infinispan.version>
         <hibernate.version>6.4.4.Final</hibernate.version>
 
         <!-- Hibernate 7.0.0.Alpha5 is a compatible implementation for Bean Validation 3.0 (EE9/EE10) -->
@@ -107,15 +113,11 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- must include the Oracle BOM before the Quarkus BOM to override OJDBC 23.3 with 21.xx -->
-            <!-- you can test it by removing the <version> line from the ojdbc11 dependency below and the running -->
-            <!-- mvn dependency:tree -P dependencies-existence -->
+            <!-- Must include Bouncy Castle before the Quarkus BOM to make sure the latest version is not overridden -->
             <dependency>
-                <groupId>com.oracle.database.jdbc</groupId>
-                <artifactId>ojdbc-bom</artifactId>
-                <version>${oracle.ojdbc.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk18on</artifactId>
+                <version>${bouncycastle.version}</version>
             </dependency>
 
             <!-- Quarkus BOM -->
@@ -304,6 +306,11 @@
                 </dependency>
                 <dependency>
                     <groupId>io.smallrye</groupId>
+                    <artifactId>jandex</artifactId>
+                    <version>${smallrye.jandex.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.smallrye</groupId>
                     <artifactId>smallrye-jwt</artifactId>
                     <version>${smallrye.jwt.version}</version>
                     <exclusions>
@@ -398,6 +405,11 @@
                     <groupId>io.opentelemetry</groupId>
                     <artifactId>opentelemetry-api</artifactId>
                     <version>${io.opentelemetry.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.opentelemetry.instrumentation</groupId>
+                    <artifactId>opentelemetry-instrumentation-annotations</artifactId>
+                    <version>${io.opentelemetry.instrumentation.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>io.opentracing</groupId>
