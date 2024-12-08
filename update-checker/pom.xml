@@ -14,13 +14,6 @@
     <name>${project.groupId}.${project.artifactId}</name>
     <description>Pseudo Artifact just for running the maven version plugin</description>
 
-    <prerequisites>
-        <!-- although 'prerequisites' is deprecated in favour of the maven-enforcer-plugin, -->
-        <!-- the versions plugins still needs it, otherwise you get an ERROR: -->
-        <!-- [ERROR] Project requires an incorrect minimum version of Maven -->
-        <maven>${minimum-maven-version}</maven>
-    </prerequisites>
-
     <build>
         <defaultGoal>versions:display-dependency-updates versions:display-plugin-updates</defaultGoal>
         <plugins>
@@ -95,6 +88,18 @@
                                     <ignoreVersion>
                                         <type>regex</type>
                                         <version>3\..*</version>
+                                    </ignoreVersion>
+                                </ignoreVersions>
+                            </rule>
+                            <rule>
+                                <groupId>io.swagger.codegen.v3</groupId>
+                                <artifactId>swagger-codegen-maven-plugin</artifactId>
+                                <comparisonMethod>maven</comparisonMethod>
+                                <ignoreVersions>
+                                    <!-- 3.0.57+ are broken: https://github.com/swagger-api/swagger-codegen-generators/issues/1295 -->
+                                    <ignoreVersion>
+                                        <type>regex</type>
+                                        <version>3\.0\.(5[7-9]|6[0-4])</version>
                                     </ignoreVersion>
                                 </ignoreVersions>
                             </rule>
@@ -329,21 +334,6 @@
                     <groupId>io.rest-assured</groupId>
                     <artifactId>rest-assured</artifactId>
                     <scope>test</scope>
-                </dependency>
-                <dependency>
-                    <groupId>com.github.tomakehurst</groupId>
-                    <artifactId>wiremock</artifactId>
-                    <scope>test</scope>
-                    <exclusions>
-                        <exclusion>
-                            <groupId>com.google.guava</groupId>
-                            <artifactId>guava</artifactId>
-                        </exclusion>
-                        <exclusion>
-                            <groupId>javax.servlet</groupId>
-                            <artifactId>servlet-api</artifactId>
-                        </exclusion>
-                    </exclusions>
                 </dependency>
             </dependencies>
         </profile>
