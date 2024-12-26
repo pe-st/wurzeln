@@ -8,7 +8,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>quarkus-3.16</artifactId>
+    <artifactId>quarkus-3.17</artifactId>
     <packaging>pom</packaging>
 
     <name>${project.groupId}.${project.artifactId}</name>
@@ -18,7 +18,7 @@
 
     <properties>
         <!-- latest Quarkus version -->
-        <quarkus.version>3.16.4</quarkus.version>
+        <quarkus.version>3.17.4</quarkus.version>
 
         <!-- Quarkus >= 3.2 requires Java 17, at least for its maven plugin -->
         <java.release>17</java.release>
@@ -42,21 +42,20 @@
         <mp.jwt.version>2.1</mp.jwt.version>
         <mp.lra.version>2.0</mp.lra.version>
         <mp.metrics.version>4.0.1</mp.metrics.version>
-        <mp.openapi.version>3.1.2</mp.openapi.version>
-        <mp.opentracing.version>3.0</mp.opentracing.version>
+        <mp.openapi.version>4.0.2</mp.openapi.version>
         <!-- mp.reactive-messaging classes included in smallrye.reactive-messaging, no dependency on upstream API -->
         <mp.reactive-streams-operators.version>3.0.1</mp.reactive-streams-operators.version>
-        <mp.rest-client.version>3.0.1</mp.rest-client.version>
-        <smallrye.common.version>2.7.0</smallrye.common.version>
-        <smallrye.config.version>3.9.1</smallrye.config.version>
+        <mp.rest-client.version>4.0</mp.rest-client.version>
+        <smallrye.common.version>2.9.0</smallrye.common.version>
+        <smallrye.config.version>3.10.2</smallrye.config.version>
         <smallrye.context-propagation.version>2.1.2</smallrye.context-propagation.version>
-        <smallrye.fault-tolerance.version>6.5.0</smallrye.fault-tolerance.version>
+        <smallrye.fault-tolerance.version>6.6.3</smallrye.fault-tolerance.version>
         <smallrye.graphql.version>2.11.0</smallrye.graphql.version>
         <smallrye.health.version>4.1.0</smallrye.health.version>
         <smallrye.jandex.version>3.2.3</smallrye.jandex.version>
         <smallrye.jwt.version>4.6.1</smallrye.jwt.version>
         <smallrye.metrics.version>4.0.0</smallrye.metrics.version>
-        <smallrye.openapi.version>3.13.0</smallrye.openapi.version>
+        <smallrye.openapi.version>4.0.5</smallrye.openapi.version>
         <smallrye.reactive-attribute-processor.version>4.25.0</smallrye.reactive-attribute-processor.version>
         <smallrye.reactive-converter-api.version>3.0.1</smallrye.reactive-converter-api.version>
         <smallrye.reactive-messaging.version>4.25.0</smallrye.reactive-messaging.version>
@@ -72,7 +71,6 @@
         <io.micrometer.version>1.13.7</io.micrometer.version>
         <io.opentelemetry.version>1.42.1</io.opentelemetry.version>
         <io.opentelemetry.instrumentation.version>2.8.0</io.opentelemetry.instrumentation.version>
-        <io.opentracing.version>0.33.0</io.opentracing.version>
 
         <!-- Artifact versions provided by Quarkus x.y -->
         <resteasy.version>6.2.11.Final</resteasy.version>
@@ -83,11 +81,11 @@
         <yasson.version>3.0.4</yasson.version>
 
         <!-- note that for new projects you should consider using JSON-B (yasson) instead of Jackson -->
-        <jackson-2-version>2.18.1</jackson-2-version>
-        <jackson-bom.version>2.18.1</jackson-bom.version>
+        <jackson-2-version>2.18.2</jackson-2-version>
+        <jackson-bom.version>2.18.2</jackson-bom.version>
 
         <infinispan.version>15.0.11.Final</infinispan.version>
-        <hibernate.version>6.6.1.Final</hibernate.version>
+        <hibernate.version>6.6.3.Final</hibernate.version>
 
         <!-- Hibernate 7.0.0.Alpha5 is a compatible implementation for Bean Validation 3.0 (EE9/EE10) -->
         <jakarta.validation.version>3.0.2</jakarta.validation.version>
@@ -220,11 +218,6 @@
                     <groupId>org.eclipse.microprofile.openapi</groupId>
                     <artifactId>microprofile-openapi-api</artifactId>
                     <version>${mp.openapi.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.eclipse.microprofile.opentracing</groupId>
-                    <artifactId>microprofile-opentracing-api</artifactId>
-                    <version>${mp.opentracing.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.eclipse.microprofile.reactive-streams-operators</groupId>
@@ -410,11 +403,6 @@
                     <groupId>io.opentelemetry.instrumentation</groupId>
                     <artifactId>opentelemetry-instrumentation-annotations</artifactId>
                     <version>${io.opentelemetry.instrumentation.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>io.opentracing</groupId>
-                    <artifactId>opentracing-api</artifactId>
-                    <version>${io.opentracing.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.jboss.resteasy</groupId>

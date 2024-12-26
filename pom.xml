@@ -20,6 +20,7 @@
         <module>quarkus-3.14</module>
         <module>quarkus-3.15</module> <!-- 3.15 has LTS (https://quarkus.io/blog/quarkus-3-15-1-released/) -->
         <module>quarkus-3.16</module>
+        <module>quarkus-3.17</module>
         <module>wildfly-26.1</module>
         <module>wildfly-28</module>
         <module>wildfly-30</module>
@@ -147,7 +148,7 @@
         <!-- note that byte-buddy pulls in asm, so asm.version should be the one used by the given byte-buddy -->
         <!-- (check `version.asm` in maven3_repo\net\bytebuddy\byte-buddy-parent\x.y.z\byte-buddy-parent-x.y.z.pom) -->
         <asm.version>9.7.1</asm.version>
-        <byte-buddy.version>1.15.10</byte-buddy.version>
+        <byte-buddy.version>1.15.11</byte-buddy.version>
 
         <!-- use the latest Bouncy Castle version despite what Quarkus defines in its BOM -->
         <bouncycastle.version>1.79</bouncycastle.version>
