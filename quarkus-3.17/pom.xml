@@ -18,7 +18,7 @@
 
     <properties>
         <!-- latest Quarkus version -->
-        <quarkus.version>3.17.4</quarkus.version>
+        <quarkus.version>3.17.8</quarkus.version>
 
         <!-- Quarkus >= 3.2 requires Java 17, at least for its maven plugin -->
         <java.release>17</java.release>
@@ -51,11 +51,11 @@
         <smallrye.context-propagation.version>2.1.2</smallrye.context-propagation.version>
         <smallrye.fault-tolerance.version>6.6.3</smallrye.fault-tolerance.version>
         <smallrye.graphql.version>2.11.0</smallrye.graphql.version>
-        <smallrye.health.version>4.1.0</smallrye.health.version>
+        <smallrye.health.version>4.1.1</smallrye.health.version>
         <smallrye.jandex.version>3.2.3</smallrye.jandex.version>
         <smallrye.jwt.version>4.6.1</smallrye.jwt.version>
         <smallrye.metrics.version>4.0.0</smallrye.metrics.version>
-        <smallrye.openapi.version>4.0.5</smallrye.openapi.version>
+        <smallrye.openapi.version>4.0.6</smallrye.openapi.version>
         <smallrye.reactive-attribute-processor.version>4.25.0</smallrye.reactive-attribute-processor.version>
         <smallrye.reactive-converter-api.version>3.0.1</smallrye.reactive-converter-api.version>
         <smallrye.reactive-messaging.version>4.25.0</smallrye.reactive-messaging.version>
@@ -85,11 +85,11 @@
         <jackson-bom.version>2.18.2</jackson-bom.version>
 
         <infinispan.version>15.0.11.Final</infinispan.version>
-        <hibernate.version>6.6.3.Final</hibernate.version>
+        <hibernate.version>6.6.5.Final</hibernate.version>
 
         <!-- Hibernate 7.0.0.Alpha5 is a compatible implementation for Bean Validation 3.0 (EE9/EE10) -->
         <jakarta.validation.version>3.0.2</jakarta.validation.version>
-        <hibernate.validator.version>8.0.1.Final</hibernate.validator.version>
+        <hibernate.validator.version>8.0.2.Final</hibernate.validator.version>
         <!-- ojdbc version in the quarkus-jdbc-oracle extension -->
         <oracle.ojdbc.version>23.5.0.24.07</oracle.ojdbc.version>
         <!-- kafka version in the kafka extensions -->
@@ -102,7 +102,7 @@
         <slf4j.version>2.0.6</slf4j.version>
 
         <asm.version>9.7.1</asm.version>
-        <byte-buddy.version>1.14.18</byte-buddy.version>
+        <byte-buddy.version>1.15.11</byte-buddy.version>
 
         <!-- it seems that the quarkus testing integration works best using the junit mentioned in the quarkus BOM -->
         <junit.jupiter.version>5.10.5</junit.jupiter.version>

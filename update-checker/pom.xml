@@ -80,18 +80,6 @@
                                 </ignoreVersions>
                             </rule>
                             <rule>
-                                <groupId>com.github.tomakehurst</groupId>
-                                <artifactId>wiremock</artifactId>
-                                <comparisonMethod>maven</comparisonMethod>
-                                <ignoreVersions>
-                                    <!-- use new groupId org.wiremock for version 3 -->
-                                    <ignoreVersion>
-                                        <type>regex</type>
-                                        <version>3\..*</version>
-                                    </ignoreVersion>
-                                </ignoreVersions>
-                            </rule>
-                            <rule>
                                 <groupId>io.swagger.codegen.v3</groupId>
                                 <artifactId>swagger-codegen-maven-plugin</artifactId>
                                 <comparisonMethod>maven</comparisonMethod>
@@ -242,6 +230,16 @@
                 <dependency>
                     <groupId>org.bouncycastle</groupId>
                     <artifactId>bcprov-jdk18on</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>io.quarkiverse.loggingjson</groupId>
+                    <artifactId>quarkus-logging-json</artifactId>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>io.quarkus</groupId>
+                            <artifactId>*</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>io.opentelemetry.instrumentation</groupId>
