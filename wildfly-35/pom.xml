@@ -118,6 +118,7 @@
                 <type>pom</type>
             </dependency>
             <dependency>
+                <!-- Maven 4 doesn't like having two wildfly BOMs, as both manage resteasy-core -->
                 <groupId>org.wildfly.bom</groupId>
                 <artifactId>wildfly-expansion</artifactId>
                 <version>${wildfly.bom.version}</version>

@@ -157,8 +157,8 @@
         <junit.jupiter.version>5.12.2</junit.jupiter.version>
         <hamcrest.version>3.0</hamcrest.version>
         <mockito.version>5.17.0</mockito.version>
-        <equalsverifier.version>3.19.4</equalsverifier.version>
-        <json.unit.version>4.1.0</json.unit.version>
+        <equalsverifier.version>4.0</equalsverifier.version>
+        <json.unit.version>4.1.1</json.unit.version>
         <jsonassert.version>1.5.3</jsonassert.version>
         <restassured.version>5.5.1</restassured.version>
         <wiremock.version>3.13.0</wiremock.version>
