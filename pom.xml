@@ -466,6 +466,11 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.plugin.version}</version>
                 <configuration>
+                    <!-- see https://github.com/khmarbaise/example-jacoco -->
+                    <argLine>
+                        @{argLine}
+                        -XX:+EnableDynamicAgentLoading
+                    </argLine>
                     <!-- skips surefire tests without skipping failsafe tests.
                          Property value seems to magically default to false -->
                     <skipTests>${skip.surefire.tests}</skipTests>
@@ -674,21 +679,10 @@
                     <version>${jacoco.plugin.version}</version>
                     <executions>
                         <execution>
-                            <id>pre-unit-test</id>
-                            <phase>process-test-classes</phase>
                             <goals>
                                 <goal>prepare-agent</goal>
+                                <goal>report</goal>
                             </goals>
-                        </execution>
-                        <execution>
-                            <id>pre-integration-test</id>
-                            <phase>pre-integration-test</phase>
-                            <goals>
-                                <goal>prepare-agent-integration</goal>
-                            </goals>
-                            <configuration>
-                                <propertyName>jacoco.integration.agent.arg</propertyName>
-                            </configuration>
                         </execution>
                     </executions>
                 </plugin>
