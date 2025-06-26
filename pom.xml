@@ -18,6 +18,9 @@
         <module>quarkus-3.19</module>
         <module>quarkus-3.20</module> <!-- 3.20 has LTS (https://quarkus.io/blog/quarkus-3-20-0-released/) -->
         <module>quarkus-3.21</module>
+        <module>quarkus-3.22</module>
+        <module>quarkus-3.23</module>
+        <module>quarkus-3.24</module>
         <module>wildfly-32</module>
         <module>wildfly-33</module>
         <module>wildfly-34</module>
@@ -78,15 +81,16 @@
 
         <!-- non-apache maven plugin versions -->
         <asciidoctor.plugin.version>3.2.0</asciidoctor.plugin.version>
-        <build-helper.plugin.version>3.6.0</build-helper.plugin.version>
-        <docker.plugin.version>0.46.0</docker.plugin.version>
+        <build-helper.plugin.version>3.6.1</build-helper.plugin.version>
+        <!-- downgraded to 0.45.0 as 0.45.1 and 0.46 have an issue with overwriting the docker registry before the push -->
+        <docker.plugin.version>0.45.0</docker.plugin.version>
         <extra-enforcer-rules.plugin.version>1.10.0</extra-enforcer-rules.plugin.version>
         <jacoco.plugin.version>0.8.13</jacoco.plugin.version>
         <!-- the jandex version is overwritten in the quarkus modules -->
-        <jandex.plugin.version>3.3.0</jandex.plugin.version>
+        <jandex.plugin.version>3.3.1</jandex.plugin.version>
         <nexus-staging.plugin.version>1.7.0</nexus-staging.plugin.version>
-        <openapi-generator.plugin.version>7.13.0</openapi-generator.plugin.version>
-        <!-- Don't use 3.0.57..3.0.68 because of https://github.com/swagger-api/swagger-codegen-generators/issues/1295 -->
+        <openapi-generator.plugin.version>7.14.0</openapi-generator.plugin.version>
+        <!-- Don't use 3.0.57..3.0.69 because of https://github.com/swagger-api/swagger-codegen-generators/issues/1295 -->
         <!-- (still not fixed for non-spring apps, see https://github.com/swagger-api/swagger-codegen-generators/pull/1308) -->
         <swagger-codegen.plugin.version>3.0.56</swagger-codegen.plugin.version>
         <versions.plugin.version>2.18.0</versions.plugin.version>
@@ -94,11 +98,11 @@
 
         <!-- apache maven plugin versions (in alphabetical order) -->
         <maven.assembly.plugin.version>3.7.1</maven.assembly.plugin.version>
-        <maven.clean.plugin.version>3.4.1</maven.clean.plugin.version>
+        <maven.clean.plugin.version>3.5.0</maven.clean.plugin.version>
         <maven.compiler.plugin.version>3.14.0</maven.compiler.plugin.version>
         <maven.dependency.plugin.version>3.8.1</maven.dependency.plugin.version>
         <maven.deploy.plugin.version>3.1.4</maven.deploy.plugin.version>
-        <maven.ear.plugin.version>3.3.0</maven.ear.plugin.version>
+        <maven.ear.plugin.version>3.4.0</maven.ear.plugin.version>
         <maven.ejb.plugin.version>3.2.1</maven.ejb.plugin.version>
         <maven.enforcer.plugin.version>3.5.0</maven.enforcer.plugin.version>
         <maven.failsafe.plugin.version>3.5.3</maven.failsafe.plugin.version>
@@ -115,19 +119,22 @@
         <maven.surefire.plugin.version>${maven.failsafe.plugin.version}</maven.surefire.plugin.version>
         <maven.war.plugin.version>3.4.0</maven.war.plugin.version>
 
+        <!-- PostgresSQL JDBC driver -->
+        <postgresql.version>42.7.7</postgresql.version>
+
         <!-- artifact versions -->
         <apache.commons.lang3.version>3.17.0</apache.commons.lang3.version>
         <logback.version>1.5.18</logback.version>
         <lombok.version>1.18.38</lombok.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <mapstruct.version>1.6.3</mapstruct.version>
-        <io.opentelemetry.instrumentation.version>2.15.0</io.opentelemetry.instrumentation.version>
+        <io.opentelemetry.instrumentation.version>2.16.0</io.opentelemetry.instrumentation.version>
         <slf4j.version>2.0.17</slf4j.version>
 
         <!-- latest Jackson version for projects independent of an application server (AS) -->
         <!-- most of the AS submodules redefine it with an older version -->
-        <jackson-2-version>2.19.0</jackson-2-version>
-        <jackson-bom.version>2.19.0</jackson-bom.version>
+        <jackson-2-version>2.19.1</jackson-2-version>
+        <jackson-bom.version>2.19.1</jackson-bom.version>
 
         <!-- latest version for projects independent of an application server (AS) -->
         <!-- with an AS it is redefined to be the version used by the AS's resteasy artifact -->
@@ -143,25 +150,25 @@
         <!-- note that byte-buddy pulls in asm, so asm.version should be the one used by the given byte-buddy -->
         <!-- (check `version.asm` in maven3_repo\net\bytebuddy\byte-buddy-parent\x.y.z\byte-buddy-parent-x.y.z.pom) -->
         <asm.version>9.8</asm.version>
-        <byte-buddy.version>1.17.5</byte-buddy.version>
+        <byte-buddy.version>1.17.6</byte-buddy.version>
 
         <!-- use the latest Bouncy Castle version despite what Quarkus defines in its BOM -->
-        <bouncycastle.version>1.80</bouncycastle.version>
+        <bouncycastle.version>1.81</bouncycastle.version>
 
         <!-- use the latest Quarkus Logging from Quarkiverse -->
         <quarkiverse.logging.version>3.1.0</quarkiverse.logging.version>
 
         <!-- testing and static analysis -->
         <opentest4j.version>1.3.0</opentest4j.version>
-        <junit.platform.version>1.12.2</junit.platform.version>
-        <junit.jupiter.version>5.12.2</junit.jupiter.version>
+        <junit.platform.version>1.13.2</junit.platform.version>
+        <junit.jupiter.version>5.13.2</junit.jupiter.version>
         <hamcrest.version>3.0</hamcrest.version>
-        <mockito.version>5.17.0</mockito.version>
-        <equalsverifier.version>4.0</equalsverifier.version>
+        <mockito.version>5.18.0</mockito.version>
+        <equalsverifier.version>4.0.3</equalsverifier.version>
         <json.unit.version>4.1.1</json.unit.version>
         <jsonassert.version>1.5.3</jsonassert.version>
-        <restassured.version>5.5.1</restassured.version>
-        <wiremock.version>3.13.0</wiremock.version>
+        <restassured.version>5.5.5</restassured.version>
+        <wiremock.version>3.13.1</wiremock.version>
 
         <!-- Docker has a special DNS name 'host.docker.internal', but only starting with Docker 18.03... -->
         <!-- Simulating this variable depending on the OS (see also the profiles below overriding it) -->
@@ -269,6 +276,13 @@
                 <groupId>io.quarkiverse.loggingjson</groupId>
                 <artifactId>quarkus-logging-json</artifactId>
                 <version>${quarkiverse.logging.version}</version>
+            </dependency>
+
+            <!-- PostgreSQL JDBC driver -->
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
             </dependency>
 
             <!-- other dependencies -->
@@ -474,25 +488,6 @@
                     <!-- skips surefire tests without skipping failsafe tests.
                          Property value seems to magically default to false -->
                     <skipTests>${skip.surefire.tests}</skipTests>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>${maven.failsafe.plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>integration-test</goal>
-                            <goal>verify</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <argLine>${jacoco.integration.agent.arg}</argLine>
-                    <classpathDependencyExcludes>
-                        <classpathDependencyExcludes>javax:javaee-api</classpathDependencyExcludes>
-                    </classpathDependencyExcludes>
                 </configuration>
             </plugin>
         </plugins>
@@ -723,9 +718,50 @@
                 <docker-host-internal>${env.HOSTNAME}</docker-host-internal>
             </properties>
         </profile>
-        <!-- default failsafe configuration, can be overridden/deactivated with "-DoverrideFailsafe" or "-P !failsafe-jacoco" -->
+        <!-- default surefire configuration, can be overridden/deactivated with "-DoverrideSurefire" or "-P !surefire-with-jacoco" -->
         <profile>
-            <id>failsafe-jacoco</id>
+            <id>surefire-with-jacoco</id>
+            <activation>
+                <property>
+                    <name>!overrideSurefire</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven.surefire.plugin.version}</version>
+                        <configuration>
+                            <!-- see https://blog.soebes.io/posts/2023/10/2023-10-26-maven-jacoco-configuration/ -->
+                            <argLine>
+                                @{argLine}
+                                -XX:+EnableDynamicAgentLoading
+                            </argLine>
+                            <systemPropertyVariables>
+                                <log4j.configuration>log4j.xml</log4j.configuration>
+                                <fo.test>skip</fo.test>
+                                <fo.test.tbi>skip</fo.test.tbi>
+                                <fo.test.dev>skip</fo.test.dev>
+                                <fo.test.selenium>skip</fo.test.selenium>
+                                <fo.test.pci>skip</fo.test.pci>
+                                <fo.test.defect>skip</fo.test.defect>
+                            </systemPropertyVariables>
+                            <classpathDependencyExcludes>
+                                <classpathDependencyExcludes>javax:javaee-api</classpathDependencyExcludes>
+                            </classpathDependencyExcludes>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <!-- default failsafe configuration, can be overridden/deactivated with "-DoverrideFailsafe" or "-P !failsafe-exclude-ee" -->
+        <profile>
+            <id>failsafe-exclude-ee</id>
             <activation>
                 <property>
                     <name>!overrideFailsafe</name>
@@ -755,7 +791,6 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <argLine>${jacoco.integration.agent.arg}</argLine>
                             <classpathDependencyExcludes>
                                 <classpathDependencyExcludes>javax:javaee-api</classpathDependencyExcludes>
                             </classpathDependencyExcludes>

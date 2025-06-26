@@ -87,7 +87,19 @@
                                     <!-- 3.0.57+ are broken: https://github.com/swagger-api/swagger-codegen-generators/issues/1295 -->
                                     <ignoreVersion>
                                         <type>regex</type>
-                                        <version>3\.0\.(5[7-9]|6[0-8])</version>
+                                        <version>3\.0\.(5[7-9]|6[0-9])</version>
+                                    </ignoreVersion>
+                                </ignoreVersions>
+                            </rule>
+                            <rule>
+                                <groupId>io.fabric8</groupId>
+                                <artifactId>docker-maven-plugin</artifactId>
+                                <comparisonMethod>maven</comparisonMethod>
+                                <ignoreVersions>
+                                    <!-- 0.45.1 and 0.46.0 are broken: Dockerfile issue when using a registry in FROM (Arik has details) -->
+                                    <ignoreVersion>
+                                        <type>regex</type>
+                                        <version>0\.4(5\.1|6\.0)</version>
                                     </ignoreVersion>
                                 </ignoreVersions>
                             </rule>

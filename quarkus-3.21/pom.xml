@@ -18,7 +18,7 @@
 
     <properties>
         <!-- latest Quarkus version -->
-        <quarkus.version>3.21.3</quarkus.version>
+        <quarkus.version>3.21.4</quarkus.version>
 
         <!-- Quarkus >= 3.2 requires Java 17, at least for its maven plugin -->
         <java.release>17</java.release>
@@ -49,13 +49,13 @@
         <smallrye.common.version>2.12.0</smallrye.common.version>
         <smallrye.config.version>3.12.4</smallrye.config.version>
         <smallrye.context-propagation.version>2.2.1</smallrye.context-propagation.version>
-        <smallrye.fault-tolerance.version>6.9.0</smallrye.fault-tolerance.version>
+        <smallrye.fault-tolerance.version>6.9.1</smallrye.fault-tolerance.version>
         <smallrye.graphql.version>2.12.2</smallrye.graphql.version>
         <smallrye.health.version>4.2.0</smallrye.health.version>
         <smallrye.jandex.version>3.3.0</smallrye.jandex.version>
         <smallrye.jwt.version>4.6.1</smallrye.jwt.version>
         <smallrye.metrics.version>4.0.0</smallrye.metrics.version>
-        <smallrye.openapi.version>4.0.8</smallrye.openapi.version>
+        <smallrye.openapi.version>4.0.10</smallrye.openapi.version>
         <smallrye.reactive-attribute-processor.version>4.27.0</smallrye.reactive-attribute-processor.version>
         <smallrye.reactive-converter-api.version>3.0.3</smallrye.reactive-converter-api.version>
         <smallrye.reactive-messaging.version>4.27.0</smallrye.reactive-messaging.version>
@@ -93,7 +93,8 @@
         <!-- ojdbc version in the quarkus-jdbc-oracle extension -->
         <oracle.ojdbc.version>23.6.0.24.10</oracle.ojdbc.version>
         <!-- kafka version in the kafka extensions -->
-        <kafka.version>3.9.0</kafka.version>
+        <!-- overridden from 3.9.0 to mitigate a vulnerability -->
+        <kafka.version>3.9.1</kafka.version>
 
         <!-- Quarkus x.y uses Quarkus ARC x.y (based on CDI 4.1) -->
         <jakarta.inject.version>2.0.1</jakarta.inject.version>
@@ -111,11 +112,21 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- Must include Bouncy Castle before the Quarkus BOM to make sure the latest version is not overridden -->
+            <!-- Must include explicit dependencies before the Quarkus BOM to make sure the latest version is not overridden -->
             <dependency>
                 <groupId>org.bouncycastle</groupId>
                 <artifactId>bcprov-jdk18on</artifactId>
                 <version>${bouncycastle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-clients</artifactId>
+                <version>${kafka.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
             </dependency>
 
             <!-- Quarkus BOM -->
@@ -448,18 +459,7 @@
                 </dependency>
                 <dependency>
                     <groupId>org.infinispan</groupId>
-                    <artifactId>infinispan-core</artifactId>
-                    <version>${infinispan.version}</version>
-                    <exclusions>
-                        <exclusion>
-                            <groupId>org.jboss.logging</groupId>
-                            <artifactId>jboss-logging</artifactId>
-                        </exclusion>
-                    </exclusions>
-                </dependency>
-                <dependency>
-                    <groupId>org.infinispan</groupId>
-                    <artifactId>infinispan-jcache</artifactId>
+                    <artifactId>infinispan-api</artifactId>
                     <version>${infinispan.version}</version>
                 </dependency>
                 <dependency>
