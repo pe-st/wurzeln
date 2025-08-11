@@ -8,7 +8,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>quarkus-3.20</artifactId>
+    <artifactId>quarkus-3.25</artifactId>
     <packaging>pom</packaging>
 
     <name>${project.groupId}.${project.artifactId}</name>
@@ -18,7 +18,7 @@
 
     <properties>
         <!-- latest Quarkus version -->
-        <quarkus.version>3.20.2</quarkus.version>
+        <quarkus.version>3.25.1</quarkus.version>
 
         <!-- Quarkus >= 3.2 requires Java 17, at least for its maven plugin -->
         <java.release>17</java.release>
@@ -29,14 +29,15 @@
         <jakarta.xml.bind-api.version>4.0.2</jakarta.xml.bind-api.version>
         <jakarta.annotation.version>3.0.0</jakarta.annotation.version>
         <jakarta.transaction.version>2.0.1</jakarta.transaction.version>
+        <jakarta.data.version>1.0.1</jakarta.data.version>
 
-        <jakarta.el.version>5.0.1</jakarta.el.version>
+        <jakarta.el.version>6.0.1</jakarta.el.version>
 
         <!-- MicroProfile Standard Versions, from the quarkus-bom-x.x.x.Final.pom -->
         <!-- or as transitive dependency from the smallrye artifacts -->
         <mp.config.version>3.1</mp.config.version>
         <mp.context-propagation.version>1.3</mp.context-propagation.version>
-        <mp.fault-tolerance.version>4.1.1</mp.fault-tolerance.version>
+        <mp.fault-tolerance.version>4.1.2</mp.fault-tolerance.version>
         <mp.graphql.version>2.0</mp.graphql.version> <!-- transitive from smallrye.graphql.version -->
         <mp.health.version>4.0.1</mp.health.version>
         <mp.jwt.version>2.1</mp.jwt.version>
@@ -46,29 +47,29 @@
         <!-- mp.reactive-messaging classes included in smallrye.reactive-messaging, no dependency on upstream API -->
         <mp.reactive-streams-operators.version>3.0.1</mp.reactive-streams-operators.version>
         <mp.rest-client.version>4.0</mp.rest-client.version>
-        <smallrye.common.version>2.12.0</smallrye.common.version>
-        <smallrye.config.version>3.11.4</smallrye.config.version>
+        <smallrye.common.version>2.13.8</smallrye.common.version>
+        <smallrye.config.version>3.13.4</smallrye.config.version>
         <smallrye.context-propagation.version>2.2.1</smallrye.context-propagation.version>
-        <smallrye.fault-tolerance.version>6.9.0</smallrye.fault-tolerance.version>
-        <smallrye.graphql.version>2.12.2</smallrye.graphql.version>
+        <smallrye.fault-tolerance.version>6.9.2</smallrye.fault-tolerance.version>
+        <smallrye.graphql.version>2.14.0</smallrye.graphql.version>
         <smallrye.health.version>4.2.0</smallrye.health.version>
-        <smallrye.jandex.version>3.3.0</smallrye.jandex.version>
+        <smallrye.jandex.version>3.3.2</smallrye.jandex.version>
         <smallrye.jwt.version>4.6.2</smallrye.jwt.version>
         <smallrye.metrics.version>4.0.0</smallrye.metrics.version>
-        <smallrye.openapi.version>4.0.11</smallrye.openapi.version>
+        <smallrye.openapi.version>4.0.12</smallrye.openapi.version>
         <smallrye.reactive-attribute-processor.version>4.28.0</smallrye.reactive-attribute-processor.version>
         <smallrye.reactive-converter-api.version>3.0.3</smallrye.reactive-converter-api.version>
         <smallrye.reactive-messaging.version>4.28.0</smallrye.reactive-messaging.version>
         <smallrye.reactive-streams-operators.version>1.0.13</smallrye.reactive-streams-operators.version>
-        <smallrye.mutiny.reactive-streams-operators.version>2.9.2</smallrye.mutiny.reactive-streams-operators.version>
-        <smallrye.mutiny.vertx.version>3.19.1</smallrye.mutiny.vertx.version>
+        <smallrye.mutiny.reactive-streams-operators.version>2.9.4</smallrye.mutiny.reactive-streams-operators.version>
+        <smallrye.mutiny.vertx.version>3.19.2</smallrye.mutiny.vertx.version>
         <!-- quarkus is using resteasy-client-microprofile instead of smallrye-rest-client -->
 
         <!-- smallrye maven plugins -->
         <jandex.plugin.version>${smallrye.jandex.version}</jandex.plugin.version>
 
         <!-- observability implementations -->
-        <io.micrometer.version>1.14.5</io.micrometer.version>
+        <io.micrometer.version>1.14.7</io.micrometer.version>
         <io.opentelemetry.version>1.44.1</io.opentelemetry.version>
         <io.opentelemetry.instrumentation.version>2.10.0</io.opentelemetry.instrumentation.version>
 
@@ -81,20 +82,19 @@
         <yasson.version>3.0.4</yasson.version>
 
         <!-- note that for new projects you should consider using JSON-B (yasson) instead of Jackson -->
-        <jackson-2-version>2.18.2</jackson-2-version>
-        <jackson-bom.version>2.18.2</jackson-bom.version>
+        <jackson-2-version>2.19.2</jackson-2-version>
+        <jackson-bom.version>2.19.2</jackson-bom.version>
 
-        <infinispan.version>15.0.14.Final</infinispan.version>
-        <hibernate.version>6.6.17.Final</hibernate.version>
+        <infinispan.version>15.0.18.Final</infinispan.version>
+        <hibernate.version>7.0.8.Final</hibernate.version>
 
-        <!-- Hibernate 7.0.0.Alpha5 is a compatible implementation for Bean Validation 3.0 (EE9/EE10) -->
-        <jakarta.validation.version>3.0.2</jakarta.validation.version>
-        <hibernate.validator.version>8.0.2.Final</hibernate.validator.version>
-        <!-- ojdbc version in the quarkus-jdbc-oracle extension -->
+        <!-- Hibernate 8.0.1.Final is a compatible implementation for Bean Validation 3.1 (EE11) -->
+        <jakarta.validation.version>3.1.0</jakarta.validation.version>
+        <hibernate.validator.version>9.0.1.Final</hibernate.validator.version>
+        <!-- ojdbc version in the quarkus-jdbc-oracle extension, commented out as -->
         <oracle.ojdbc.version>23.6.0.24.10</oracle.ojdbc.version>
         <!-- kafka version in the kafka extensions -->
-        <!-- overridden from 3.9.0 to mitigate a vulnerability -->
-        <kafka.version>3.9.1</kafka.version>
+        <kafka.version>4.0.0</kafka.version>
 
         <!-- Quarkus x.y uses Quarkus ARC x.y (based on CDI 4.1) -->
         <jakarta.inject.version>2.0.1</jakarta.inject.version>
@@ -102,16 +102,27 @@
         <!-- Logging API supported by Quarkus (logback for testing must be compatible with slf4j) -->
         <slf4j.version>2.0.6</slf4j.version>
 
-        <asm.version>9.7.1</asm.version>
-        <byte-buddy.version>1.15.11</byte-buddy.version>
+        <asm.version>9.8</asm.version>
+        <byte-buddy.version>1.17.5</byte-buddy.version>
 
         <!-- it seems that the quarkus testing integration works best using the junit mentioned in the quarkus BOM -->
-        <junit.jupiter.version>5.12.1</junit.jupiter.version>
-        <junit.platform.version>1.12.1</junit.platform.version>
+        <junit.jupiter.version>5.13.4</junit.jupiter.version>
+        <junit.platform.version>1.13.4</junit.platform.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!-- must include the Oracle BOM before the Quarkus BOM to override OJDBC 23.3 with 21.xx -->
+            <!-- you can test it by removing the <version> line from the ojdbc11 dependency below and the running -->
+            <!-- mvn dependency:tree -P dependencies-existence -->
+            <dependency>
+                <groupId>com.oracle.database.jdbc</groupId>
+                <artifactId>ojdbc-bom</artifactId>
+                <version>${oracle.ojdbc.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <!-- Must include explicit dependencies before the Quarkus BOM to make sure the latest version is not overridden -->
             <dependency>
                 <groupId>org.bouncycastle</groupId>
@@ -484,14 +495,6 @@
                     <version>${hibernate.version}</version>
                     <exclusions>
                         <exclusion>
-                            <groupId>io.smallrye</groupId>
-                            <artifactId>jandex</artifactId>
-                        </exclusion>
-                        <exclusion>
-                            <groupId>org.hibernate.common</groupId>
-                            <artifactId>hibernate-commons-annotations</artifactId>
-                        </exclusion>
-                        <exclusion>
                             <groupId>org.jboss.logging</groupId>
                             <artifactId>jboss-logging</artifactId>
                         </exclusion>
@@ -537,6 +540,11 @@
                     <groupId>jakarta.transaction</groupId>
                     <artifactId>jakarta.transaction-api</artifactId>
                     <version>${jakarta.transaction.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>jakarta.data</groupId>
+                    <artifactId>jakarta.data-api</artifactId>
+                    <version>${jakarta.data.version}</version>
                 </dependency>
             </dependencies>
         </profile>

@@ -18,7 +18,7 @@
 
     <properties>
         <!-- latest Quarkus version -->
-        <quarkus.version>3.15.5</quarkus.version>
+        <quarkus.version>3.15.6</quarkus.version>
 
         <!-- Quarkus >= 3.2 requires Java 17, at least for its maven plugin -->
         <java.release>17</java.release>
@@ -40,7 +40,7 @@
         <mp.graphql.version>2.0</mp.graphql.version> <!-- transitive from smallrye.graphql.version -->
         <mp.health.version>4.0.1</mp.health.version>
         <mp.jwt.version>2.1</mp.jwt.version>
-        <mp.lra.version>2.0</mp.lra.version>
+        <mp.lra.version>2.0.1</mp.lra.version>
         <mp.metrics.version>4.0.1</mp.metrics.version>
         <mp.openapi.version>3.1.1</mp.openapi.version>
         <mp.opentracing.version>3.0</mp.opentracing.version>
@@ -58,11 +58,11 @@
         <smallrye.metrics.version>4.0.0</smallrye.metrics.version>
         <smallrye.openapi.version>3.10.0</smallrye.openapi.version>
         <smallrye.reactive-attribute-processor.version>4.24.0</smallrye.reactive-attribute-processor.version>
-        <smallrye.reactive-converter-api.version>3.0.1</smallrye.reactive-converter-api.version>
+        <smallrye.reactive-converter-api.version>3.0.3</smallrye.reactive-converter-api.version>
         <smallrye.reactive-messaging.version>4.24.0</smallrye.reactive-messaging.version>
         <smallrye.reactive-streams-operators.version>1.0.13</smallrye.reactive-streams-operators.version>
-        <smallrye.mutiny.reactive-streams-operators.version>2.6.2</smallrye.mutiny.reactive-streams-operators.version>
-        <smallrye.mutiny.vertx.version>3.16.0</smallrye.mutiny.vertx.version>
+        <smallrye.mutiny.reactive-streams-operators.version>2.9.2</smallrye.mutiny.reactive-streams-operators.version>
+        <smallrye.mutiny.vertx.version>3.19.1</smallrye.mutiny.vertx.version>
         <!-- quarkus is using resteasy-client-microprofile instead of smallrye-rest-client -->
 
         <!-- smallrye maven plugins -->

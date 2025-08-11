@@ -18,7 +18,7 @@
 
     <properties>
         <!-- latest Quarkus version -->
-        <quarkus.version>3.24.1</quarkus.version>
+        <quarkus.version>3.24.5</quarkus.version>
 
         <!-- Quarkus >= 3.2 requires Java 17, at least for its maven plugin -->
         <java.release>17</java.release>
@@ -47,13 +47,13 @@
         <!-- mp.reactive-messaging classes included in smallrye.reactive-messaging, no dependency on upstream API -->
         <mp.reactive-streams-operators.version>3.0.1</mp.reactive-streams-operators.version>
         <mp.rest-client.version>4.0</mp.rest-client.version>
-        <smallrye.common.version>2.12.0</smallrye.common.version>
-        <smallrye.config.version>3.13.2</smallrye.config.version>
+        <smallrye.common.version>2.12.2</smallrye.common.version>
+        <smallrye.config.version>3.13.3</smallrye.config.version>
         <smallrye.context-propagation.version>2.2.1</smallrye.context-propagation.version>
         <smallrye.fault-tolerance.version>6.9.1</smallrye.fault-tolerance.version>
         <smallrye.graphql.version>2.13.0</smallrye.graphql.version>
         <smallrye.health.version>4.2.0</smallrye.health.version>
-        <smallrye.jandex.version>3.3.1</smallrye.jandex.version>
+        <smallrye.jandex.version>3.3.2</smallrye.jandex.version>
         <smallrye.jwt.version>4.6.2</smallrye.jwt.version>
         <smallrye.metrics.version>4.0.0</smallrye.metrics.version>
         <smallrye.openapi.version>4.0.11</smallrye.openapi.version>
@@ -61,7 +61,7 @@
         <smallrye.reactive-converter-api.version>3.0.3</smallrye.reactive-converter-api.version>
         <smallrye.reactive-messaging.version>4.28.0</smallrye.reactive-messaging.version>
         <smallrye.reactive-streams-operators.version>1.0.13</smallrye.reactive-streams-operators.version>
-        <smallrye.mutiny.reactive-streams-operators.version>2.9.0</smallrye.mutiny.reactive-streams-operators.version>
+        <smallrye.mutiny.reactive-streams-operators.version>2.9.2</smallrye.mutiny.reactive-streams-operators.version>
         <smallrye.mutiny.vertx.version>3.19.1</smallrye.mutiny.vertx.version>
         <!-- quarkus is using resteasy-client-microprofile instead of smallrye-rest-client -->
 
@@ -82,11 +82,11 @@
         <yasson.version>3.0.4</yasson.version>
 
         <!-- note that for new projects you should consider using JSON-B (yasson) instead of Jackson -->
-        <jackson-2-version>2.19.1</jackson-2-version>
-        <jackson-bom.version>2.19.1</jackson-bom.version>
+        <jackson-2-version>2.19.2</jackson-2-version>
+        <jackson-bom.version>2.19.2</jackson-bom.version>
 
-        <infinispan.version>15.0.15.Final</infinispan.version>
-        <hibernate.version>7.0.3.Final</hibernate.version>
+        <infinispan.version>15.0.18.Final</infinispan.version>
+        <hibernate.version>7.0.6.Final</hibernate.version>
 
         <!-- Hibernate 8.0.1.Final is a compatible implementation for Bean Validation 3.1 (EE11) -->
         <jakarta.validation.version>3.1.0</jakarta.validation.version>
@@ -106,8 +106,8 @@
         <byte-buddy.version>1.17.5</byte-buddy.version>
 
         <!-- it seems that the quarkus testing integration works best using the junit mentioned in the quarkus BOM -->
-        <junit.jupiter.version>5.13.1</junit.jupiter.version>
-        <junit.platform.version>1.13.1</junit.platform.version>
+        <junit.jupiter.version>5.13.4</junit.jupiter.version>
+        <junit.platform.version>1.13.4</junit.platform.version>
     </properties>
 
     <dependencyManagement>

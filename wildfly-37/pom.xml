@@ -7,7 +7,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>wildfly-36</artifactId>
+    <artifactId>wildfly-37</artifactId>
     <packaging>pom</packaging>
 
     <name>${project.groupId}.${project.artifactId}</name>
@@ -18,7 +18,7 @@
 
         <!-- latest Wildfly 36 dependencies -->
         <!-- see https://github.com/wildfly/boms/releases -->
-        <wildfly.bom.version>36.0.1.Final</wildfly.bom.version>
+        <wildfly.bom.version>37.0.0.Final</wildfly.bom.version>
 
         <!-- Java EE modules that were removed from Java SE after Java 8 -->
         <jakarta.activation.version>2.1.3</jakarta.activation.version>
@@ -47,12 +47,12 @@
         <mp.reactive-messaging.version>3.0.1</mp.reactive-messaging.version>
         <mp.reactive-streams-operators.version>3.0.1</mp.reactive-streams-operators.version>
         <mp.rest-client.version>4.0</mp.rest-client.version>
-        <smallrye.common.version>2.10.0</smallrye.common.version>
+        <smallrye.common.version>2.12.2</smallrye.common.version>
         <smallrye.config.version>3.12.4</smallrye.config.version>
         <smallrye.fault-tolerance.version>6.9.1</smallrye.fault-tolerance.version>
         <smallrye.health.version>4.2.0</smallrye.health.version>
         <smallrye.jwt.version>4.3.1</smallrye.jwt.version>
-        <smallrye.openapi.version>4.0.9</smallrye.openapi.version>
+        <smallrye.openapi.version>4.0.12</smallrye.openapi.version>
         <smallrye.opentelemetry.version>2.9.2</smallrye.opentelemetry.version>
         <smallrye.reactive-converter-api.version>2.6.0</smallrye.reactive-converter-api.version>
         <smallrye.reactive-messaging.version>4.25.0</smallrye.reactive-messaging.version>
@@ -61,7 +61,7 @@
         <!-- Wildfly 36 is using resteasy-client-microprofile instead of smallrye-rest-client -->
 
         <!-- observability implementations -->
-        <io.micrometer.version>1.14.5</io.micrometer.version>
+        <io.micrometer.version>1.15.0</io.micrometer.version>
         <io.opentelemetry.version>1.42.1</io.opentelemetry.version>
         <io.opentelemetry.instrumentation.version>2.8.0</io.opentelemetry.instrumentation.version>
 
@@ -76,12 +76,12 @@
         <yasson.version>3.0.4</yasson.version>
 
         <!-- note that for new projects you should consider using JSON-B (yasson) instead of Jackson -->
-        <jackson-2-version>2.18.3</jackson-2-version>
-        <jackson-bom.version>2.18.3</jackson-bom.version>
+        <jackson-2-version>2.18.4</jackson-2-version>
+        <jackson-bom.version>2.18.4</jackson-bom.version>
 
         <!-- note that infinispan-directory-provider uses an older version -->
-        <infinispan.version>15.1.7.Final</infinispan.version>
-        <hibernate.version>6.6.7.Final</hibernate.version>
+        <infinispan.version>15.2.4.Final</infinispan.version>
+        <hibernate.version>6.6.19.Final</hibernate.version>
 
         <!-- Wildfly 36.x.x.Final uses Hibernate Validator 8.0.xx.Final -->
         <jakarta.validation.version>3.0.2</jakarta.validation.version>
@@ -90,10 +90,10 @@
         <!-- Wildfly 36.x.x.Final uses Weld 5.1.x (corresponding to CDI 4.0) -->
         <jakarta.inject.version>2.0.1</jakarta.inject.version>
         <!-- TODO use org.jboss.weld:weld-core-bom -->
-        <weld.version>5.1.5.Final</weld.version>
+        <weld.version>5.1.6.Final</weld.version>
 
         <!-- Logging API supported by Wildfly -->
-        <slf4j.version>2.0.16</slf4j.version>
+        <slf4j.version>2.0.17</slf4j.version>
 
         <!-- Latest Wildfly plugin -->
         <wildfly.maven.plugin.version>${wildfly.plugin.version}</wildfly.maven.plugin.version>

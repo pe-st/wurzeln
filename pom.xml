@@ -21,11 +21,13 @@
         <module>quarkus-3.22</module>
         <module>quarkus-3.23</module>
         <module>quarkus-3.24</module>
+        <module>quarkus-3.25</module>
         <module>wildfly-32</module>
         <module>wildfly-33</module>
         <module>wildfly-34</module>
         <module>wildfly-35</module>
         <module>wildfly-36</module>
+        <module>wildfly-37</module>
         <module>update-checker</module>
     </modules>
 
@@ -87,7 +89,7 @@
         <extra-enforcer-rules.plugin.version>1.10.0</extra-enforcer-rules.plugin.version>
         <jacoco.plugin.version>0.8.13</jacoco.plugin.version>
         <!-- the jandex version is overwritten in the quarkus modules -->
-        <jandex.plugin.version>3.3.1</jandex.plugin.version>
+        <jandex.plugin.version>3.4.0</jandex.plugin.version>
         <nexus-staging.plugin.version>1.7.0</nexus-staging.plugin.version>
         <openapi-generator.plugin.version>7.14.0</openapi-generator.plugin.version>
         <!-- Don't use 3.0.57..3.0.69 because of https://github.com/swagger-api/swagger-codegen-generators/issues/1295 -->
@@ -104,7 +106,7 @@
         <maven.deploy.plugin.version>3.1.4</maven.deploy.plugin.version>
         <maven.ear.plugin.version>3.4.0</maven.ear.plugin.version>
         <maven.ejb.plugin.version>3.2.1</maven.ejb.plugin.version>
-        <maven.enforcer.plugin.version>3.5.0</maven.enforcer.plugin.version>
+        <maven.enforcer.plugin.version>3.6.1</maven.enforcer.plugin.version>
         <maven.failsafe.plugin.version>3.5.3</maven.failsafe.plugin.version>
         <maven.install.plugin.version>3.1.4</maven.install.plugin.version>
         <maven.jar.plugin.version>3.4.2</maven.jar.plugin.version>
@@ -123,18 +125,18 @@
         <postgresql.version>42.7.7</postgresql.version>
 
         <!-- artifact versions -->
-        <apache.commons.lang3.version>3.17.0</apache.commons.lang3.version>
+        <apache.commons.lang3.version>3.18.0</apache.commons.lang3.version>
         <logback.version>1.5.18</logback.version>
         <lombok.version>1.18.38</lombok.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <mapstruct.version>1.6.3</mapstruct.version>
-        <io.opentelemetry.instrumentation.version>2.16.0</io.opentelemetry.instrumentation.version>
+        <io.opentelemetry.instrumentation.version>2.18.1</io.opentelemetry.instrumentation.version>
         <slf4j.version>2.0.17</slf4j.version>
 
         <!-- latest Jackson version for projects independent of an application server (AS) -->
         <!-- most of the AS submodules redefine it with an older version -->
-        <jackson-2-version>2.19.1</jackson-2-version>
-        <jackson-bom.version>2.19.1</jackson-bom.version>
+        <jackson-2-version>2.19.2</jackson-2-version>
+        <jackson-bom.version>2.19.2</jackson-bom.version>
 
         <!-- latest version for projects independent of an application server (AS) -->
         <!-- with an AS it is redefined to be the version used by the AS's resteasy artifact -->
@@ -160,11 +162,11 @@
 
         <!-- testing and static analysis -->
         <opentest4j.version>1.3.0</opentest4j.version>
-        <junit.platform.version>1.13.2</junit.platform.version>
-        <junit.jupiter.version>5.13.2</junit.jupiter.version>
+        <junit.platform.version>1.13.4</junit.platform.version>
+        <junit.jupiter.version>5.13.4</junit.jupiter.version>
         <hamcrest.version>3.0</hamcrest.version>
         <mockito.version>5.18.0</mockito.version>
-        <equalsverifier.version>4.0.3</equalsverifier.version>
+        <equalsverifier.version>4.0.7</equalsverifier.version>
         <json.unit.version>4.1.1</json.unit.version>
         <jsonassert.version>1.5.3</jsonassert.version>
         <restassured.version>5.5.5</restassured.version>
