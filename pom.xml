@@ -12,19 +12,14 @@
 
     <modules>
         <module>quarkus-3.15</module> <!-- 3.15 has LTS (https://quarkus.io/blog/quarkus-3-15-1-released/) -->
-        <module>quarkus-3.16</module>
-        <module>quarkus-3.17</module>
-        <module>quarkus-3.18</module>
-        <module>quarkus-3.19</module>
         <module>quarkus-3.20</module> <!-- 3.20 has LTS (https://quarkus.io/blog/quarkus-3-20-0-released/) -->
         <module>quarkus-3.21</module>
         <module>quarkus-3.22</module>
         <module>quarkus-3.23</module>
         <module>quarkus-3.24</module>
         <module>quarkus-3.25</module>
-        <module>wildfly-32</module>
+        <module>quarkus-3.26</module>
         <module>wildfly-33</module>
-        <module>wildfly-34</module>
         <module>wildfly-35</module>
         <module>wildfly-36</module>
         <module>wildfly-37</module>
@@ -89,14 +84,14 @@
         <extra-enforcer-rules.plugin.version>1.10.0</extra-enforcer-rules.plugin.version>
         <jacoco.plugin.version>0.8.13</jacoco.plugin.version>
         <!-- the jandex version is overwritten in the quarkus modules -->
-        <jandex.plugin.version>3.4.0</jandex.plugin.version>
+        <jandex.plugin.version>3.5.0</jandex.plugin.version>
         <nexus-staging.plugin.version>1.7.0</nexus-staging.plugin.version>
-        <openapi-generator.plugin.version>7.14.0</openapi-generator.plugin.version>
-        <!-- Don't use 3.0.57..3.0.69 because of https://github.com/swagger-api/swagger-codegen-generators/issues/1295 -->
+        <openapi-generator.plugin.version>7.15.0</openapi-generator.plugin.version>
+        <!-- Don't use 3.0.57..3.0.73 because of https://github.com/swagger-api/swagger-codegen-generators/issues/1295 -->
         <!-- (still not fixed for non-spring apps, see https://github.com/swagger-api/swagger-codegen-generators/pull/1308) -->
         <swagger-codegen.plugin.version>3.0.56</swagger-codegen.plugin.version>
-        <versions.plugin.version>2.18.0</versions.plugin.version>
-        <wildfly.plugin.version>5.1.3.Final</wildfly.plugin.version>
+        <versions.plugin.version>2.19.0</versions.plugin.version>
+        <wildfly.plugin.version>5.1.4.Final</wildfly.plugin.version>
 
         <!-- apache maven plugin versions (in alphabetical order) -->
         <maven.assembly.plugin.version>3.7.1</maven.assembly.plugin.version>
@@ -107,15 +102,15 @@
         <maven.ear.plugin.version>3.4.0</maven.ear.plugin.version>
         <maven.ejb.plugin.version>3.2.1</maven.ejb.plugin.version>
         <maven.enforcer.plugin.version>3.6.1</maven.enforcer.plugin.version>
-        <maven.failsafe.plugin.version>3.5.3</maven.failsafe.plugin.version>
+        <maven.failsafe.plugin.version>3.5.4</maven.failsafe.plugin.version>
         <maven.install.plugin.version>3.1.4</maven.install.plugin.version>
         <maven.jar.plugin.version>3.4.2</maven.jar.plugin.version>
-        <maven.javadoc.plugin.version>3.11.2</maven.javadoc.plugin.version>
+        <maven.javadoc.plugin.version>3.11.3</maven.javadoc.plugin.version>
         <maven.rar.plugin.version>3.0.0</maven.rar.plugin.version>
         <maven.release.plugin.version>3.1.1</maven.release.plugin.version>
         <maven.resources.plugin.version>3.3.1</maven.resources.plugin.version>
         <maven.scm.plugin.version>2.1.0</maven.scm.plugin.version>
-        <maven.shade.plugin.version>3.6.0</maven.shade.plugin.version>
+        <maven.shade.plugin.version>3.6.1</maven.shade.plugin.version>
         <maven.site.plugin.version>3.21.0</maven.site.plugin.version>
         <maven.source.plugin.version>3.3.1</maven.source.plugin.version>
         <maven.surefire.plugin.version>${maven.failsafe.plugin.version}</maven.surefire.plugin.version>
@@ -127,16 +122,15 @@
         <!-- artifact versions -->
         <apache.commons.lang3.version>3.18.0</apache.commons.lang3.version>
         <logback.version>1.5.18</logback.version>
-        <lombok.version>1.18.38</lombok.version>
+        <lombok.version>1.18.42</lombok.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <mapstruct.version>1.6.3</mapstruct.version>
-        <io.opentelemetry.instrumentation.version>2.18.1</io.opentelemetry.instrumentation.version>
+        <io.opentelemetry.instrumentation.version>2.20.0</io.opentelemetry.instrumentation.version>
         <slf4j.version>2.0.17</slf4j.version>
 
         <!-- latest Jackson version for projects independent of an application server (AS) -->
         <!-- most of the AS submodules redefine it with an older version -->
-        <jackson-2-version>2.19.2</jackson-2-version>
-        <jackson-bom.version>2.19.2</jackson-bom.version>
+        <jackson-bom.version>2.20.0</jackson-bom.version>
 
         <!-- latest version for projects independent of an application server (AS) -->
         <!-- with an AS it is redefined to be the version used by the AS's resteasy artifact -->
@@ -152,24 +146,21 @@
         <!-- note that byte-buddy pulls in asm, so asm.version should be the one used by the given byte-buddy -->
         <!-- (check `version.asm` in maven3_repo\net\bytebuddy\byte-buddy-parent\x.y.z\byte-buddy-parent-x.y.z.pom) -->
         <asm.version>9.8</asm.version>
-        <byte-buddy.version>1.17.6</byte-buddy.version>
+        <byte-buddy.version>1.17.7</byte-buddy.version>
 
         <!-- use the latest Bouncy Castle version despite what Quarkus defines in its BOM -->
-        <bouncycastle.version>1.81</bouncycastle.version>
-
-        <!-- use the latest Quarkus Logging from Quarkiverse -->
-        <quarkiverse.logging.version>3.1.0</quarkiverse.logging.version>
+        <bouncycastle.version>1.82</bouncycastle.version>
 
         <!-- testing and static analysis -->
         <opentest4j.version>1.3.0</opentest4j.version>
         <junit.platform.version>1.13.4</junit.platform.version>
         <junit.jupiter.version>5.13.4</junit.jupiter.version>
         <hamcrest.version>3.0</hamcrest.version>
-        <mockito.version>5.18.0</mockito.version>
-        <equalsverifier.version>4.0.7</equalsverifier.version>
+        <mockito.version>5.19.0</mockito.version>
+        <equalsverifier.version>4.1</equalsverifier.version>
         <json.unit.version>4.1.1</json.unit.version>
         <jsonassert.version>1.5.3</jsonassert.version>
-        <restassured.version>5.5.5</restassured.version>
+        <restassured.version>5.5.6</restassured.version>
         <wiremock.version>3.13.1</wiremock.version>
 
         <!-- Docker has a special DNS name 'host.docker.internal', but only starting with Docker 18.03... -->
@@ -273,11 +264,6 @@
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
                 <version>${logback.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.quarkiverse.loggingjson</groupId>
-                <artifactId>quarkus-logging-json</artifactId>
-                <version>${quarkiverse.logging.version}</version>
             </dependency>
 
             <!-- PostgreSQL JDBC driver -->

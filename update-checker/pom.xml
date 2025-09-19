@@ -46,7 +46,6 @@
                             <rule>
                                 <groupId>javax.jws</groupId>
                                 <artifactId>jsr181-api</artifactId>
-                                <comparisonMethod>maven</comparisonMethod>
                                 <ignoreVersions>
                                     <!-- ignore versions like 1.0.0.MR1-redhat-8 -->
                                     <ignoreVersion>
@@ -58,7 +57,6 @@
                             <rule>
                                 <groupId>com.sun.activation</groupId>
                                 <artifactId>jakarta.activation</artifactId>
-                                <comparisonMethod>maven</comparisonMethod>
                                 <ignoreVersions>
                                     <!-- ignore Jakarta EE 9 artifacts (2.x) for now -->
                                     <ignoreVersion>
@@ -70,7 +68,6 @@
                             <rule>
                                 <groupId>org.glassfish</groupId>
                                 <artifactId>jakarta.el</artifactId>
-                                <comparisonMethod>maven</comparisonMethod>
                                 <ignoreVersions>
                                     <!-- ignore Jakarta EE 9 artifacts (4.x) for now -->
                                     <ignoreVersion>
@@ -82,19 +79,17 @@
                             <rule>
                                 <groupId>io.swagger.codegen.v3</groupId>
                                 <artifactId>swagger-codegen-maven-plugin</artifactId>
-                                <comparisonMethod>maven</comparisonMethod>
                                 <ignoreVersions>
                                     <!-- 3.0.57+ are broken: https://github.com/swagger-api/swagger-codegen-generators/issues/1295 -->
                                     <ignoreVersion>
                                         <type>regex</type>
-                                        <version>3\.0\.(5[7-9]|6[0-9]|7[0-1])</version>
+                                        <version>3\.0\.(5[7-9]|6[0-9]|7[0-3])</version>
                                     </ignoreVersion>
                                 </ignoreVersions>
                             </rule>
                             <rule>
                                 <groupId>io.fabric8</groupId>
                                 <artifactId>docker-maven-plugin</artifactId>
-                                <comparisonMethod>maven</comparisonMethod>
                                 <ignoreVersions>
                                     <!-- 0.45.1 and 0.46.0 are broken: Dockerfile issue when using a registry in FROM (Arik has details) -->
                                     <ignoreVersion>
@@ -242,16 +237,6 @@
                 <dependency>
                     <groupId>org.bouncycastle</groupId>
                     <artifactId>bcprov-jdk18on</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>io.quarkiverse.loggingjson</groupId>
-                    <artifactId>quarkus-logging-json</artifactId>
-                    <exclusions>
-                        <exclusion>
-                            <groupId>io.quarkus</groupId>
-                            <artifactId>*</artifactId>
-                        </exclusion>
-                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>io.opentelemetry.instrumentation</groupId>
