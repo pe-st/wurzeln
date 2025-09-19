@@ -76,7 +76,6 @@
         <yasson.version>3.0.4</yasson.version>
 
         <!-- note that for new projects you should consider using JSON-B (yasson) instead of Jackson -->
-        <jackson-2-version>2.18.2</jackson-2-version>
         <jackson-bom.version>2.18.2</jackson-bom.version>
 
         <!-- note that infinispan-directory-provider uses an older version -->
@@ -314,7 +313,6 @@
                 <dependency>
                     <groupId>com.fasterxml.jackson.core</groupId>
                     <artifactId>jackson-core</artifactId>
-                    <version>${jackson-2-version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.infinispan</groupId>

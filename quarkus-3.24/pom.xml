@@ -82,7 +82,6 @@
         <yasson.version>3.0.4</yasson.version>
 
         <!-- note that for new projects you should consider using JSON-B (yasson) instead of Jackson -->
-        <jackson-2-version>2.19.2</jackson-2-version>
         <jackson-bom.version>2.19.2</jackson-bom.version>
 
         <infinispan.version>15.0.18.Final</infinispan.version>
@@ -93,6 +92,7 @@
         <hibernate.validator.version>9.0.1.Final</hibernate.validator.version>
         <!-- ojdbc version in the quarkus-jdbc-oracle extension -->
         <oracle.ojdbc.version>23.6.0.24.10</oracle.ojdbc.version>
+
         <!-- kafka version in the kafka extensions -->
         <kafka.version>4.0.0</kafka.version>
 
@@ -455,7 +455,6 @@
                 <dependency>
                     <groupId>com.fasterxml.jackson.core</groupId>
                     <artifactId>jackson-core</artifactId>
-                    <version>${jackson-2-version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.infinispan</groupId>

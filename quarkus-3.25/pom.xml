@@ -18,7 +18,7 @@
 
     <properties>
         <!-- latest Quarkus version -->
-        <quarkus.version>3.25.1</quarkus.version>
+        <quarkus.version>3.25.4</quarkus.version>
 
         <!-- Quarkus >= 3.2 requires Java 17, at least for its maven plugin -->
         <java.release>17</java.release>
@@ -82,10 +82,9 @@
         <yasson.version>3.0.4</yasson.version>
 
         <!-- note that for new projects you should consider using JSON-B (yasson) instead of Jackson -->
-        <jackson-2-version>2.19.2</jackson-2-version>
         <jackson-bom.version>2.19.2</jackson-bom.version>
 
-        <infinispan.version>15.0.18.Final</infinispan.version>
+        <infinispan.version>15.0.19.Final</infinispan.version>
         <hibernate.version>7.0.8.Final</hibernate.version>
 
         <!-- Hibernate 8.0.1.Final is a compatible implementation for Bean Validation 3.1 (EE11) -->
@@ -93,6 +92,7 @@
         <hibernate.validator.version>9.0.1.Final</hibernate.validator.version>
         <!-- ojdbc version in the quarkus-jdbc-oracle extension, commented out as -->
         <oracle.ojdbc.version>23.6.0.24.10</oracle.ojdbc.version>
+
         <!-- kafka version in the kafka extensions -->
         <kafka.version>4.0.0</kafka.version>
 
@@ -112,17 +112,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- must include the Oracle BOM before the Quarkus BOM to override OJDBC 23.3 with 21.xx -->
-            <!-- you can test it by removing the <version> line from the ojdbc11 dependency below and the running -->
-            <!-- mvn dependency:tree -P dependencies-existence -->
-            <dependency>
-                <groupId>com.oracle.database.jdbc</groupId>
-                <artifactId>ojdbc-bom</artifactId>
-                <version>${oracle.ojdbc.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
             <!-- Must include explicit dependencies before the Quarkus BOM to make sure the latest version is not overridden -->
             <dependency>
                 <groupId>org.bouncycastle</groupId>
@@ -466,7 +455,6 @@
                 <dependency>
                     <groupId>com.fasterxml.jackson.core</groupId>
                     <artifactId>jackson-core</artifactId>
-                    <version>${jackson-2-version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.infinispan</groupId>

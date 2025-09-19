@@ -18,7 +18,7 @@
 
     <properties>
         <!-- latest Quarkus version -->
-        <quarkus.version>3.20.2</quarkus.version>
+        <quarkus.version>3.20.2.2</quarkus.version>
 
         <!-- Quarkus >= 3.2 requires Java 17, at least for its maven plugin -->
         <java.release>17</java.release>
@@ -81,7 +81,6 @@
         <yasson.version>3.0.4</yasson.version>
 
         <!-- note that for new projects you should consider using JSON-B (yasson) instead of Jackson -->
-        <jackson-2-version>2.18.2</jackson-2-version>
         <jackson-bom.version>2.18.2</jackson-bom.version>
 
         <infinispan.version>15.0.14.Final</infinispan.version>
@@ -92,6 +91,7 @@
         <hibernate.validator.version>8.0.2.Final</hibernate.validator.version>
         <!-- ojdbc version in the quarkus-jdbc-oracle extension -->
         <oracle.ojdbc.version>23.6.0.24.10</oracle.ojdbc.version>
+
         <!-- kafka version in the kafka extensions -->
         <!-- overridden from 3.9.0 to mitigate a vulnerability -->
         <kafka.version>3.9.1</kafka.version>
@@ -455,7 +455,6 @@
                 <dependency>
                     <groupId>com.fasterxml.jackson.core</groupId>
                     <artifactId>jackson-core</artifactId>
-                    <version>${jackson-2-version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.infinispan</groupId>
