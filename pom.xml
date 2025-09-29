@@ -19,6 +19,7 @@
         <module>quarkus-3.24</module>
         <module>quarkus-3.25</module>
         <module>quarkus-3.26</module>
+        <module>quarkus-3.27</module> <!-- 3.27 has LTS (https://quarkus.io/blog/quarkus-3-27-released/) -->
         <module>wildfly-33</module>
         <module>wildfly-35</module>
         <module>wildfly-36</module>
@@ -86,17 +87,17 @@
         <!-- the jandex version is overwritten in the quarkus modules -->
         <jandex.plugin.version>3.5.0</jandex.plugin.version>
         <nexus-staging.plugin.version>1.7.0</nexus-staging.plugin.version>
-        <openapi-generator.plugin.version>7.15.0</openapi-generator.plugin.version>
+        <openapi-generator.plugin.version>7.16.0</openapi-generator.plugin.version>
         <!-- Don't use 3.0.57..3.0.73 because of https://github.com/swagger-api/swagger-codegen-generators/issues/1295 -->
         <!-- (still not fixed for non-spring apps, see https://github.com/swagger-api/swagger-codegen-generators/pull/1308) -->
         <swagger-codegen.plugin.version>3.0.56</swagger-codegen.plugin.version>
-        <versions.plugin.version>2.19.0</versions.plugin.version>
+        <versions.plugin.version>2.19.1</versions.plugin.version>
         <wildfly.plugin.version>5.1.4.Final</wildfly.plugin.version>
 
         <!-- apache maven plugin versions (in alphabetical order) -->
         <maven.assembly.plugin.version>3.7.1</maven.assembly.plugin.version>
         <maven.clean.plugin.version>3.5.0</maven.clean.plugin.version>
-        <maven.compiler.plugin.version>3.14.0</maven.compiler.plugin.version>
+        <maven.compiler.plugin.version>3.14.1</maven.compiler.plugin.version>
         <maven.dependency.plugin.version>3.8.1</maven.dependency.plugin.version>
         <maven.deploy.plugin.version>3.1.4</maven.deploy.plugin.version>
         <maven.ear.plugin.version>3.4.0</maven.ear.plugin.version>
@@ -105,11 +106,11 @@
         <maven.failsafe.plugin.version>3.5.4</maven.failsafe.plugin.version>
         <maven.install.plugin.version>3.1.4</maven.install.plugin.version>
         <maven.jar.plugin.version>3.4.2</maven.jar.plugin.version>
-        <maven.javadoc.plugin.version>3.11.3</maven.javadoc.plugin.version>
+        <maven.javadoc.plugin.version>3.12.0</maven.javadoc.plugin.version>
         <maven.rar.plugin.version>3.0.0</maven.rar.plugin.version>
         <maven.release.plugin.version>3.1.1</maven.release.plugin.version>
         <maven.resources.plugin.version>3.3.1</maven.resources.plugin.version>
-        <maven.scm.plugin.version>2.1.0</maven.scm.plugin.version>
+        <maven.scm.plugin.version>2.2.1</maven.scm.plugin.version>
         <maven.shade.plugin.version>3.6.1</maven.shade.plugin.version>
         <maven.site.plugin.version>3.21.0</maven.site.plugin.version>
         <maven.source.plugin.version>3.3.1</maven.source.plugin.version>
@@ -117,15 +118,15 @@
         <maven.war.plugin.version>3.4.0</maven.war.plugin.version>
 
         <!-- PostgresSQL JDBC driver -->
-        <postgresql.version>42.7.7</postgresql.version>
+        <postgresql.version>42.7.8</postgresql.version>
 
         <!-- artifact versions -->
-        <apache.commons.lang3.version>3.18.0</apache.commons.lang3.version>
+        <apache.commons.lang3.version>3.19.0</apache.commons.lang3.version>
         <logback.version>1.5.18</logback.version>
         <lombok.version>1.18.42</lombok.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <mapstruct.version>1.6.3</mapstruct.version>
-        <io.opentelemetry.instrumentation.version>2.20.0</io.opentelemetry.instrumentation.version>
+        <io.opentelemetry.instrumentation.version>2.20.1</io.opentelemetry.instrumentation.version>
         <slf4j.version>2.0.17</slf4j.version>
 
         <!-- latest Jackson version for projects independent of an application server (AS) -->
@@ -156,8 +157,8 @@
         <junit.platform.version>1.13.4</junit.platform.version>
         <junit.jupiter.version>5.13.4</junit.jupiter.version>
         <hamcrest.version>3.0</hamcrest.version>
-        <mockito.version>5.19.0</mockito.version>
-        <equalsverifier.version>4.1</equalsverifier.version>
+        <mockito.version>5.20.0</mockito.version>
+        <equalsverifier.version>4.1.1</equalsverifier.version>
         <json.unit.version>4.1.1</json.unit.version>
         <jsonassert.version>1.5.3</jsonassert.version>
         <restassured.version>5.5.6</restassured.version>
