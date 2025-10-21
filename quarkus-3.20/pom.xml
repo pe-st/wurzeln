@@ -106,7 +106,6 @@
 
         <!-- it seems that the quarkus testing integration works best using the junit mentioned in the quarkus BOM -->
         <junit.jupiter.version>5.12.2</junit.jupiter.version>
-        <junit.platform.version>1.12.2</junit.platform.version>
     </properties>
 
     <dependencyManagement>

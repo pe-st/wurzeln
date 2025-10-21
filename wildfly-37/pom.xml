@@ -16,7 +16,7 @@
         <!-- latest EE10 spec -->
         <jakarta.jakartaee-api.version>10.0.0</jakarta.jakartaee-api.version>
 
-        <!-- latest Wildfly 36 dependencies -->
+        <!-- latest Wildfly 37 dependencies -->
         <!-- see https://github.com/wildfly/boms/releases -->
         <wildfly.bom.version>37.0.1.Final</wildfly.bom.version>
 
@@ -34,8 +34,8 @@
         <version.org.jboss.spec.jakarta.el>4.0.1.Final</version.org.jboss.spec.jakarta.el>
         <jakarta.el.version>5.0.0-M1</jakarta.el.version>
 
-        <!-- MicroProfile Standard Versions provided by Wildfly 36 -->
-        <!-- see also https://mvnrepository.com/artifact/org.wildfly.bom/wildfly-microprofile/36.x.x.Final -->
+        <!-- MicroProfile Standard Versions provided by Wildfly 37 -->
+        <!-- see also https://mvnrepository.com/artifact/org.wildfly.bom/wildfly-microprofile/37.x.x.Final -->
         <mp.config.version>3.1</mp.config.version>
         <mp.fault-tolerance.version>4.1.2</mp.fault-tolerance.version>
         <mp.health.version>4.0.1</mp.health.version>
@@ -58,15 +58,15 @@
         <smallrye.reactive-messaging.version>4.25.0</smallrye.reactive-messaging.version>
         <smallrye.mutiny.reactive-streams-operators.version>2.7.0</smallrye.mutiny.reactive-streams-operators.version>
         <smallrye.mutiny.vertx.version>3.13.2</smallrye.mutiny.vertx.version>
-        <!-- Wildfly 36 is using resteasy-client-microprofile instead of smallrye-rest-client -->
+        <!-- Wildfly 37 is using resteasy-client-microprofile instead of smallrye-rest-client -->
 
         <!-- observability implementations -->
         <io.micrometer.version>1.15.0</io.micrometer.version>
         <io.opentelemetry.version>1.42.1</io.opentelemetry.version>
         <io.opentelemetry.instrumentation.version>2.8.0</io.opentelemetry.instrumentation.version>
 
-        <!-- Artifact versions provided by Wildfly 36.x.x.Final -->
-        <!-- (see wildfly-36.x.x.Final/modules/system/layers/base and Wildfly BOM) -->
+        <!-- Artifact versions provided by Wildfly 37.x.x.Final -->
+        <!-- (see wildfly-37.x.x.Final/modules/system/layers/base and Wildfly BOM) -->
         <resteasy.version>6.2.12.Final</resteasy.version>
         <apache.httpclient.version>4.5.14</apache.httpclient.version>
         <!-- note that wildfly provides jakarta.json* in the path modules/system/layers/base/javax/json/* -->
@@ -82,11 +82,11 @@
         <infinispan.version>15.2.5.Final</infinispan.version>
         <hibernate.version>6.6.26.Final</hibernate.version>
 
-        <!-- Wildfly 36.x.x.Final uses Hibernate Validator 8.0.xx.Final -->
+        <!-- Wildfly 37.x.x.Final uses Hibernate Validator 8.0.xx.Final -->
         <jakarta.validation.version>3.0.2</jakarta.validation.version>
         <hibernate.validator.version>8.0.2.Final</hibernate.validator.version>
 
-        <!-- Wildfly 36.x.x.Final uses Weld 5.1.x (corresponding to CDI 4.0) -->
+        <!-- Wildfly 37.x.x.Final uses Weld 5.1.x (corresponding to CDI 4.0) -->
         <jakarta.inject.version>2.0.1</jakarta.inject.version>
         <!-- TODO use org.jboss.weld:weld-core-bom -->
         <weld.version>5.1.6.Final</weld.version>
