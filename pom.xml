@@ -13,6 +13,7 @@
     <modules>
         <module>quarkus-3.20</module> <!-- 3.20 has LTS (https://quarkus.io/blog/quarkus-3-20-0-released/) -->
         <module>quarkus-3.27</module> <!-- 3.27 has LTS (https://quarkus.io/blog/quarkus-3-27-released/) -->
+        <module>quarkus-3.28</module>
         <module>wildfly-36</module>
         <module>wildfly-37</module>
         <module>wildfly-38</module>
