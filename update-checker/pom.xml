@@ -76,28 +76,6 @@
                                     </ignoreVersion>
                                 </ignoreVersions>
                             </rule>
-                            <rule>
-                                <groupId>io.swagger.codegen.v3</groupId>
-                                <artifactId>swagger-codegen-maven-plugin</artifactId>
-                                <ignoreVersions>
-                                    <!-- 3.0.57+ are broken: https://github.com/swagger-api/swagger-codegen-generators/issues/1295 -->
-                                    <ignoreVersion>
-                                        <type>regex</type>
-                                        <version>3\.0\.(5[7-9]|6[0-9]|7[0-5])</version>
-                                    </ignoreVersion>
-                                </ignoreVersions>
-                            </rule>
-                            <rule>
-                                <groupId>io.fabric8</groupId>
-                                <artifactId>docker-maven-plugin</artifactId>
-                                <ignoreVersions>
-                                    <!-- 0.45.1 and 0.46.0 are broken: Dockerfile issue when using a registry in FROM (Arik has details) -->
-                                    <ignoreVersion>
-                                        <type>regex</type>
-                                        <version>0\.4(5\.1|6\.0)</version>
-                                    </ignoreVersion>
-                                </ignoreVersions>
-                            </rule>
                         </rules>
                     </ruleSet>
                 </configuration>
@@ -481,11 +459,6 @@
                     <groupId>org.sonatype.plugins</groupId>
                     <artifactId>nexus-staging-maven-plugin</artifactId>
                     <version>${nexus-staging.plugin.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>io.swagger.codegen.v3</groupId>
-                    <artifactId>swagger-codegen-maven-plugin</artifactId>
-                    <version>${swagger-codegen.plugin.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.codehaus.mojo</groupId>
