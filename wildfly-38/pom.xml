@@ -18,7 +18,7 @@
 
         <!-- latest Wildfly 38 dependencies -->
         <!-- see https://github.com/wildfly/boms/releases -->
-        <wildfly.bom.version>38.0.0.Final</wildfly.bom.version>
+        <wildfly.bom.version>38.0.1.Final</wildfly.bom.version>
 
         <!-- Java EE modules that were removed from Java SE after Java 8 -->
         <jakarta.activation.version>2.1.4</jakarta.activation.version>

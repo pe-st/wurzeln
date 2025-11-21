@@ -18,7 +18,7 @@
 
     <properties>
         <!-- latest Quarkus version -->
-        <quarkus.version>3.27.0</quarkus.version>
+        <quarkus.version>3.27.1</quarkus.version>
 
         <!-- Quarkus >= 3.2 requires Java 17, at least for its maven plugin -->
         <java.release>17</java.release>
@@ -51,7 +51,7 @@
         <smallrye.config.version>3.13.4</smallrye.config.version>
         <smallrye.context-propagation.version>2.2.1</smallrye.context-propagation.version>
         <smallrye.fault-tolerance.version>6.9.3</smallrye.fault-tolerance.version>
-        <smallrye.graphql.version>2.14.1</smallrye.graphql.version>
+        <smallrye.graphql.version>2.14.2</smallrye.graphql.version>
         <smallrye.health.version>4.2.0</smallrye.health.version>
         <smallrye.jandex.version>3.4.0</smallrye.jandex.version>
         <smallrye.jwt.version>4.6.2</smallrye.jwt.version>
@@ -61,7 +61,7 @@
         <smallrye.reactive-converter-api.version>3.0.3</smallrye.reactive-converter-api.version>
         <smallrye.reactive-messaging.version>4.28.0</smallrye.reactive-messaging.version>
         <smallrye.reactive-streams-operators.version>1.0.13</smallrye.reactive-streams-operators.version>
-        <smallrye.mutiny.reactive-streams-operators.version>2.9.4</smallrye.mutiny.reactive-streams-operators.version>
+        <smallrye.mutiny.reactive-streams-operators.version>2.9.5</smallrye.mutiny.reactive-streams-operators.version>
         <smallrye.mutiny.vertx.version>3.19.2</smallrye.mutiny.vertx.version>
         <!-- quarkus is using resteasy-client-microprofile instead of smallrye-rest-client -->
 
@@ -85,7 +85,7 @@
         <jackson-bom.version>2.19.2</jackson-bom.version>
 
         <infinispan.version>15.0.19.Final</infinispan.version>
-        <hibernate.version>7.1.0.Final</hibernate.version>
+        <hibernate.version>7.1.4.Final</hibernate.version>
 
         <!-- Hibernate 8.0.1.Final is a compatible implementation for Bean Validation 3.1 (EE11) -->
         <jakarta.validation.version>3.1.1</jakarta.validation.version>
