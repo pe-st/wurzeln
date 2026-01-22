@@ -5,6 +5,7 @@
 ```bash
 mvn clean install
 mvn clean verify -P dependencies-existence
+mvn verify -pl update-checker -P update-check
 
 cd update-checker
 mvn -P update-check

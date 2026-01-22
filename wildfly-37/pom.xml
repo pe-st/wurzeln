@@ -86,6 +86,9 @@
         <jakarta.validation.version>3.0.2</jakarta.validation.version>
         <hibernate.validator.version>8.0.2.Final</hibernate.validator.version>
 
+        <!-- kafka version used by the reactive-messaging-smallrye subsystem -->
+        <kafka.version>3.9.1</kafka.version>
+
         <!-- Wildfly 37.x.x.Final uses Weld 5.1.x (corresponding to CDI 4.0) -->
         <jakarta.inject.version>2.0.1</jakarta.inject.version>
         <!-- TODO use org.jboss.weld:weld-core-bom -->
@@ -323,6 +326,11 @@
                     <groupId>org.infinispan</groupId>
                     <artifactId>infinispan-jcache</artifactId>
                     <version>${infinispan.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.kafka</groupId>
+                    <artifactId>kafka-clients</artifactId>
+                    <version>${kafka.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.hibernate.orm</groupId>
