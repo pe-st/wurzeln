@@ -11,13 +11,10 @@
     <name>${project.groupId}.${project.artifactId}</name>
 
     <modules>
-        <module>quarkus-3.20</module> <!-- 3.20 has LTS (https://quarkus.io/blog/quarkus-3-20-0-released/) -->
         <module>quarkus-3.27</module> <!-- 3.27 has LTS (https://quarkus.io/blog/quarkus-3-27-released/) -->
         <module>quarkus-3.28</module>
         <module>quarkus-3.29</module>
         <module>quarkus-3.30</module>
-        <module>wildfly-36</module>
-        <module>wildfly-37</module>
         <module>wildfly-38</module>
         <module>wildfly-39</module>
         <module>update-checker</module>
