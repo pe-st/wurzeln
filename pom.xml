@@ -15,6 +15,10 @@
         <module>quarkus-3.28</module>
         <module>quarkus-3.29</module>
         <module>quarkus-3.30</module>
+        <module>quarkus-3.31</module>
+        <module>quarkus-3.32</module>
+        <module>quarkus-3.33</module> <!-- 3.23 has LTS (https://quarkus.io/blog/quarkus-3-33-released/) -->
+        <module>quarkus-3.34</module>
         <module>wildfly-38</module>
         <module>wildfly-39</module>
         <module>update-checker</module>
