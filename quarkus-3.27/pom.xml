@@ -82,7 +82,10 @@
         <yasson.version>3.0.4</yasson.version>
 
         <!-- note that for new projects you should consider using JSON-B (yasson) instead of Jackson -->
-        <jackson-bom.version>2.12.2</jackson-bom.version>
+        <jackson-bom.version>2.21.2</jackson-bom.version>
+
+        <!-- Fix vulnerabilities in Netty 4.1.130: GHSA-pwqr-wmgm-9rr8 and GHSA-w9fj-cfpg-grvv -->
+        <netty.version>4.1.132.Final</netty.version>
 
         <infinispan.version>15.0.19.Final</infinispan.version>
         <hibernate.version>7.1.18.Final</hibernate.version>
@@ -120,6 +123,13 @@
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
                 <version>${postgresql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-bom</artifactId>
+                <version>${netty.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
 
             <!-- Quarkus BOM -->

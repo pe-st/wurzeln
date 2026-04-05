@@ -28,13 +28,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <!-- Override this with `17` in your application POM if so desired. -->
-        <!-- Until Java 8 is a thing of the past we have to live with two versioning schemes (see JEP223): -->
-        <!-- - the Java release (the 'de facto' Java major version number, e.g. 8 for Java 1.8, and 9 for Java 9), -->
-        <!--   supported in the compiler plugin as `<release>` for JDK 9 and later -->
-        <!-- - the official Java version number, e.g. 1.8 for Java 1.8, and 9 for Java 9 -->
-        <!--   (this is used for 'legacy' interfaces, e.g. the -source/-target switches of javac) -->
-        <java.release>11</java.release>
+        <!-- Override this with `25` in your application POM if so desired. -->
+        <java.release>17</java.release>
 
         <!-- Java/Jakarta EE modules that were removed from Java SE after Java 8 -->
         <!-- (see http://openjdk.java.net/jeps/320) -->
@@ -63,9 +58,6 @@
         <javax.transaction.groupId>javax.transaction</javax.transaction.groupId>
         <javax.transaction.artifactId>javax.transaction-api</javax.transaction.artifactId>
         <javax.transaction.version>${javax.transaction-api.version}</javax.transaction.version>
-
-        <!-- prevent javadoc failures in JDK 8 -->
-        <additionalparam>-Xdoclint:none</additionalparam>
 
         <!-- it's maven-dependency-plugin:3.7.0 that requires 3.6.3 -->
         <minimum-maven-version>3.6.3</minimum-maven-version>
@@ -162,6 +154,12 @@
         <!-- Simulating this variable depending on the OS (see also the profiles below overriding it) -->
         <!-- This IP address is the standard virtualbox IP address for localhost, used on our Windows 7 machines -->
         <docker-host-internal>10.0.2.2</docker-host-internal>
+
+        <!-- allows skipping surefire tests without skipping failsafe tests -->
+        <skip.surefire.tests>false</skip.surefire.tests>
+        <!-- allows skipping failsafe integration tests independently of surefire tests -->
+        <!-- it is redundant with `skipITs` but it makes it consistent with skip.surefire.tests above -->
+        <skip.failsafe.tests>false</skip.failsafe.tests>
     </properties>
 
     <!-- no dependencies in this POM, as dependencies from a parent POM can't be excluded -->
@@ -447,6 +445,30 @@
     </dependencyManagement>
 
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven.source.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <id>attach-sources-no-fork</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+
         <pluginManagement>
             <plugins>
                 <!-- apache maven plugins -->
@@ -464,6 +486,9 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven.compiler.plugin.version}</version>
+                    <configuration>
+                        <release>${java.release}</release>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -498,6 +523,33 @@
                     <artifactId>maven-enforcer-plugin</artifactId>
                     <version>${maven.enforcer.plugin.version}</version>
                 </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>${maven.failsafe.plugin.version}</version>
+                    <configuration>
+                        <skipITs>${skip.failsafe.tests}</skipITs>
+                    </configuration>
+                    <executions>
+                        <!-- according to https://github.com/fabric8io/docker-maven-plugin/issues/915#issuecomment-691493030 -->
+                        <!-- docker:stop works more reliably in case of test failures when separating integration-test and verify -->
+                        <!-- compare to the jetty example at https://maven.apache.org/surefire/maven-failsafe-plugin/usage.html#using-jetty-and-maven-failsafe-plugin -->
+                        <execution>
+                            <id>root-pom-failsafe-integration-test</id>
+                            <goals>
+                                <goal>integration-test</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>root-pom-failsafe-verify</id>
+                            <goals>
+                                <goal>verify</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-install-plugin</artifactId>
@@ -560,8 +612,28 @@
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-source-plugin</artifactId>
-                    <version>${maven.source.plugin.version}</version>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven.surefire.plugin.version}</version>
+                    <configuration>
+                        <!-- tmpdir: apparently, a tmpdir config in MAVEN_OPTS is ignored unless you add this incantation here -->
+                        <!-- EnableDynamicAgentLoading: see https://blog.soebes.io/posts/2023/10/2023-10-26-maven-jacoco-configuration/ -->
+                        <!-- mockito: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#mockito-instrumentation -->
+                        <argLine>
+                            @{argLine}
+                            -Djava.io.tmpdir=${java.io.tmpdir}
+                            -XX:+EnableDynamicAgentLoading
+                            -javaagent:${settings.localRepository}/org/mockito/mockito-core/${mockito.version}/mockito-core-${mockito.version}.jar
+                        </argLine>
+                        <!-- allows skipping surefire tests without skipping failsafe tests -->
+                        <skipTests>${skip.surefire.tests}</skipTests>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.mockito</groupId>
+                            <artifactId>mockito-core</artifactId>
+                            <version>${mockito.version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -622,11 +694,26 @@
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
                     <version>${jacoco.plugin.version}</version>
+                    <configuration>
+                        <includeCurrentProject>true</includeCurrentProject>
+                    </configuration>
                     <executions>
                         <execution>
                             <goals>
+                                <!-- binds to phase initialize -->
                                 <goal>prepare-agent</goal>
-                                <goal>report</goal>
+                                <!-- binds to phase pre-integration-test -->
+                                <goal>prepare-agent-integration</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <!-- generates an aggregate JaCoCo report with all *.exec files -->
+                            <!-- for single-module projects, this typically includes jacoco.exec and jacoco-it.exec -->
+                            <!-- for multi-module projects, this includes all *.exec files for each module and its direct dependencies -->
+                            <id>report-aggregate</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>report-aggregate</goal>
                             </goals>
                         </execution>
                     </executions>
@@ -636,25 +723,6 @@
     </build>
 
     <profiles>
-        <profile>
-            <id>java9plus</id>
-            <activation>
-                <jdk>[9,)</jdk>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <version>${maven.compiler.plugin.version}</version>
-                        <configuration>
-                            <!-- starting with Java 9 javac should be called with -release N -->
-                            <release>${java.release}</release>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
         <profile>
             <id>linux</id>
             <activation>
@@ -667,98 +735,6 @@
                 <!-- to override the default from the <properties> section above -->
                 <docker-host-internal>${env.HOSTNAME}</docker-host-internal>
             </properties>
-        </profile>
-        <!-- default surefire configuration, can be overridden/deactivated with "-DoverrideSurefire" or "-P !surefire-with-jacoco" -->
-        <profile>
-            <id>surefire-with-jacoco</id>
-            <activation>
-                <property>
-                    <name>!overrideSurefire</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${maven.surefire.plugin.version}</version>
-                        <configuration>
-                            <!-- tmpdir: apparently a tmpdir config in MAVEN_OPTS is ignored unless you add this incantation here -->
-                            <!-- EnableDynamicAgentLoading: see https://blog.soebes.io/posts/2023/10/2023-10-26-maven-jacoco-configuration/ -->
-                            <!-- mockito: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#mockito-instrumentation -->
-                            <argLine>
-                                @{argLine}
-                                -Djava.io.tmpdir=${java.io.tmpdir}
-                                -XX:+EnableDynamicAgentLoading
-                                -javaagent:${settings.localRepository}/org/mockito/mockito-core/${mockito.version}/mockito-core-${mockito.version}.jar
-                            </argLine>
-                            <systemPropertyVariables>
-                                <log4j.configuration>log4j.xml</log4j.configuration>
-                                <fo.test>skip</fo.test>
-                                <fo.test.tbi>skip</fo.test.tbi>
-                                <fo.test.dev>skip</fo.test.dev>
-                                <fo.test.selenium>skip</fo.test.selenium>
-                                <fo.test.pci>skip</fo.test.pci>
-                                <fo.test.defect>skip</fo.test.defect>
-                            </systemPropertyVariables>
-                            <classpathDependencyExcludes>
-                                <classpathDependencyExcludes>javax:javaee-api</classpathDependencyExcludes>
-                            </classpathDependencyExcludes>
-                        </configuration>
-                        <dependencies>
-                            <dependency>
-                                <groupId>org.mockito</groupId>
-                                <artifactId>mockito-core</artifactId>
-                                <version>${mockito.version}</version>
-                            </dependency>
-                        </dependencies>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.jacoco</groupId>
-                        <artifactId>jacoco-maven-plugin</artifactId>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <!-- default failsafe configuration, can be overridden/deactivated with "-DoverrideFailsafe" or "-P !failsafe-exclude-ee" -->
-        <profile>
-            <id>failsafe-exclude-ee</id>
-            <activation>
-                <property>
-                    <name>!overrideFailsafe</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>${maven.failsafe.plugin.version}</version>
-                        <executions>
-                            <!-- according to https://github.com/fabric8io/docker-maven-plugin/issues/915#issuecomment-691493030 -->
-                            <!-- docker:stop works more reliable in case of test failures when separating integration-test and verify -->
-                            <!-- compare to the jetty example at https://maven.apache.org/surefire/maven-failsafe-plugin/usage.html#using-jetty-and-maven-failsafe-plugin -->
-                            <execution>
-                                <id>root-pom-failsafe-integration-test</id>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                </goals>
-                            </execution>
-                            <execution>
-                                <id>root-pom-failsafe-verify</id>
-                                <goals>
-                                    <goal>verify</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <classpathDependencyExcludes>
-                                <classpathDependencyExcludes>javax:javaee-api</classpathDependencyExcludes>
-                            </classpathDependencyExcludes>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
         </profile>
 
         <!-- profile to test that the referenced versions exist for typical dependencies -->
