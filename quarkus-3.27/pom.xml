@@ -18,7 +18,7 @@
 
     <properties>
         <!-- latest Quarkus version -->
-        <quarkus.version>3.27.3</quarkus.version>
+        <quarkus.version>3.27.5.1</quarkus.version>
 
         <!-- Quarkus >= 3.2 requires Java 17, at least for its maven plugin -->
         <java.release>17</java.release>
@@ -62,7 +62,7 @@
         <smallrye.reactive-messaging.version>4.28.0</smallrye.reactive-messaging.version>
         <smallrye.reactive-streams-operators.version>1.0.13</smallrye.reactive-streams-operators.version>
         <smallrye.mutiny.reactive-streams-operators.version>2.9.5</smallrye.mutiny.reactive-streams-operators.version>
-        <smallrye.mutiny.vertx.version>3.21.5</smallrye.mutiny.vertx.version>
+        <smallrye.mutiny.vertx.version>3.21.6</smallrye.mutiny.vertx.version>
         <!-- quarkus is using resteasy-client-microprofile instead of smallrye-rest-client -->
 
         <!-- smallrye maven plugins -->
@@ -82,21 +82,19 @@
         <yasson.version>3.0.4</yasson.version>
 
         <!-- note that for new projects you should consider using JSON-B (yasson) instead of Jackson -->
-        <jackson-bom.version>2.21.2</jackson-bom.version>
+        <jackson-bom.version>2.21.5</jackson-bom.version>
 
-        <!-- Fix vulnerabilities in Netty 4.1.130: GHSA-pwqr-wmgm-9rr8 and GHSA-w9fj-cfpg-grvv -->
-        <netty.version>4.1.132.Final</netty.version>
+        <netty.version>4.1.136.Final</netty.version>
 
         <infinispan.version>15.0.19.Final</infinispan.version>
-        <hibernate.version>7.1.18.Final</hibernate.version>
+        <hibernate.version>7.1.33.Final</hibernate.version>
 
         <!-- Hibernate 8.0.1.Final is a compatible implementation for Bean Validation 3.1 (EE11) -->
         <jakarta.validation.version>3.1.1</jakarta.validation.version>
         <hibernate.validator.version>9.0.1.Final</hibernate.validator.version>
         <oracle.ojdbc.version>23.6.0.24.10</oracle.ojdbc.version>
 
-        <!-- kafka version in the kafka extensions -->
-        <kafka.version>4.0.0</kafka.version>
+        <kafka.version>4.0.2</kafka.version>
 
         <!-- Quarkus x.y uses Quarkus ARC x.y (based on CDI 4.1) -->
         <jakarta.inject.version>2.0.1</jakarta.inject.version>
@@ -125,11 +123,23 @@
                 <version>${postgresql.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.fasterxml.jackson</groupId>
+                <artifactId>jackson-bom</artifactId>
+                <version>${jackson-bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
                 <groupId>io.netty</groupId>
                 <artifactId>netty-bom</artifactId>
                 <version>${netty.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-clients</artifactId>
+                <version>${kafka.version}</version>
             </dependency>
 
             <!-- Quarkus BOM -->
