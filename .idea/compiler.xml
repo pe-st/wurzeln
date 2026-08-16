@@ -14,6 +14,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="quarkus-3.33" options="-parameters" />
       <module name="quarkus-3.34" options="-parameters" />
+      <module name="quarkus-3.35" options="-parameters" />
     </option>
   </component>
 </project>

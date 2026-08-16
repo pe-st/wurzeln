@@ -14,6 +14,7 @@
         <module>quarkus-3.27</module> <!-- 3.27 has LTS (https://quarkus.io/blog/quarkus-3-27-released/) -->
         <module>quarkus-3.33</module> <!-- 3.33 has LTS (https://quarkus.io/blog/quarkus-3-33-released/) -->                
         <module>quarkus-3.34</module>
+        <module>quarkus-3.35</module>
         <module>wildfly-38</module>
         <module>wildfly-39</module>
         <module>wildfly-40</module>
@@ -66,7 +67,7 @@
         <!-- non-apache maven plugin versions -->
         <asciidoctor.plugin.version>3.2.0</asciidoctor.plugin.version>
         <build-helper.plugin.version>3.6.1</build-helper.plugin.version>
-        <docker.plugin.version>0.48.1</docker.plugin.version>
+        <docker.plugin.version>0.49.0</docker.plugin.version>
         <extra-enforcer-rules.plugin.version>1.12.0</extra-enforcer-rules.plugin.version>
         <jacoco.plugin.version>0.8.15</jacoco.plugin.version>
         <!-- the jandex version is overwritten in the quarkus modules -->
@@ -104,7 +105,7 @@
 
         <!-- artifact versions -->
         <apache.commons.lang3.version>3.20.0</apache.commons.lang3.version>
-        <logback.version>1.6.1</logback.version>
+        <logback.version>1.6.3</logback.version>
         <lombok.version>1.18.46</lombok.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <mapstruct.version>1.6.3</mapstruct.version>
@@ -114,7 +115,7 @@
         <!-- latest Jackson version for projects independent of an application server (AS) -->
         <!-- most of the AS submodules redefine it with an older version -->
         <jackson-bom.version>2.22.1</jackson-bom.version>
-        <jackson-3-bom.version>3.2.1</jackson-3-bom.version>
+        <jackson-3-bom.version>3.2.2</jackson-3-bom.version>
 
         <!-- latest version for projects independent of an application server (AS) -->
         <!-- with an AS it is redefined to be the version used by the AS's resteasy artifact -->
@@ -141,7 +142,7 @@
         <hamcrest.version>3.0</hamcrest.version>
         <mockito.version>5.23.0</mockito.version>
         <equalsverifier.version>4.5</equalsverifier.version>
-        <json.unit.version>6.0.1</json.unit.version>
+        <json.unit.version>6.2.0</json.unit.version>
         <jsonassert.version>1.5.3</jsonassert.version>
         <restassured.version>6.0.1</restassured.version>
         <wiremock.version>3.13.2</wiremock.version>
