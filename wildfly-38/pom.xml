@@ -35,7 +35,7 @@
         <jakarta.el.version>5.0.0-M1</jakarta.el.version>
 
         <!-- MicroProfile Standard Versions provided by Wildfly 38 -->
-        <!-- see also https://mvnrepository.com/artifact/org.wildfly.bom/wildfly-microprofile/38.x.x.Final -->
+        <!-- see also https://mvnrepository.com/artifact/org.wildfly.bom/wildfly-expansion/38.x.x.Final -->
         <mp.config.version>3.1</mp.config.version>
         <mp.fault-tolerance.version>4.1.2</mp.fault-tolerance.version>
         <mp.health.version>4.0.1</mp.health.version>
@@ -43,7 +43,7 @@
         <mp.lra.version>2.0.1</mp.lra.version>
         <mp.openapi.version>4.1</mp.openapi.version>
         <!-- mp.reactive-messaging classes included in smallrye.reactive-messaging, no dependency on upstream API -->
-        <!-- but it is defined anyway in the wildfly-microprofile BOM -->
+        <!-- but it is defined anyway in the wildfly-expansion BOM -->
         <mp.reactive-messaging.version>3.0.1</mp.reactive-messaging.version>
         <mp.reactive-streams-operators.version>3.0.1</mp.reactive-streams-operators.version>
         <mp.rest-client.version>4.0</mp.rest-client.version>

@@ -18,7 +18,7 @@
 
     <properties>
         <!-- latest Quarkus version -->
-        <quarkus.version>3.33.1</quarkus.version>
+        <quarkus.version>3.33.3.1</quarkus.version>
 
         <!-- Quarkus >= 3.2 requires Java 17, at least for its maven plugin -->
         <java.release>17</java.release>
@@ -35,7 +35,7 @@
 
         <!-- MicroProfile Standard Versions, from the quarkus-bom-x.x.x.Final.pom -->
         <!-- or as transitive dependency from the smallrye artifacts -->
-        <mp.config.version>3.1</mp.config.version>
+        <mp.config.version>3.1.1</mp.config.version>
         <mp.context-propagation.version>1.3</mp.context-propagation.version>
         <mp.fault-tolerance.version>4.1.2</mp.fault-tolerance.version>
         <mp.graphql.version>2.0</mp.graphql.version> <!-- transitive from smallrye.graphql.version -->
@@ -49,7 +49,7 @@
         <smallrye.common.version>2.16.0</smallrye.common.version>
         <smallrye.config.version>3.16.0</smallrye.config.version>
         <smallrye.context-propagation.version>2.3.0</smallrye.context-propagation.version>
-        <smallrye.fault-tolerance.version>6.10.0</smallrye.fault-tolerance.version>
+        <smallrye.fault-tolerance.version>6.10.1</smallrye.fault-tolerance.version>
         <smallrye.graphql.version>2.17.0</smallrye.graphql.version>
         <smallrye.health.version>4.3.0</smallrye.health.version>
         <smallrye.jandex.version>3.5.3</smallrye.jandex.version>
@@ -60,19 +60,19 @@
         <smallrye.reactive-messaging.version>4.33.0</smallrye.reactive-messaging.version>
         <smallrye.reactive-streams-operators.version>1.0.13</smallrye.reactive-streams-operators.version>
         <smallrye.mutiny.reactive-streams-operators.version>3.1.1</smallrye.mutiny.reactive-streams-operators.version>
-        <smallrye.mutiny.vertx.version>3.21.5</smallrye.mutiny.vertx.version>
+        <smallrye.mutiny.vertx.version>3.21.6</smallrye.mutiny.vertx.version>
         <!-- quarkus is using resteasy-client-microprofile instead of smallrye-rest-client -->
 
         <!-- smallrye maven plugins -->
         <jandex.plugin.version>${smallrye.jandex.version}</jandex.plugin.version>
 
         <!-- observability implementations -->
-        <io.micrometer.version>1.16.3</io.micrometer.version>
+        <io.micrometer.version>1.16.6</io.micrometer.version>
         <io.opentelemetry.version>1.57.0</io.opentelemetry.version>
         <io.opentelemetry.instrumentation.version>2.23.0</io.opentelemetry.instrumentation.version>
 
         <!-- Artifact versions provided by Quarkus x.y -->
-        <resteasy.version>6.2.15.Final</resteasy.version>
+        <resteasy.version>6.2.16.Final</resteasy.version>
         <apache.httpclient.version>4.5.14</apache.httpclient.version>
         <jakarta.json.version>2.1.3</jakarta.json.version>
         <jakarta.json.bind.version>3.0.1</jakarta.json.bind.version>
@@ -80,13 +80,12 @@
         <yasson.version>3.0.4</yasson.version>
 
         <!-- note that for new projects you should consider using JSON-B (yasson) instead of Jackson -->
-        <jackson-bom.version>2.21.2</jackson-bom.version>
+        <jackson-bom.version>2.21.5</jackson-bom.version>
 
-        <!-- Fix vulnerabilities in Netty 4.1.130: GHSA-pwqr-wmgm-9rr8 and GHSA-w9fj-cfpg-grvv -->
-        <netty.version>4.1.132.Final</netty.version>
+        <netty.version>4.1.136.Final</netty.version>
 
-        <infinispan.version>16.0.8</infinispan.version>
-        <hibernate.version>7.2.6.Final</hibernate.version>
+        <infinispan.version>16.0.13</infinispan.version>
+        <hibernate.version>7.2.19.Final</hibernate.version>
 
         <!-- Hibernate 8.0.1.Final is a compatible implementation for Bean Validation 3.1 (EE11) -->
         <jakarta.validation.version>3.1.1</jakarta.validation.version>
@@ -94,7 +93,7 @@
         <oracle.ojdbc.version>23.26.0.0.0</oracle.ojdbc.version>
 
         <!-- kafka version in the kafka extensions -->
-        <kafka.version>4.1.1</kafka.version>
+        <kafka.version>4.1.2</kafka.version>
 
         <!-- Quarkus x.y uses Quarkus ARC x.y (based on CDI 4.1) -->
         <jakarta.inject.version>2.0.1</jakarta.inject.version>
@@ -173,13 +172,15 @@
                 <artifactId>quarkus-maven-plugin</artifactId>
                 <version>${quarkus.version}</version>
                 <extensions>true</extensions>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                    </execution>
-                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <!-- Needed for REST request parameters: https://quarkus.io/guides/rest#accessing-request-parameters -->
+                    <parameters>true</parameters>
+                </configuration>
             </plugin>
 
             <plugin>

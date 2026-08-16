@@ -75,6 +75,10 @@
     <file url="file://$PROJECT_DIR$/wildfly-38/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wildfly-39/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wildfly-39/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/wildfly-40/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/wildfly-40/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/wildfly-41/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/wildfly-41/src/main/resources" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
