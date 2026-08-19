@@ -15,6 +15,9 @@
         <module>quarkus-3.33</module> <!-- 3.33 has LTS (https://quarkus.io/blog/quarkus-3-33-released/) -->                
         <module>quarkus-3.34</module>
         <module>quarkus-3.35</module>
+        <module>quarkus-3.36</module>
+        <module>quarkus-3.37</module>
+        <module>quarkus-3.38</module>
         <module>wildfly-38</module>
         <module>wildfly-39</module>
         <module>wildfly-40</module>
@@ -114,7 +117,7 @@
 
         <!-- latest Jackson version for projects independent of an application server (AS) -->
         <!-- most of the AS submodules redefine it with an older version -->
-        <jackson-bom.version>2.22.1</jackson-bom.version>
+        <jackson-bom.version>2.22.2</jackson-bom.version>
         <jackson-3-bom.version>3.2.2</jackson-3-bom.version>
 
         <!-- latest version for projects independent of an application server (AS) -->
@@ -131,7 +134,7 @@
         <!-- note that byte-buddy pulls in asm, so asm.version should be the one used by the given byte-buddy -->
         <!-- (check `version.asm` in maven3_repo\net\bytebuddy\byte-buddy-parent\x.y.z\byte-buddy-parent-x.y.z.pom) -->
         <asm.version>9.10.1</asm.version>
-        <byte-buddy.version>1.18.11</byte-buddy.version>
+        <byte-buddy.version>1.18.12</byte-buddy.version>
 
         <!-- use the latest Bouncy Castle version despite what Quarkus defines in its BOM -->
         <bouncycastle.version>1.85.2</bouncycastle.version>

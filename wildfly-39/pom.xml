@@ -75,7 +75,6 @@
         <parsson.version>1.1.7</parsson.version>
         <yasson.version>3.0.4</yasson.version>
 
-        <!-- note that for new projects you should consider using JSON-B (yasson) instead of Jackson -->
         <jackson-bom.version>2.20.1</jackson-bom.version>
 
         <!-- note that infinispan-directory-provider uses an older version -->
