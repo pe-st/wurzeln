@@ -76,6 +76,17 @@
                                     </ignoreVersion>
                                 </ignoreVersions>
                             </rule>
+                            <rule>
+                                <groupId>io.netty</groupId>
+                                <artifactId>*</artifactId>
+                                <ignoreVersions>
+                                    <!-- as long as alL Quarkus versions use netty 4.1.x we ignore 4.2.x and 2.0.x -->
+                                    <ignoreVersion>
+                                        <type>regex</type>
+                                        <version>^([24]\.[02]\.).*</version>
+                                    </ignoreVersion>
+                                </ignoreVersions>
+                            </rule>
                         </rules>
                     </ruleSet>
                 </configuration>
@@ -315,6 +326,13 @@
             <!-- have a dependency entry for every plugin in the root pom -->
             <!-- because plugin update checks doesn't seem to work anymore as of 2018-08 -->
             <dependencies>
+                <!-- also add here unmanaged dependencies for the update check -->
+                <dependency>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty-codec</artifactId>
+                    <version>${netty-41-version}</version>
+                </dependency>
+
                 <!-- plugins defined in the root pom -->
                 <dependency>
                     <groupId>org.apache.maven.plugins</groupId>

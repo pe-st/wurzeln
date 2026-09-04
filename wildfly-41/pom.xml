@@ -18,7 +18,7 @@
 
         <!-- latest Wildfly 41 dependencies -->
         <!-- see https://github.com/wildfly/boms/releases -->
-        <wildfly.bom.version>41.0.0.Final</wildfly.bom.version>
+        <wildfly.bom.version>41.0.1.Final</wildfly.bom.version>
 
         <!-- Java EE modules that were removed from Java SE after Java 8 -->
         <!-- Note that the jakarta.xml.* specifications are not part of EE 11 anymore, but they still exist as standalone specifications -->

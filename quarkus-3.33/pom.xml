@@ -24,7 +24,14 @@
     <dependencyManagement>
         <dependencies>
             <!-- Must include explicit dependencies before the Quarkus BOM to make sure the latest version is not overridden -->
- 
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-bom</artifactId>
+                <version>${netty-41-version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <!-- Quarkus BOM -->
             <dependency>
                 <groupId>io.quarkus.platform</groupId>

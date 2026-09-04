@@ -84,7 +84,8 @@
         <!-- note that for new projects you should consider using JSON-B (yasson) instead of Jackson -->
         <jackson-bom.version>2.21.5</jackson-bom.version>
 
-        <netty.version>4.1.136.Final</netty.version>
+        <!-- use netty-41-version from root -->
+        <!--<netty.version>4.1.136.Final</netty.version>-->
 
         <infinispan.version>15.0.19.Final</infinispan.version>
         <hibernate.version>7.1.33.Final</hibernate.version>
@@ -114,8 +115,10 @@
             <!-- Must include explicit dependencies before the Quarkus BOM to make sure the latest version is not overridden -->
             <dependency>
                 <groupId>org.bouncycastle</groupId>
-                <artifactId>bcprov-jdk18on</artifactId>
+                <artifactId>bc-jdk18on-bom</artifactId>
                 <version>${bouncycastle.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.postgresql</groupId>
@@ -132,7 +135,7 @@
             <dependency>
                 <groupId>io.netty</groupId>
                 <artifactId>netty-bom</artifactId>
-                <version>${netty.version}</version>
+                <version>${netty-41-version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
