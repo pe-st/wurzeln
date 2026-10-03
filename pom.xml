@@ -11,9 +11,8 @@
     <name>${project.groupId}.${project.artifactId}</name>
 
     <modules>
-        <module>quarkus-3.27</module> <!-- 3.27 has LTS (https://quarkus.io/blog/quarkus-3-27-released/) -->
+        <module>standalone</module>
         <module>quarkus-3.33</module> <!-- 3.33 has LTS (https://quarkus.io/blog/quarkus-3-33-released/) -->
-        <module>wildfly-38</module>
         <module>wildfly-39</module>
         <module>wildfly-40</module>
         <module>wildfly-41</module>
@@ -27,34 +26,6 @@
         <!-- Override this with `25` in your application POM if so desired. -->
         <java.release>21</java.release>
 
-        <!-- Java/Jakarta EE modules that were removed from Java SE after Java 8 -->
-        <!-- (see http://openjdk.java.net/jeps/320) -->
-        <!-- For the Jakarta EE successors to the Java EE modules the version of Jakarta EE8/Wildfly 18 is given -->
-        <!-- The versions here are the latest individual version, some servers override them, -->
-        <!-- in some cases with different artifacts (that's why group/artifact are variable) -->
-        <javax.jaxb.version>2.3.1</javax.jaxb.version>
-        <javax.jws.version>1.0-MR1</javax.jws.version>
-        <javax.soap-api.version>1.4.0</javax.soap-api.version>
-        <javax.activation.version>1.1.1</javax.activation.version>
-        <jakarta.activation.version>1.2.2</jakarta.activation.version>
-        <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
-        <javax.transaction-api.version>1.3</javax.transaction-api.version>
-        <javax.xml.bind.groupId>javax.xml.bind</javax.xml.bind.groupId>
-        <javax.xml.bind.artifactId>jaxb-api</javax.xml.bind.artifactId>
-        <javax.xml.bind.version>${javax.jaxb.version}</javax.xml.bind.version>
-        <javax.xml.ws.groupId>javax.xml.ws</javax.xml.ws.groupId>
-        <javax.xml.ws.artifactId>jaxws-api</javax.xml.ws.artifactId>
-        <javax.xml.ws.version>${javax.jaxb.version}</javax.xml.ws.version>
-        <javax.xml.soap.groupId>javax.xml.soap</javax.xml.soap.groupId>
-        <javax.xml.soap.artifactId>javax.xml.soap-api</javax.xml.soap.artifactId>
-        <javax.xml.soap.version>${javax.soap-api.version}</javax.xml.soap.version>
-        <javax.annotation.groupId>javax.annotation</javax.annotation.groupId>
-        <javax.annotation.artifactId>javax.annotation-api</javax.annotation.artifactId>
-        <javax.annotation.version>${javax.annotation-api.version}</javax.annotation.version>
-        <javax.transaction.groupId>javax.transaction</javax.transaction.groupId>
-        <javax.transaction.artifactId>javax.transaction-api</javax.transaction.artifactId>
-        <javax.transaction.version>${javax.transaction-api.version}</javax.transaction.version>
-
         <!-- it's maven-dependency-plugin:3.7.0 that requires 3.6.3 -->
         <minimum-maven-version>3.6.3</minimum-maven-version>
 
@@ -64,28 +35,28 @@
 
         <!-- non-apache maven plugin versions -->
         <asciidoctor.plugin.version>3.2.0</asciidoctor.plugin.version>
-        <build-helper.plugin.version>3.6.1</build-helper.plugin.version>
+        <build-helper.plugin.version>3.6.2</build-helper.plugin.version>
         <docker.plugin.version>0.49.0</docker.plugin.version>
-        <extra-enforcer-rules.plugin.version>1.12.0</extra-enforcer-rules.plugin.version>
+        <extra-enforcer-rules.plugin.version>1.12.1</extra-enforcer-rules.plugin.version>
         <jacoco.plugin.version>0.8.15</jacoco.plugin.version>
         <!-- the jandex version is overwritten in the quarkus modules -->
         <jandex.plugin.version>3.6.0</jandex.plugin.version>
-        <nexus-staging.plugin.version>1.7.0</nexus-staging.plugin.version>
         <openapi-generator.plugin.version>7.25.0</openapi-generator.plugin.version>
-        <versions.plugin.version>2.21.0</versions.plugin.version>
+        <sonar.plugin.version>5.8.0.7211</sonar.plugin.version>
+        <versions.plugin.version>2.22.0</versions.plugin.version>
         <wildfly.plugin.version>6.0.1.Final</wildfly.plugin.version>
 
         <!-- Apache Maven plugin versions (in alphabetical order) -->
         <maven.assembly.plugin.version>3.8.0</maven.assembly.plugin.version>
         <maven.clean.plugin.version>3.5.0</maven.clean.plugin.version>
-        <maven.compiler.plugin.version>3.15.0</maven.compiler.plugin.version>
+        <maven.compiler.plugin.version>3.16.0</maven.compiler.plugin.version>
         <maven.dependency.plugin.version>3.11.0</maven.dependency.plugin.version>
-        <maven.deploy.plugin.version>3.1.4</maven.deploy.plugin.version>
+        <maven.deploy.plugin.version>3.2.0</maven.deploy.plugin.version>
         <maven.ear.plugin.version>3.4.0</maven.ear.plugin.version>
         <maven.ejb.plugin.version>3.3.0</maven.ejb.plugin.version>
         <maven.enforcer.plugin.version>3.6.3</maven.enforcer.plugin.version>
-        <maven.failsafe.plugin.version>3.5.6</maven.failsafe.plugin.version>
-        <maven.install.plugin.version>3.1.4</maven.install.plugin.version>
+        <maven.failsafe.plugin.version>3.6.0</maven.failsafe.plugin.version>
+        <maven.install.plugin.version>3.2.0</maven.install.plugin.version>
         <maven.jar.plugin.version>3.5.1</maven.jar.plugin.version>
         <maven.javadoc.plugin.version>3.12.0</maven.javadoc.plugin.version>
         <maven.rar.plugin.version>3.1.0</maven.rar.plugin.version>
@@ -98,55 +69,21 @@
         <maven.surefire.plugin.version>${maven.failsafe.plugin.version}</maven.surefire.plugin.version>
         <maven.war.plugin.version>3.5.1</maven.war.plugin.version>
 
-        <!-- PostgresSQL JDBC driver -->
-        <postgresql.version>42.7.13</postgresql.version>
-
-        <!-- artifact versions -->
-        <apache.commons.lang3.version>3.20.0</apache.commons.lang3.version>
-        <logback.version>1.6.3</logback.version>
-        <lombok.version>1.18.46</lombok.version>
+        <!-- organization-wide dependency versions -->
+        <lombok.version>1.18.48</lombok.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <mapstruct.version>1.6.3</mapstruct.version>
-        <io.opentelemetry.instrumentation.version>2.31.1</io.opentelemetry.instrumentation.version>
-        <slf4j.version>2.0.18</slf4j.version>
-
-        <!-- latest Jackson version for projects independent of an application server (AS) -->
-        <!-- most of the AS submodules redefine it with an older version -->
-        <jackson-bom.version>2.22.2</jackson-bom.version>
-        <jackson-3-bom.version>3.2.2</jackson-3-bom.version>
-
-        <netty-41-version>4.1.137.Final</netty-41-version>
-
-        <!-- latest version for projects independent of an application server (AS) -->
-        <!-- with an AS it is redefined to be the version used by the AS's resteasy artifact -->
-        <apache.httpclient.version>4.5.14</apache.httpclient.version>
-
-        <!-- Java Expression Language (JSR 341) generally defined; the application servers -->
-        <!-- have slightly different version strings (3.0.1-b08-jbossorg-1 and 3.0.1.b08-redhat-1), -->
-        <!-- but it's always 3.0.1 (except with Jakarta EE) -->
-        <javax.el.version>3.0.1-b11</javax.el.version>
-        <jakarta.el.version>3.0.4</jakarta.el.version>
-
-        <!-- byte code manipulation tools, mostly used for tests, but not exclusively -->
-        <!-- note that byte-buddy pulls in asm, so asm.version should be the one used by the given byte-buddy -->
-        <!-- (check `version.asm` in maven3_repo\net\bytebuddy\byte-buddy-parent\x.y.z\byte-buddy-parent-x.y.z.pom) -->
-        <asm.version>9.10.1</asm.version>
-        <byte-buddy.version>1.18.12</byte-buddy.version>
-
-        <!-- use the latest Bouncy Castle version despite what Quarkus defines in its BOM -->
-        <bouncycastle.version>1.85.2</bouncycastle.version>
-
-        <!-- testing and static analysis -->
+        <mockito.version>5.24.0</mockito.version>
         <opentest4j.version>1.3.0</opentest4j.version>
         <junit.jupiter.version>6.1.3</junit.jupiter.version>
         <hamcrest.version>3.0</hamcrest.version>
-        <mockito.version>5.23.0</mockito.version>
         <equalsverifier.version>4.5.2</equalsverifier.version>
         <json.unit.version>6.2.0</json.unit.version>
         <jsonassert.version>1.5.3</jsonassert.version>
         <restassured.version>6.0.1</restassured.version>
         <wiremock.version>3.13.2</wiremock.version>
         <assertj.version>3.27.7</assertj.version>
+        <logback.version>1.6.5</logback.version>
 
         <!-- Docker has a special DNS name 'host.docker.internal', but only starting with Docker 18.03... -->
         <!-- Simulating this variable depending on the OS (see also the profiles below overriding it) -->
@@ -174,62 +111,9 @@
         </surefire.base.argLine>
     </properties>
 
-    <!-- no dependencies in this POM, as dependencies from a parent POM can't be excluded -->
-
     <dependencyManagement>
         <dependencies>
-            <!-- Java EE modules removed from Java SE in Java 11 -->
-            <!-- Usually there is also a dependencyManagement entry in the AS pom -->
-            <dependency>
-                <groupId>${javax.xml.bind.groupId}</groupId>
-                <artifactId>${javax.xml.bind.artifactId}</artifactId>
-                <version>${javax.xml.bind.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${javax.xml.ws.groupId}</groupId>
-                <artifactId>${javax.xml.ws.artifactId}</artifactId>
-                <version>${javax.xml.ws.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${javax.xml.soap.groupId}</groupId>
-                <artifactId>${javax.xml.soap.artifactId}</artifactId>
-                <version>${javax.xml.soap.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${javax.annotation.groupId}</groupId>
-                <artifactId>${javax.annotation.artifactId}</artifactId>
-                <version>${javax.annotation.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${javax.transaction.groupId}</groupId>
-                <artifactId>${javax.transaction.artifactId}</artifactId>
-                <version>${javax.transaction.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.jws</groupId>
-                <artifactId>jsr181-api</artifactId>
-                <version>${javax.jws.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.activation</groupId>
-                <artifactId>activation</artifactId>
-                <version>${javax.activation.version}</version>
-            </dependency>
-            <dependency>
-                <!-- this is the Jakarta EE8/9 artifact for Activation. If you get a -->
-                <!-- 'com.sun.activation:jakarta.activation' not found in a Jakarta EE 10 -->
-                <!-- application it is a sign that you have a non-EE10 dependency somewhere... -->
-                <groupId>com.sun.activation</groupId>
-                <artifactId>jakarta.activation</artifactId>
-                <version>${jakarta.activation.version}</version>
-            </dependency>
-
-            <!-- utils -->
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-lang3</artifactId>
-                <version>${apache.commons.lang3.version}</version>
-            </dependency>
+            <!-- These annotation processors are shared by all parent variants. -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
@@ -259,116 +143,14 @@
                 <scope>provided</scope>
             </dependency>
 
-            <!-- logging -->
+            <!-- The agent JAR and test dependency must resolve to the same Mockito version. -->
             <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-classic</artifactId>
-                <version>${logback.version}</version>
-            </dependency>
-
-            <!-- PostgreSQL JDBC driver -->
-            <dependency>
-                <groupId>org.postgresql</groupId>
-                <artifactId>postgresql</artifactId>
-                <version>${postgresql.version}</version>
-            </dependency>
-
-            <!-- other dependencies -->
-            <dependency>
-                <groupId>com.fasterxml.jackson</groupId>
-                <artifactId>jackson-bom</artifactId>
-                <version>${jackson-bom.version}</version>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-bom</artifactId>
+                <version>${mockito.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>tools.jackson</groupId>
-                <artifactId>jackson-bom</artifactId>
-                <version>${jackson-3-bom.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.glassfish</groupId>
-                <artifactId>javax.el</artifactId>
-                <version>${javax.el.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.glassfish</groupId>
-                <artifactId>jakarta.el</artifactId>
-                <version>${jakarta.el.version}</version>
-            </dependency>
-            <dependency>
-                <!-- must manage the httpclient to avoid dependency convergence errors -->
-                <!-- between rest-assured and wiremock. And you must pay attention because -->
-                <!-- the httpclient is also needed by resteasy provided by EAP/Wildfly etc. -->
-                <!-- in scope runtime. If you define the scope here it might affect your packaging! -->
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpclient</artifactId>
-                <version>${apache.httpclient.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>commons-logging</artifactId>
-                        <groupId>commons-logging</groupId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-
-            <dependency>
-                <!-- must have a managed byte-buddy dependency because wildfly manages it as well -->
-                <!-- (with a quite old version, breaking some mockito tests) -->
-                <groupId>net.bytebuddy</groupId>
-                <artifactId>byte-buddy</artifactId>
-                <version>${byte-buddy.version}</version>
-            </dependency>
-            <dependency>
-                <!-- mockito depends on byte-buddy-agent -->
-                <groupId>net.bytebuddy</groupId>
-                <artifactId>byte-buddy-agent</artifactId>
-                <version>${byte-buddy.version}</version>
-            </dependency>
-            <dependency>
-                <!-- must have managed asm dependencies to make sure we use a version compatible with byte-buddy -->
-                <groupId>org.ow2.asm</groupId>
-                <artifactId>asm</artifactId>
-                <version>${asm.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.ow2.asm</groupId>
-                <artifactId>asm-util</artifactId>
-                <version>${asm.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.ow2.asm</groupId>
-                <artifactId>asm-tree</artifactId>
-                <version>${asm.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.ow2.asm</groupId>
-                <artifactId>asm-analysis</artifactId>
-                <version>${asm.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.bouncycastle</groupId>
-                <artifactId>bc-jdk18on-bom</artifactId>
-                <version>${bouncycastle.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>io.opentelemetry.instrumentation</groupId>
-                <artifactId>opentelemetry-instrumentation-annotations</artifactId>
-                <version>${io.opentelemetry.instrumentation.version}</version>
-            </dependency>
-
-            <!-- testing -->
             <dependency>
                 <groupId>org.junit</groupId>
                 <artifactId>junit-bom</artifactId>
@@ -377,89 +159,79 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-bom</artifactId>
+                <version>${assertj.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>net.javacrumbs.json-unit</groupId>
+                <artifactId>json-unit-bom</artifactId>
+                <version>${json.unit.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.rest-assured</groupId>
+                <artifactId>rest-assured-bom</artifactId>
+                <version>${restassured.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
                 <groupId>org.opentest4j</groupId>
                 <artifactId>opentest4j</artifactId>
                 <version>${opentest4j.version}</version>
-                <scope>test</scope>
             </dependency>
-
-            <!-- junit 5 no longer includes hamcrest -->
             <dependency>
                 <groupId>org.hamcrest</groupId>
                 <artifactId>hamcrest</artifactId>
                 <version>${hamcrest.version}</version>
-                <scope>test</scope>
             </dependency>
             <dependency>
-                <!-- some testing libraries depend on `hamcrest-core` instead of `hamcrest` -->
                 <groupId>org.hamcrest</groupId>
                 <artifactId>hamcrest-core</artifactId>
                 <version>${hamcrest.version}</version>
-                <scope>test</scope>
             </dependency>
             <dependency>
-                <!-- some testing libraries depend on `hamcrest-library` instead of `hamcrest` -->
                 <groupId>org.hamcrest</groupId>
                 <artifactId>hamcrest-library</artifactId>
                 <version>${hamcrest.version}</version>
-                <scope>test</scope>
             </dependency>
-
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-core</artifactId>
-                <version>${mockito.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-junit-jupiter</artifactId>
-                <version>${mockito.version}</version>
-                <scope>test</scope>
-            </dependency>
-
             <dependency>
                 <groupId>nl.jqno.equalsverifier</groupId>
                 <artifactId>equalsverifier</artifactId>
                 <version>${equalsverifier.version}</version>
-                <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>net.javacrumbs.json-unit</groupId>
-                <artifactId>json-unit</artifactId>
-                <version>${json.unit.version}</version>
-                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.skyscreamer</groupId>
                 <artifactId>jsonassert</artifactId>
                 <version>${jsonassert.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>io.rest-assured</groupId>
-                <artifactId>rest-assured</artifactId>
-                <version>${restassured.version}</version>
-                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.wiremock</groupId>
                 <artifactId>wiremock</artifactId>
                 <version>${wiremock.version}</version>
-                <scope>test</scope>
             </dependency>
             <dependency>
-                <groupId>org.assertj</groupId>
-                <artifactId>assertj-core</artifactId>
-                <version>${assertj.version}</version>
-                <scope>test</scope>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-scm-plugin</artifactId>
+                <version>${maven.scm.plugin.version}</version>
+                <configuration>
+                    <tag>${project.artifactId}-${project.version}</tag>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -608,14 +380,6 @@
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-scm-plugin</artifactId>
-                    <version>${maven.scm.plugin.version}</version>
-                    <configuration>
-                        <connectionType>developerConnection</connectionType>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-shade-plugin</artifactId>
                     <version>${maven.shade.plugin.version}</version>
                 </plugin>
@@ -682,9 +446,9 @@
                     <version>${openapi-generator.plugin.version}</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.sonatype.plugins</groupId>
-                    <artifactId>nexus-staging-maven-plugin</artifactId>
-                    <version>${nexus-staging.plugin.version}</version>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>${sonar.plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
@@ -743,7 +507,7 @@
             </properties>
         </profile>
 
-        <!-- profile to test that the referenced versions exist for typical dependencies -->
+        <!-- profile (for root POM maintenance) to test that the referenced versions exist for typical dependencies -->
         <profile>
             <id>dependencies-existence</id>
             <activation>
