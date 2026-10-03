@@ -13,6 +13,7 @@
     <modules>
         <module>standalone</module>
         <module>quarkus-3.33</module> <!-- 3.33 has LTS (https://quarkus.io/blog/quarkus-3-33-released/) -->
+        <module>quarkus-3.40</module> <!-- 3.40 has LTS (https://quarkus.io/blog/quarkus-3-40-released/) -->
         <module>wildfly-39</module>
         <module>wildfly-40</module>
         <module>wildfly-41</module>
@@ -23,8 +24,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <!-- Override this with `25` in your application POM if so desired. -->
-        <java.release>21</java.release>
+        <java.release>25</java.release>
 
         <!-- it's maven-dependency-plugin:3.7.0 that requires 3.6.3 -->
         <minimum-maven-version>3.6.3</minimum-maven-version>
